@@ -1,25 +1,24 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.ui {
 
-    /**
-     * Creates a new id generator.
-     * @constructor
-     * @final
-     */
-    class IdGenerator {
-        /**
-         * Creates a new id generator.
-         * @constructor
-         * @final
-         */
-        constructor();
+    class IdGenerator extends IdGenerator.__Class { }
+    module IdGenerator {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * Gets the next unique ID.
-         * @return {string} The next unique identifier.
-         */
-        getNextUniqueId(): string;
+            /**
+             * Creates a new id generator.
+             * @constructor
+             * @final
+             */
+            constructor();
+    
+            /**
+             * Gets the next unique ID.
+             * @return {string} The next unique identifier.
+             */
+            getNextUniqueId(): string;
+        }
     }
 }
-

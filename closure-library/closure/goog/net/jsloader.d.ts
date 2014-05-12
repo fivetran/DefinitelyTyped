@@ -1,53 +1,25 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../closure/goog/dom/dom.d.ts" />
-/// <reference path="../../../closure/goog/promise/resolver.d.ts" />
-/// <reference path="../../../closure/goog/testing/watchers.d.ts" />
-/// <reference path="../../../closure/goog/debug/entrypointregistry.d.ts" />
-/// <reference path="../../../closure/goog/async/nexttick.d.ts" />
-/// <reference path="../../../closure/goog/async/run.d.ts" />
-/// <reference path="../../../closure/goog/promise/thenable.d.ts" />
-/// <reference path="../../../closure/goog/promise/promise.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../debug/error.d.ts" />
 /// <reference path="../../../third_party/closure/goog/mochikit/async/deferred.d.ts" />
 
 declare module goog.net.jsloader {
 
-    /**
-     * A jsloader error.
-     *
-     * @param {goog.net.jsloader.ErrorCode} code The error code.
-     * @param {string=} opt_message Additional message.
-     * @constructor
-     * @extends {goog.debug.Error}
-     * @final
-     */
-    class Error extends goog.debug.Error {
-        /**
-         * A jsloader error.
-         *
-         * @param {goog.net.jsloader.ErrorCode} code The error code.
-         * @param {string=} opt_message Additional message.
-         * @constructor
-         * @extends {goog.debug.Error}
-         * @final
-         */
-        constructor(code: goog.net.jsloader.ErrorCode, opt_message?: string);
+    class Error extends Error.__Class { }
+    module Error {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.debug.Error.__Class {
+    
+            /**
+             * A jsloader error.
+             *
+             * @param {goog.net.jsloader.ErrorCode} code The error code.
+             * @param {string=} opt_message Additional message.
+             * @constructor
+             * @extends {goog.debug.Error}
+             * @final
+             */
+            constructor(code: goog.net.jsloader.ErrorCode, opt_message?: string);
+        }
     }
 
     /**
@@ -149,4 +121,3 @@ declare module goog.net.jsloader {
      */
     enum ErrorCode { LOAD_ERROR, TIMEOUT, VERIFY_ERROR, VERIFY_OBJECT_ALREADY_EXISTS } 
 }
-

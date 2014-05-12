@@ -1,29 +1,5 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/structs/collection.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/structs/structs.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/iter/iter.d.ts" />
-/// <reference path="../../../closure/goog/structs/map.d.ts" />
-/// <reference path="../../../closure/goog/structs/set.d.ts" />
-/// <reference path="../../../closure/goog/debug/debug.d.ts" />
-/// <reference path="../../../closure/goog/debug/logrecord.d.ts" />
-/// <reference path="../../../closure/goog/debug/logbuffer.d.ts" />
-/// <reference path="../../../closure/goog/debug/logger.d.ts" />
-/// <reference path="../../../closure/goog/log/log.d.ts" />
-/// <reference path="../../../closure/goog/tweak/entries.d.ts" />
-/// <reference path="../../../closure/goog/uri/utils.d.ts" />
-/// <reference path="../../../closure/goog/tweak/registry.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./registry.d.ts" />
 
 declare module goog.tweak {
 
@@ -58,7 +34,1063 @@ declare module goog.tweak {
      * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
      *     parameters.
      */
-    function beginBooleanGroup(id: string, description: string, opt_configParams?: goog.tweak.ConfigParams): void;
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a group of BooleanSettings that are all set by a
+     * single query parameter. A call to goog.tweak.endBooleanGroup() must be used
+     * to close this group. Only goog.tweak.registerBoolean() calls are allowed with
+     * the beginBooleanGroup()/endBooleanGroup().
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function beginBooleanGroup(id: string, description: string, opt_configParams?: Object): void;
 
     /**
      * Stops adding boolean entries to the active boolean group.
@@ -73,7 +1105,871 @@ declare module goog.tweak {
      * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
      *     parameters.
      */
-    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: goog.tweak.ConfigParams): void;
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a BooleanSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {boolean=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerBoolean(id: string, description: string, opt_defaultValue?: boolean, opt_configParams?: Object): void;
 
     /**
      * Creates and registers a StringSetting.
@@ -83,7 +1979,871 @@ declare module goog.tweak {
      * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
      *     parameters.
      */
-    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: goog.tweak.ConfigParams): void;
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a StringSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {string=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerString(id: string, description: string, opt_defaultValue?: string, opt_configParams?: Object): void;
 
     /**
      * Creates and registers a NumericSetting.
@@ -93,7 +2853,871 @@ declare module goog.tweak {
      * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
      *     parameters.
      */
-    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: goog.tweak.ConfigParams): void;
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: string; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: string[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: number[]; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: string; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: boolean; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: Function; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: string }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: { label: any /*undefined*/; validValues: any /*undefined*/; paramName: any /*undefined*/; restartRequired: any /*undefined*/; callback: any /*undefined*/; token: any /*undefined*/ }): void;
+    /**
+     * Creates and registers a NumericSetting.
+     * @param {string} id The unique ID for the setting.
+     * @param {string} description A description of what the setting does.
+     * @param {number=} opt_defaultValue The default value for the setting.
+     * @param {goog.tweak.ConfigParams=} opt_configParams Extra configuration
+     *     parameters.
+     */
+    function registerNumber(id: string, description: string, opt_defaultValue?: number, opt_configParams?: Object): void;
 
     /**
      * Creates and registers a ButtonAction.
@@ -111,7 +3735,23 @@ declare module goog.tweak {
      * @param {string} id The unique string that identifies the entry.
      * @param {string|number|boolean} value The new default value for the tweak.
      */
-    function overrideDefaultValue(id: string, value: any /*string|number|boolean*/): void;
+    function overrideDefaultValue(id: string, value: string): void;
+    /**
+     * Sets a default value to use for the given tweak instead of the one passed
+     * to the register* function. This function must be called before the tweak is
+     * registered.
+     * @param {string} id The unique string that identifies the entry.
+     * @param {string|number|boolean} value The new default value for the tweak.
+     */
+    function overrideDefaultValue(id: string, value: number): void;
+    /**
+     * Sets a default value to use for the given tweak instead of the one passed
+     * to the register* function. This function must be called before the tweak is
+     * registered.
+     * @param {string} id The unique string that identifies the entry.
+     * @param {string|number|boolean} value The new default value for the tweak.
+     */
+    function overrideDefaultValue(id: string, value: boolean): void;
 
     /**
      * Returns the value of the boolean setting with the given ID.
@@ -134,4 +3774,3 @@ declare module goog.tweak {
      */
     function getNumber(id: string): number;
 }
-

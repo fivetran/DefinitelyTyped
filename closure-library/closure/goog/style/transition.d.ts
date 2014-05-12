@@ -1,26 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../closure/goog/math/box.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../closure/goog/math/rect.d.ts" />
-/// <reference path="../../../closure/goog/dom/vendor.d.ts" />
-/// <reference path="../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/dom/dom.d.ts" />
-/// <reference path="../../../closure/goog/style/style.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.style.transition {
 
@@ -48,7 +26,23 @@ declare module goog.style.transition {
      *     Array.<goog.style.transition.Css3Property>} properties A single CSS3
      *     transition property or array of properties.
      */
-    function set(element: Element, properties: any /*goog.style.transition.Css3Property|goog.style.transition.Css3Property[]*/): void;
+    function set(element: Element, properties: any /*{ property: string; duration: number; timing: string; delay: number }|string*/[]): void;
+    /**
+     * Sets the element CSS3 transition to properties.
+     * @param {Element} element The element to set transition on.
+     * @param {goog.style.transition.Css3Property|
+     *     Array.<goog.style.transition.Css3Property>} properties A single CSS3
+     *     transition property or array of properties.
+     */
+    function set(element: Element, properties: { property: string; duration: number; timing: string; delay: number }): void;
+    /**
+     * Sets the element CSS3 transition to properties.
+     * @param {Element} element The element to set transition on.
+     * @param {goog.style.transition.Css3Property|
+     *     Array.<goog.style.transition.Css3Property>} properties A single CSS3
+     *     transition property or array of properties.
+     */
+    function set(element: Element, properties: string): void;
 
     /**
      * Removes any programmatically-added CSS3 transition in the given element.
@@ -61,4 +55,3 @@ declare module goog.style.transition {
      */
     function isSupported(): boolean;
 }
-

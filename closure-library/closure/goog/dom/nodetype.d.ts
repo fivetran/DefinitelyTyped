@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.dom {
 
@@ -17,4 +17,3 @@ declare module goog.dom {
      */
     enum NodeType { ELEMENT, ATTRIBUTE, TEXT, CDATA_SECTION, ENTITY_REFERENCE, ENTITY, PROCESSING_INSTRUCTION, COMMENT, DOCUMENT, DOCUMENT_TYPE, DOCUMENT_FRAGMENT, NOTATION } 
 }
-

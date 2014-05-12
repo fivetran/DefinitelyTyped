@@ -1,9 +1,7 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/vec/float64array.d.ts" />
-/// <reference path="../../../closure/goog/vec/float32array.d.ts" />
-/// <reference path="../../../closure/goog/vec/vec.d.ts" />
-/// <reference path="../../../closure/goog/vec/vec3.d.ts" />
-/// <reference path="../../../closure/goog/vec/vec4.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./vec.d.ts" />
+/// <reference path="./vec4.d.ts" />
+/// <reference path="./vec3.d.ts" />
 
 declare module goog.vec.Mat4 {
 
@@ -19,7 +17,7 @@ declare module goog.vec.Mat4 {
     /** @typedef {goog.vec.AnyType} */
     interface AnyType extends goog.vec.AnyType { }
 
-    /** @typedef {Float32Array} */
+    /** @typedef {!Float32Array} */
     interface Type extends Float32Array { }
 
     /** @typedef {goog.vec.ArrayType} */
@@ -892,4 +890,3 @@ declare module goog.vec.Mat4 {
      */
     function getTranslation(mat: goog.vec.Mat4.AnyType, translation: goog.vec.Vec3.AnyType): goog.vec.Mat4.AnyType;
 }
-

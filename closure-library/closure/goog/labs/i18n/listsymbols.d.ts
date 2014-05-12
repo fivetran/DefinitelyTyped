@@ -1,4 +1,4 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
 
 declare module goog.labs.i18n {
 
@@ -522,4 +522,3 @@ declare module goog.labs.i18n {
      */
     var ListFormatSymbols: any /*missing*/;
 }
-

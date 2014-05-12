@@ -1,105 +1,15 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/a11y/aria/roles.d.ts" />
-/// <reference path="../../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../../closure/goog/math/box.d.ts" />
-/// <reference path="../../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../../closure/goog/math/rect.d.ts" />
-/// <reference path="../../../../closure/goog/dom/vendor.d.ts" />
-/// <reference path="../../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../../closure/goog/dom/dom.d.ts" />
-/// <reference path="../../../../closure/goog/style/style.d.ts" />
-/// <reference path="../../../../closure/goog/events/eventid.d.ts" />
-/// <reference path="../../../../closure/goog/events/listenable.d.ts" />
-/// <reference path="../../../../closure/goog/events/listener.d.ts" />
-/// <reference path="../../../../closure/goog/events/listenermap.d.ts" />
-/// <reference path="../../../../closure/goog/events/browserfeature.d.ts" />
-/// <reference path="../../../../closure/goog/debug/entrypointregistry.d.ts" />
-/// <reference path="../../../../closure/goog/events/eventtype.d.ts" />
-/// <reference path="../../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../../closure/goog/disposable/disposable.d.ts" />
-/// <reference path="../../../../closure/goog/events/event.d.ts" />
-/// <reference path="../../../../closure/goog/reflect/reflect.d.ts" />
-/// <reference path="../../../../closure/goog/events/browserevent.d.ts" />
-/// <reference path="../../../../closure/goog/events/events.d.ts" />
-/// <reference path="../../../../closure/goog/events/eventhandler.d.ts" />
-/// <reference path="../../../../closure/goog/ui/idgenerator.d.ts" />
-/// <reference path="../../../../closure/goog/events/eventtarget.d.ts" />
-/// <reference path="../../../../closure/goog/ui/component.d.ts" />
-/// <reference path="../../../../closure/goog/a11y/aria/attributes.d.ts" />
-/// <reference path="../../../../closure/goog/a11y/aria/datatables.d.ts" />
-/// <reference path="../../../../closure/goog/a11y/aria/aria.d.ts" />
-/// <reference path="../../../../closure/goog/dom/classlist.d.ts" />
-/// <reference path="../../../../closure/goog/ui/registry.d.ts" />
-/// <reference path="../../../../closure/goog/ui/containerrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/events/keycodes.d.ts" />
-/// <reference path="../../../../closure/goog/events/keyhandler.d.ts" />
-/// <reference path="../../../../closure/goog/ui/decorate.d.ts" />
-/// <reference path="../../../../closure/goog/ui/controlrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/controlcontent.d.ts" />
-/// <reference path="../../../../closure/goog/ui/control.d.ts" />
-/// <reference path="../../../../closure/goog/ui/container.d.ts" />
-/// <reference path="../../../../closure/goog/ui/menuseparatorrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/cssnames.d.ts" />
-/// <reference path="../../../../closure/goog/ui/toolbarseparatorrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/separator.d.ts" />
-/// <reference path="../../../../closure/goog/ui/toolbarrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/toolbar.d.ts" />
-/// <reference path="../../../../closure/goog/ui/menuitemrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/menuitem.d.ts" />
-/// <reference path="../../../../closure/goog/ui/option.d.ts" />
-/// <reference path="../../../../closure/goog/ui/menurenderer.d.ts" />
-/// <reference path="../../../../closure/goog/style/bidi.d.ts" />
-/// <reference path="../../../../closure/goog/positioning/positioning.d.ts" />
-/// <reference path="../../../../closure/goog/timer/timer.d.ts" />
-/// <reference path="../../../../closure/goog/useragent/product.d.ts" />
-/// <reference path="../../../../closure/goog/ui/menuseparator.d.ts" />
-/// <reference path="../../../../closure/goog/ui/menuheaderrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/menuheader.d.ts" />
-/// <reference path="../../../../closure/goog/ui/menu.d.ts" />
-/// <reference path="../../../../closure/goog/positioning/abstractposition.d.ts" />
-/// <reference path="../../../../closure/goog/positioning/anchoredposition.d.ts" />
-/// <reference path="../../../../closure/goog/positioning/anchoredviewportposition.d.ts" />
-/// <reference path="../../../../closure/goog/positioning/menuanchoredposition.d.ts" />
-/// <reference path="../../../../closure/goog/ui/buttonside.d.ts" />
-/// <reference path="../../../../closure/goog/ui/buttonrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/nativebuttonrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/button.d.ts" />
-/// <reference path="../../../../closure/goog/ui/custombuttonrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/menubuttonrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/menubutton.d.ts" />
-/// <reference path="../../../../closure/goog/ui/selectionmodel.d.ts" />
-/// <reference path="../../../../closure/goog/ui/select.d.ts" />
-/// <reference path="../../../../closure/goog/ui/toolbarmenubuttonrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/toolbarselect.d.ts" />
-/// <reference path="../../../../closure/goog/color/names.d.ts" />
-/// <reference path="../../../../closure/goog/color/color.d.ts" />
-/// <reference path="../../../../closure/goog/ui/colormenubuttonrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/iter/iter.d.ts" />
-/// <reference path="../../../../closure/goog/dom/tagiterator.d.ts" />
-/// <reference path="../../../../closure/goog/dom/nodeiterator.d.ts" />
-/// <reference path="../../../../closure/goog/ui/paletterenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/palette.d.ts" />
-/// <reference path="../../../../closure/goog/ui/colorpalette.d.ts" />
-/// <reference path="../../../../closure/goog/ui/colormenubutton.d.ts" />
-/// <reference path="../../../../closure/goog/ui/toolbarcolormenubuttonrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/toolbarcolormenubutton.d.ts" />
-/// <reference path="../../../../closure/goog/ui/toolbarbuttonrenderer.d.ts" />
-/// <reference path="../../../../closure/goog/ui/toolbarbutton.d.ts" />
-/// <reference path="../../../../closure/goog/ui/toolbarmenubutton.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
+/// <reference path="../select.d.ts" />
+/// <reference path="../../dom/tagname.d.ts" />
+/// <reference path="../control.d.ts" />
+/// <reference path="../toolbar.d.ts" />
+/// <reference path="../buttonrenderer.d.ts" />
+/// <reference path="../../dom/dom.d.ts" />
+/// <reference path="../button.d.ts" />
+/// <reference path="../menubutton.d.ts" />
+/// <reference path="../menubuttonrenderer.d.ts" />
+/// <reference path="../colormenubuttonrenderer.d.ts" />
+/// <reference path="../colormenubutton.d.ts" />
 
 declare module goog.ui.editor.ToolbarFactory {
 
@@ -231,7 +141,55 @@ declare module goog.ui.editor.ToolbarFactory {
      *     creation; defaults to the current document if unspecified.
      * @return {!goog.ui.Button} A toolbar button.
      */
-    function makeButton(id: string, tooltip: string, caption: goog.ui.ControlContent, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Button;
+    function makeButton(id: string, tooltip: string, caption: string, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Button;
+    /**
+     * Creates a toolbar button with the given ID, tooltip, and caption.  Applies
+     * any custom CSS class names to the button's caption element.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ButtonRenderer=} opt_renderer Button renderer; defaults to
+     *     {@link goog.ui.ToolbarButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.Button} A toolbar button.
+     */
+    function makeButton(id: string, tooltip: string, caption: Node, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Button;
+    /**
+     * Creates a toolbar button with the given ID, tooltip, and caption.  Applies
+     * any custom CSS class names to the button's caption element.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ButtonRenderer=} opt_renderer Button renderer; defaults to
+     *     {@link goog.ui.ToolbarButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.Button} A toolbar button.
+     */
+    function makeButton(id: string, tooltip: string, caption: Node[], opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Button;
+    /**
+     * Creates a toolbar button with the given ID, tooltip, and caption.  Applies
+     * any custom CSS class names to the button's caption element.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ButtonRenderer=} opt_renderer Button renderer; defaults to
+     *     {@link goog.ui.ToolbarButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.Button} A toolbar button.
+     */
+    function makeButton(id: string, tooltip: string, caption: NodeList, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Button;
 
     /**
      * Creates a toggle button with the given ID, tooltip, and caption. Applies
@@ -249,7 +207,58 @@ declare module goog.ui.editor.ToolbarFactory {
      *     creation; defaults to the current document if unspecified.
      * @return {!goog.ui.Button} A toggle button.
      */
-    function makeToggleButton(id: string, tooltip: string, caption: goog.ui.ControlContent, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Button;
+    function makeToggleButton(id: string, tooltip: string, caption: string, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Button;
+    /**
+     * Creates a toggle button with the given ID, tooltip, and caption. Applies
+     * any custom CSS class names to the button's caption element. The button
+     * returned has checkbox-like toggle semantics.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ButtonRenderer=} opt_renderer Button renderer; defaults to
+     *     {@link goog.ui.ToolbarButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.Button} A toggle button.
+     */
+    function makeToggleButton(id: string, tooltip: string, caption: Node, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Button;
+    /**
+     * Creates a toggle button with the given ID, tooltip, and caption. Applies
+     * any custom CSS class names to the button's caption element. The button
+     * returned has checkbox-like toggle semantics.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ButtonRenderer=} opt_renderer Button renderer; defaults to
+     *     {@link goog.ui.ToolbarButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.Button} A toggle button.
+     */
+    function makeToggleButton(id: string, tooltip: string, caption: Node[], opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Button;
+    /**
+     * Creates a toggle button with the given ID, tooltip, and caption. Applies
+     * any custom CSS class names to the button's caption element. The button
+     * returned has checkbox-like toggle semantics.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ButtonRenderer=} opt_renderer Button renderer; defaults to
+     *     {@link goog.ui.ToolbarButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.Button} A toggle button.
+     */
+    function makeToggleButton(id: string, tooltip: string, caption: NodeList, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Button;
 
     /**
      * Creates a menu button with the given ID, tooltip, and caption. Applies
@@ -269,7 +278,64 @@ declare module goog.ui.editor.ToolbarFactory {
      *     creation; defaults to the current document if unspecified.
      * @return {!goog.ui.MenuButton} A menu button.
      */
-    function makeMenuButton(id: string, tooltip: string, caption: goog.ui.ControlContent, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.MenuButton;
+    function makeMenuButton(id: string, tooltip: string, caption: string, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.MenuButton;
+    /**
+     * Creates a menu button with the given ID, tooltip, and caption. Applies
+     * any custom CSS class names to the button's caption element.  The button
+     * returned doesn't have an actual menu attached; use {@link
+     * goog.ui.MenuButton#setMenu} to attach a {@link goog.ui.Menu} to the
+     * button.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ButtonRenderer=} opt_renderer Button renderer; defaults to
+     *     {@link goog.ui.ToolbarMenuButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.MenuButton} A menu button.
+     */
+    function makeMenuButton(id: string, tooltip: string, caption: Node, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.MenuButton;
+    /**
+     * Creates a menu button with the given ID, tooltip, and caption. Applies
+     * any custom CSS class names to the button's caption element.  The button
+     * returned doesn't have an actual menu attached; use {@link
+     * goog.ui.MenuButton#setMenu} to attach a {@link goog.ui.Menu} to the
+     * button.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ButtonRenderer=} opt_renderer Button renderer; defaults to
+     *     {@link goog.ui.ToolbarMenuButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.MenuButton} A menu button.
+     */
+    function makeMenuButton(id: string, tooltip: string, caption: Node[], opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.MenuButton;
+    /**
+     * Creates a menu button with the given ID, tooltip, and caption. Applies
+     * any custom CSS class names to the button's caption element.  The button
+     * returned doesn't have an actual menu attached; use {@link
+     * goog.ui.MenuButton#setMenu} to attach a {@link goog.ui.Menu} to the
+     * button.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ButtonRenderer=} opt_renderer Button renderer; defaults to
+     *     {@link goog.ui.ToolbarMenuButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.MenuButton} A menu button.
+     */
+    function makeMenuButton(id: string, tooltip: string, caption: NodeList, opt_classNames?: string, opt_renderer?: goog.ui.ButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.MenuButton;
 
     /**
      * Creates a select button with the given ID, tooltip, and caption. Applies
@@ -290,7 +356,67 @@ declare module goog.ui.editor.ToolbarFactory {
      *     creation; defaults to the current document if unspecified.
      * @return {!goog.ui.Select} A select button.
      */
-    function makeSelectButton(id: string, tooltip: string, caption: goog.ui.ControlContent, opt_classNames?: string, opt_renderer?: goog.ui.MenuButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Select;
+    function makeSelectButton(id: string, tooltip: string, caption: string, opt_classNames?: string, opt_renderer?: goog.ui.MenuButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Select;
+    /**
+     * Creates a select button with the given ID, tooltip, and caption. Applies
+     * any custom CSS class names to the button's root element.  The button
+     * returned doesn't have an actual menu attached; use {@link
+     * goog.ui.Select#setMenu} to attach a {@link goog.ui.Menu} containing
+     * {@link goog.ui.Option}s to the select button.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption; used as the
+     *     default caption when nothing is selected.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the button's
+     *     root element.
+     * @param {goog.ui.MenuButtonRenderer=} opt_renderer Button renderer;
+     *     defaults to {@link goog.ui.ToolbarMenuButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.Select} A select button.
+     */
+    function makeSelectButton(id: string, tooltip: string, caption: Node, opt_classNames?: string, opt_renderer?: goog.ui.MenuButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Select;
+    /**
+     * Creates a select button with the given ID, tooltip, and caption. Applies
+     * any custom CSS class names to the button's root element.  The button
+     * returned doesn't have an actual menu attached; use {@link
+     * goog.ui.Select#setMenu} to attach a {@link goog.ui.Menu} containing
+     * {@link goog.ui.Option}s to the select button.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption; used as the
+     *     default caption when nothing is selected.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the button's
+     *     root element.
+     * @param {goog.ui.MenuButtonRenderer=} opt_renderer Button renderer;
+     *     defaults to {@link goog.ui.ToolbarMenuButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.Select} A select button.
+     */
+    function makeSelectButton(id: string, tooltip: string, caption: Node[], opt_classNames?: string, opt_renderer?: goog.ui.MenuButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Select;
+    /**
+     * Creates a select button with the given ID, tooltip, and caption. Applies
+     * any custom CSS class names to the button's root element.  The button
+     * returned doesn't have an actual menu attached; use {@link
+     * goog.ui.Select#setMenu} to attach a {@link goog.ui.Menu} containing
+     * {@link goog.ui.Option}s to the select button.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in buttons, anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption; used as the
+     *     default caption when nothing is selected.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the button's
+     *     root element.
+     * @param {goog.ui.MenuButtonRenderer=} opt_renderer Button renderer;
+     *     defaults to {@link goog.ui.ToolbarMenuButtonRenderer} if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.Select} A select button.
+     */
+    function makeSelectButton(id: string, tooltip: string, caption: NodeList, opt_classNames?: string, opt_renderer?: goog.ui.MenuButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.Select;
 
     /**
      * Creates a color menu button with the given ID, tooltip, and caption.
@@ -310,6 +436,62 @@ declare module goog.ui.editor.ToolbarFactory {
      *     creation; defaults to the current document if unspecified.
      * @return {!goog.ui.ColorMenuButton} A color menu button.
      */
-    function makeColorMenuButton(id: string, tooltip: string, caption: goog.ui.ControlContent, opt_classNames?: string, opt_renderer?: goog.ui.ColorMenuButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.ColorMenuButton;
+    function makeColorMenuButton(id: string, tooltip: string, caption: string, opt_classNames?: string, opt_renderer?: goog.ui.ColorMenuButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.ColorMenuButton;
+    /**
+     * Creates a color menu button with the given ID, tooltip, and caption.
+     * Applies any custom CSS class names to the button's caption element.  The
+     * button is created with a default color menu containing standard color
+     * palettes.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in toolbar buttons, but can be anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ColorMenuButtonRenderer=} opt_renderer Button renderer;
+     *     defaults to {@link goog.ui.ToolbarColorMenuButtonRenderer}
+     *     if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.ColorMenuButton} A color menu button.
+     */
+    function makeColorMenuButton(id: string, tooltip: string, caption: Node, opt_classNames?: string, opt_renderer?: goog.ui.ColorMenuButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.ColorMenuButton;
+    /**
+     * Creates a color menu button with the given ID, tooltip, and caption.
+     * Applies any custom CSS class names to the button's caption element.  The
+     * button is created with a default color menu containing standard color
+     * palettes.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in toolbar buttons, but can be anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ColorMenuButtonRenderer=} opt_renderer Button renderer;
+     *     defaults to {@link goog.ui.ToolbarColorMenuButtonRenderer}
+     *     if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.ColorMenuButton} A color menu button.
+     */
+    function makeColorMenuButton(id: string, tooltip: string, caption: Node[], opt_classNames?: string, opt_renderer?: goog.ui.ColorMenuButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.ColorMenuButton;
+    /**
+     * Creates a color menu button with the given ID, tooltip, and caption.
+     * Applies any custom CSS class names to the button's caption element.  The
+     * button is created with a default color menu containing standard color
+     * palettes.
+     * @param {string} id Button ID; must equal a {@link goog.editor.Command} for
+     *     built-in toolbar buttons, but can be anything else for custom buttons.
+     * @param {string} tooltip Tooltip to be shown on hover.
+     * @param {goog.ui.ControlContent} caption Button caption.
+     * @param {string=} opt_classNames CSS class name(s) to apply to the caption
+     *     element.
+     * @param {goog.ui.ColorMenuButtonRenderer=} opt_renderer Button renderer;
+     *     defaults to {@link goog.ui.ToolbarColorMenuButtonRenderer}
+     *     if unspecified.
+     * @param {goog.dom.DomHelper=} opt_domHelper DOM helper, used for DOM
+     *     creation; defaults to the current document if unspecified.
+     * @return {!goog.ui.ColorMenuButton} A color menu button.
+     */
+    function makeColorMenuButton(id: string, tooltip: string, caption: NodeList, opt_classNames?: string, opt_renderer?: goog.ui.ColorMenuButtonRenderer, opt_domHelper?: goog.dom.DomHelper): goog.ui.ColorMenuButton;
 }
-

@@ -1,32 +1,26 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/storage/mechanism/mechanism.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
+/// <reference path="./mechanism.d.ts" />
 
 declare module goog.storage.mechanism {
 
-    /**
-     * Wraps a storage mechanism with a custom error handler.
-     *
-     * @param {!goog.storage.mechanism.Mechanism} mechanism Underlying storage
-     *     mechanism.
-     * @param {goog.storage.mechanism.ErrorHandlingMechanism.ErrorHandler}
-     *     errorHandler An error handler.
-     * @constructor
-     * @extends {goog.storage.mechanism.Mechanism}
-     * @final
-     */
-    class ErrorHandlingMechanism extends goog.storage.mechanism.Mechanism {
-        /**
-         * Wraps a storage mechanism with a custom error handler.
-         *
-         * @param {!goog.storage.mechanism.Mechanism} mechanism Underlying storage
-         *     mechanism.
-         * @param {goog.storage.mechanism.ErrorHandlingMechanism.ErrorHandler}
-         *     errorHandler An error handler.
-         * @constructor
-         * @extends {goog.storage.mechanism.Mechanism}
-         * @final
-         */
-        constructor(mechanism: goog.storage.mechanism.Mechanism, errorHandler: goog.storage.mechanism.ErrorHandlingMechanism.ErrorHandler);
+    class ErrorHandlingMechanism extends ErrorHandlingMechanism.__Class { }
+    module ErrorHandlingMechanism {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.storage.mechanism.Mechanism.__Class {
+    
+            /**
+             * Wraps a storage mechanism with a custom error handler.
+             *
+             * @param {!goog.storage.mechanism.Mechanism} mechanism Underlying storage
+             *     mechanism.
+             * @param {goog.storage.mechanism.ErrorHandlingMechanism.ErrorHandler}
+             *     errorHandler An error handler.
+             * @constructor
+             * @extends {goog.storage.mechanism.Mechanism}
+             * @final
+             */
+            constructor(mechanism: goog.storage.mechanism.Mechanism, errorHandler: goog.storage.mechanism.ErrorHandlingMechanism.ErrorHandler);
+        }
     }
 }
 
@@ -60,4 +54,3 @@ declare module goog.storage.mechanism.ErrorHandlingMechanism {
         (_0: any /*Error|string*/, _1: goog.storage.mechanism.ErrorHandlingMechanism.Operation, _2: string, _3: any): any /*missing*/
     }
 }
-

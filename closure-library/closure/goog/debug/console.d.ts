@@ -1,70 +1,50 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/debug/relativetimeprovider.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/debug/formatter.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/structs/collection.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/structs/structs.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/iter/iter.d.ts" />
-/// <reference path="../../../closure/goog/structs/map.d.ts" />
-/// <reference path="../../../closure/goog/structs/set.d.ts" />
-/// <reference path="../../../closure/goog/debug/debug.d.ts" />
-/// <reference path="../../../closure/goog/debug/logrecord.d.ts" />
-/// <reference path="../../../closure/goog/debug/logbuffer.d.ts" />
-/// <reference path="../../../closure/goog/debug/logger.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./formatter.d.ts" />
+/// <reference path="./logrecord.d.ts" />
 
 declare module goog.debug {
 
-    /**
-     * Create and install a log handler that logs to window.console if available
-     * @constructor
-     */
-    class Console {
-        /**
-         * Create and install a log handler that logs to window.console if available
-         * @constructor
-         */
-        constructor();
+    class Console extends Console.__Class { }
+    module Console {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * Returns the text formatter used by this console
-         * @return {!goog.debug.TextFormatter} The text formatter.
-         */
-        getFormatter(): goog.debug.TextFormatter;
+            /**
+             * Create and install a log handler that logs to window.console if available
+             * @constructor
+             */
+            constructor();
     
-        /**
-         * Sets whether we are currently capturing logger output.
-         * @param {boolean} capturing Whether to capture logger output.
-         */
-        setCapturing(capturing: boolean): void;
+            /**
+             * Returns the text formatter used by this console
+             * @return {!goog.debug.TextFormatter} The text formatter.
+             */
+            getFormatter(): goog.debug.TextFormatter;
     
-        /**
-         * Adds a log record.
-         * @param {goog.debug.LogRecord} logRecord The log entry.
-         */
-        addLogRecord(logRecord: goog.debug.LogRecord): void;
+            /**
+             * Sets whether we are currently capturing logger output.
+             * @param {boolean} capturing Whether to capture logger output.
+             */
+            setCapturing(capturing: boolean): void;
     
-        /**
-         * Adds a logger name to be filtered.
-         * @param {string} loggerName the logger name to add.
-         */
-        addFilter(loggerName: string): void;
+            /**
+             * Adds a log record.
+             * @param {goog.debug.LogRecord} logRecord The log entry.
+             */
+            addLogRecord(logRecord: goog.debug.LogRecord): void;
     
-        /**
-         * Removes a logger name to be filtered.
-         * @param {string} loggerName the logger name to remove.
-         */
-        removeFilter(loggerName: string): void;
+            /**
+             * Adds a logger name to be filtered.
+             * @param {string} loggerName the logger name to add.
+             */
+            addFilter(loggerName: string): void;
+    
+            /**
+             * Removes a logger name to be filtered.
+             * @param {string} loggerName the logger name to remove.
+             */
+            removeFilter(loggerName: string): void;
+        }
     }
 }
 
@@ -93,4 +73,3 @@ declare module goog.debug.Console {
      */
     function show(): void;
 }
-

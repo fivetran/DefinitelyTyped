@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.reflect {
 
@@ -37,4 +37,3 @@ declare module goog.reflect {
      */
     function canAccessProperty(obj: Object, prop: string): boolean;
 }
-

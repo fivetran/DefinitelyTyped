@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.crypt.baseN {
 
@@ -69,4 +69,3 @@ declare module goog.crypt.baseN {
      */
     function recodeString(number: string, inputBase: string, outputBase: string): string;
 }
-

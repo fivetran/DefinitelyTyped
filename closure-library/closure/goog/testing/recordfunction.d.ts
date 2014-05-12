@@ -1,62 +1,56 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/testing/stacktrace.d.ts" />
-/// <reference path="../../../closure/goog/testing/asserts.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.testing {
 
-    /**
-     * Struct for a single function call.
-     * @param {!Function} func The called function.
-     * @param {!Object} thisContext {@code this} context of called function.
-     * @param {!Arguments} args Arguments of the called function.
-     * @param {*} ret Return value of the function or undefined in case of error.
-     * @param {*} error The error thrown by the function or null if none.
-     * @constructor
-     */
-    class FunctionCall {
-        /**
-         * Struct for a single function call.
-         * @param {!Function} func The called function.
-         * @param {!Object} thisContext {@code this} context of called function.
-         * @param {!Arguments} args Arguments of the called function.
-         * @param {*} ret Return value of the function or undefined in case of error.
-         * @param {*} error The error thrown by the function or null if none.
-         * @constructor
-         */
-        constructor(func: Function, thisContext: Object, args: IArguments, ret: any, error: any);
+    class FunctionCall extends FunctionCall.__Class { }
+    module FunctionCall {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * @return {!Function} The called function.
-         */
-        getFunction(): Function;
+            /**
+             * Struct for a single function call.
+             * @param {!Function} func The called function.
+             * @param {!Object} thisContext {@code this} context of called function.
+             * @param {!Arguments} args Arguments of the called function.
+             * @param {*} ret Return value of the function or undefined in case of error.
+             * @param {*} error The error thrown by the function or null if none.
+             * @constructor
+             */
+            constructor(func: Function, thisContext: Object, args: Arguments, ret: any, error: any);
     
-        /**
-         * @return {!Object} {@code this} context of called function. It is the same as
-         *     the created object if the function is a constructor.
-         */
-        getThis(): Object;
+            /**
+             * @return {!Function} The called function.
+             */
+            getFunction(): Function;
     
-        /**
-         * @return {!Array} Arguments of the called function.
-         */
-        getArguments(): any[];
+            /**
+             * @return {!Object} {@code this} context of called function. It is the same as
+             *     the created object if the function is a constructor.
+             */
+            getThis(): Object;
     
-        /**
-         * Returns the nth argument of the called function.
-         * @param {number} index 0-based index of the argument.
-         * @return {*} The argument value or undefined if there is no such argument.
-         */
-        getArgument(index: number): any;
+            /**
+             * @return {!Array} Arguments of the called function.
+             */
+            getArguments(): any[];
     
-        /**
-         * @return {*} Return value of the function or undefined in case of error.
-         */
-        getReturnValue(): any;
+            /**
+             * Returns the nth argument of the called function.
+             * @param {number} index 0-based index of the argument.
+             * @return {*} The argument value or undefined if there is no such argument.
+             */
+            getArgument(index: number): any;
     
-        /**
-         * @return {*} The error thrown by the function or null if none.
-         */
-        getError(): any;
+            /**
+             * @return {*} Return value of the function or undefined in case of error.
+             */
+            getReturnValue(): any;
+    
+            /**
+             * @return {*} The error thrown by the function or null if none.
+             */
+            getError(): any;
+        }
     }
 
     /**
@@ -119,4 +113,3 @@ declare module recordedFunction {
        */
     function reset(): void;
 }
-

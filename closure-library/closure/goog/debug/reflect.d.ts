@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.debug.reflect {
 
@@ -31,4 +31,3 @@ declare module goog.debug.reflect {
      */
     function typeOf(obj: any): string;
 }
-

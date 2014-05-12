@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.i18n.pluralRules {
 
@@ -13,4 +13,3 @@ declare module goog.i18n.pluralRules {
      */
     var select: any /*missing*/;
 }
-

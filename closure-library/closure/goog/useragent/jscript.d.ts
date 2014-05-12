@@ -1,5 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.userAgent.jscript {
 
@@ -24,4 +23,3 @@ declare module goog.userAgent.jscript {
      */
     function isVersion(version: string): boolean;
 }
-

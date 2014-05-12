@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.net {
 
@@ -19,4 +19,3 @@ declare module goog.net.ErrorCode {
      */
     function getDebugMessage(errorCode: goog.net.ErrorCode): string;
 }
-

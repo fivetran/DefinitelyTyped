@@ -1,13 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/crypt/crypt.d.ts" />
-/// <reference path="../../../closure/goog/crypt/hash.d.ts" />
-/// <reference path="../../../closure/goog/crypt/sha1.d.ts" />
-/// <reference path="../../../closure/goog/crypt/hmac.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.crypt.pbkdf2 {
 
@@ -23,4 +14,3 @@ declare module goog.crypt.pbkdf2 {
      */
     function deriveKeySha1(password: number[], initialSalt: number[], iterations: number, keyLength: number): number[];
 }
-

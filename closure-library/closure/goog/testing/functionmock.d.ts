@@ -1,33 +1,5 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/testing/objectpropertystring.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/testing/propertyreplacer.d.ts" />
-/// <reference path="../../../closure/goog/testing/mockinterface.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/testing/stacktrace.d.ts" />
-/// <reference path="../../../closure/goog/testing/asserts.d.ts" />
-/// <reference path="../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../closure/goog/dom/dom.d.ts" />
-/// <reference path="../../../closure/goog/testing/mockmatchers.d.ts" />
-/// <reference path="../../../closure/goog/testing/mock.d.ts" />
-/// <reference path="../../../closure/goog/testing/strictmock.d.ts" />
-/// <reference path="../../../closure/goog/iter/iter.d.ts" />
-/// <reference path="../../../closure/goog/structs/map.d.ts" />
-/// <reference path="../../../closure/goog/testing/loosemock.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./mockinterface.d.ts" />
 
 declare module goog.testing {
 
@@ -60,7 +32,7 @@ declare module goog.testing {
      * @param {string} functionName The name of the function we're going to mock.
      * @param {number=} opt_strictness One of goog.testing.Mock.LOOSE or
      *     goog.testing.Mock.STRICT. The default is STRICT.
-     * @return {goog.testing.MockInterface} The mocked global function.
+     * @return {!goog.testing.MockInterface} The mocked global function.
      */
     function GlobalFunctionMock(functionName: string, opt_strictness?: number): goog.testing.MockInterface;
 
@@ -80,7 +52,7 @@ declare module goog.testing {
      * @param {string} functionName The name of the function we're going to mock.
      * @param {number=} opt_strictness One of goog.testing.Mock.LOOSE or
      *     goog.testing.Mock.STRICT. The default is STRICT.
-     * @return {goog.testing.MockInterface} The mocked global function.
+     * @return {!goog.testing.MockInterface} The mocked global function.
      */
     function createMethodMock(scope: Object, functionName: string, opt_strictness?: number): goog.testing.MockInterface;
 
@@ -97,7 +69,7 @@ declare module goog.testing {
      *     mock.
      * @param {number=} opt_strictness One of goog.testing.Mock.LOOSE or
      *     goog.testing.Mock.STRICT. The default is STRICT.
-     * @return {goog.testing.MockInterface} The mocked constructor.
+     * @return {!goog.testing.MockInterface} The mocked constructor.
      */
     function createConstructorMock(scope: Object, constructorName: string, opt_strictness?: number): goog.testing.MockInterface;
 
@@ -119,4 +91,3 @@ declare module goog.testing.MethodMock {
      */
     function $tearDown(): void;
 }
-

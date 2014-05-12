@@ -1,56 +1,52 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.format {
 
-    /**
-     * Formats an email address string for display, and allows for extraction of
-     * The individual componants of the address.
-     * @param {string=} opt_address The email address.
-     * @param {string=} opt_name The name associated with the email address.
-     * @constructor
-     * @final
-     */
-    class EmailAddress {
-        /**
-         * Formats an email address string for display, and allows for extraction of
-         * The individual componants of the address.
-         * @param {string=} opt_address The email address.
-         * @param {string=} opt_name The name associated with the email address.
-         * @constructor
-         * @final
-         */
-        constructor(opt_address?: string, opt_name?: string);
+    class EmailAddress extends EmailAddress.__Class { }
+    module EmailAddress {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * Get the name associated with the email address.
-         * @return {string} The name or personal portion of the address.
-         */
-        getName(): string;
+            /**
+             * Formats an email address string for display, and allows for extraction of
+             * The individual componants of the address.
+             * @param {string=} opt_address The email address.
+             * @param {string=} opt_name The name associated with the email address.
+             * @constructor
+             * @final
+             */
+            constructor(opt_address?: string, opt_name?: string);
     
-        /**
-         * Get the email address.
-         * @return {string} The email address.
-         */
-        getAddress(): string;
+            /**
+             * Get the name associated with the email address.
+             * @return {string} The name or personal portion of the address.
+             */
+            getName(): string;
     
-        /**
-         * Set the name associated with the email address.
-         * @param {string} name The name to associate.
-         */
-        setName(name: string): void;
+            /**
+             * Get the email address.
+             * @return {string} The email address.
+             */
+            getAddress(): string;
     
-        /**
-         * Set the email address.
-         * @param {string} address The email address.
-         */
-        setAddress(address: string): void;
+            /**
+             * Set the name associated with the email address.
+             * @param {string} name The name to associate.
+             */
+            setName(name: string): void;
     
-        /**
-         * Determines is the current object is a valid email address.
-         * @return {boolean} Whether the email address is valid.
-         */
-        isValid(): boolean;
+            /**
+             * Set the email address.
+             * @param {string} address The email address.
+             */
+            setAddress(address: string): void;
+    
+            /**
+             * Determines is the current object is a valid email address.
+             * @return {boolean} Whether the email address is valid.
+             */
+            isValid(): boolean;
+        }
     }
 }
 
@@ -134,4 +130,3 @@ declare module goog.format.EmailAddress {
      */
     function parseList(str: string): goog.format.EmailAddress[];
 }
-

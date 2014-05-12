@@ -1,103 +1,56 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/uri/utils.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/iter/iter.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/structs/map.d.ts" />
-/// <reference path="../../../closure/goog/structs/structs.d.ts" />
-/// <reference path="../../../closure/goog/uri/uri.d.ts" />
-/// <reference path="../../../closure/goog/events/eventid.d.ts" />
-/// <reference path="../../../closure/goog/events/listenable.d.ts" />
-/// <reference path="../../../closure/goog/events/listener.d.ts" />
-/// <reference path="../../../closure/goog/events/listenermap.d.ts" />
-/// <reference path="../../../closure/goog/events/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/debug/entrypointregistry.d.ts" />
-/// <reference path="../../../closure/goog/events/eventtype.d.ts" />
-/// <reference path="../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../closure/goog/disposable/disposable.d.ts" />
-/// <reference path="../../../closure/goog/events/event.d.ts" />
-/// <reference path="../../../closure/goog/reflect/reflect.d.ts" />
-/// <reference path="../../../closure/goog/events/browserevent.d.ts" />
-/// <reference path="../../../closure/goog/events/events.d.ts" />
-/// <reference path="../../../closure/goog/net/httpstatus.d.ts" />
-/// <reference path="../../../closure/goog/json/json.d.ts" />
-/// <reference path="../../../closure/goog/events/eventtarget.d.ts" />
-/// <reference path="../../../closure/goog/structs/collection.d.ts" />
-/// <reference path="../../../closure/goog/structs/set.d.ts" />
-/// <reference path="../../../closure/goog/debug/debug.d.ts" />
-/// <reference path="../../../closure/goog/debug/logrecord.d.ts" />
-/// <reference path="../../../closure/goog/debug/logbuffer.d.ts" />
-/// <reference path="../../../closure/goog/debug/logger.d.ts" />
-/// <reference path="../../../closure/goog/log/log.d.ts" />
-/// <reference path="../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../closure/goog/dom/dom.d.ts" />
-/// <reference path="../../../closure/goog/net/eventtype.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../events/eventtarget.d.ts" />
 
 declare module goog.net {
 
-    /**
-     * Creates a new instance of cross domain RPC
-     * @extends {goog.events.EventTarget}
-     * @constructor
-     * @final
-     */
-    class CrossDomainRpc extends goog.events.EventTarget {
-        /**
-         * Creates a new instance of cross domain RPC
-         * @extends {goog.events.EventTarget}
-         * @constructor
-         * @final
-         */
-        constructor();
+    class CrossDomainRpc extends CrossDomainRpc.__Class { }
+    module CrossDomainRpc {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.events.EventTarget.__Class {
     
-        /**
-         * Sends a request across domain.
-         * @param {string} uri Uri to make request to.
-         * @param {string=} opt_method Method of request. Default is POST.
-         * @param {Object=} opt_params Parameters. Each property is turned into a
-         *     request parameter.
-         * @param {Object=} opt_headers Map of headers of the request.
-         */
-        sendRequest(uri: string, opt_method?: string, opt_params?: Object, opt_headers?: Object): void;
+            /**
+             * Creates a new instance of cross domain RPC
+             * @extends {goog.events.EventTarget}
+             * @constructor
+             * @final
+             */
+            constructor();
     
-        /**
-         * If response is JSON, evaluates it to a JavaScript object and
-         * returns it; otherwise returns undefined.
-         * @return {Object|undefined} JavaScript object if response is in JSON
-         *     or undefined.
-         */
-        getResponseJson(): any /*Object|any (undefined)*/;
+            /**
+             * Sends a request across domain.
+             * @param {string} uri Uri to make request to.
+             * @param {string=} opt_method Method of request. Default is POST.
+             * @param {Object=} opt_params Parameters. Each property is turned into a
+             *     request parameter.
+             * @param {Object=} opt_headers Map of headers of the request.
+             */
+            sendRequest(uri: string, opt_method?: string, opt_params?: Object, opt_headers?: Object): void;
     
-        /**
-         * @return {boolean} Whether the request completed with a success.
-         */
-        isSuccess(): boolean;
+            /**
+             * If response is JSON, evaluates it to a JavaScript object and
+             * returns it; otherwise returns undefined.
+             * @return {Object|undefined} JavaScript object if response is in JSON
+             *     or undefined.
+             */
+            getResponseJson(): any /*Object|any (undefined)*/;
     
-        /**
-         * Removes request iframe used.
-         */
-        reset(): void;
+            /**
+             * @return {boolean} Whether the request completed with a success.
+             */
+            isSuccess(): boolean;
     
-        /**
-         * Gets a response header.
-         * @param {string} name Name of response header.
-         * @return {string|undefined} Value of response header; undefined if not found.
-         */
-        getResponseHeader(name: string): any /*string|any (undefined)*/;
+            /**
+             * Removes request iframe used.
+             */
+            reset(): void;
+    
+            /**
+             * Gets a response header.
+             * @param {string} name Name of response header.
+             * @return {string|undefined} Value of response header; undefined if not found.
+             */
+            getResponseHeader(name: string): any /*string|any (undefined)*/;
+        }
     }
 }
 
@@ -196,4 +149,3 @@ declare module goog.net.CrossDomainRpc {
      */
     function sendResponse(data: string, isDataJson: boolean, echo: Object, status: number, headers: string): void;
 }
-

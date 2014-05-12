@@ -1,7 +1,5 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/vec/float64array.d.ts" />
-/// <reference path="../../../closure/goog/vec/float32array.d.ts" />
-/// <reference path="../../../closure/goog/vec/vec.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./vec.d.ts" />
 
 declare module goog.vec.vec2f {
 
@@ -82,6 +80,32 @@ declare module goog.vec.vec2f {
      *     chained together.
      */
     function subtract(vec0: goog.vec.vec2f.Type, vec1: goog.vec.vec2f.Type, resultVec: goog.vec.vec2f.Type): goog.vec.vec2f.Type;
+
+    /**
+     * Multiplies each component of vec0 with the matching element of vec0
+     * storing the products into resultVec.
+     *
+     * @param {!goog.vec.vec2f.Type} vec0 The first vector.
+     * @param {!goog.vec.vec2f.Type} vec1 The second vector.
+     * @param {!goog.vec.vec2f.Type} resultVec The vector to
+     *     receive the result. May be vec0.
+     * @return {!goog.vec.vec2f.Type} Return resultVec so that operations can be
+     *     chained together.
+     */
+    function componentMultiply(vec0: goog.vec.vec2f.Type, vec1: goog.vec.vec2f.Type, resultVec: goog.vec.vec2f.Type): goog.vec.vec2f.Type;
+
+    /**
+     * Divides each component of vec0 with the matching element of vec0
+     * storing the divisor into resultVec.
+     *
+     * @param {!goog.vec.vec2f.Type} vec0 The first vector.
+     * @param {!goog.vec.vec2f.Type} vec1 The second vector.
+     * @param {!goog.vec.vec2f.Type} resultVec The vector to
+     *     receive the result. May be vec0.
+     * @return {!goog.vec.vec2f.Type} Return resultVec so that operations can be
+     *     chained together.
+     */
+    function componentDivide(vec0: goog.vec.vec2f.Type, vec1: goog.vec.vec2f.Type, resultVec: goog.vec.vec2f.Type): goog.vec.vec2f.Type;
 
     /**
      * Negates vec0, storing the result into resultVec.
@@ -211,7 +235,19 @@ declare module goog.vec.vec2f {
      * @return {!goog.vec.vec2f.Type} Return resultVec so that operations can be
      *     chained together.
      */
-    function max(vec0: goog.vec.vec2f.Type, limit: any /*goog.vec.vec2f.Type|number*/, resultVec: goog.vec.vec2f.Type): goog.vec.vec2f.Type;
+    function max(vec0: goog.vec.vec2f.Type, limit: goog.vec.vec2f.Type, resultVec: goog.vec.vec2f.Type): goog.vec.vec2f.Type;
+    /**
+     * Compares the components of vec0 with the components of another vector or
+     * scalar, storing the larger values in resultVec.
+     *
+     * @param {goog.vec.vec2f.Type} vec0 The source vector.
+     * @param {goog.vec.vec2f.Type|number} limit The limit vector or scalar.
+     * @param {goog.vec.vec2f.Type} resultVec The vector to receive the
+     *     results (may be vec0 or limit).
+     * @return {!goog.vec.vec2f.Type} Return resultVec so that operations can be
+     *     chained together.
+     */
+    function max(vec0: goog.vec.vec2f.Type, limit: number, resultVec: goog.vec.vec2f.Type): goog.vec.vec2f.Type;
 
     /**
      * Compares the components of vec0 with the components of another vector or
@@ -224,7 +260,19 @@ declare module goog.vec.vec2f {
      * @return {!goog.vec.vec2f.Type} Return resultVec so that operations can be
      *     chained together.
      */
-    function min(vec0: goog.vec.vec2f.Type, limit: any /*goog.vec.vec2f.Type|number*/, resultVec: goog.vec.vec2f.Type): goog.vec.vec2f.Type;
+    function min(vec0: goog.vec.vec2f.Type, limit: goog.vec.vec2f.Type, resultVec: goog.vec.vec2f.Type): goog.vec.vec2f.Type;
+    /**
+     * Compares the components of vec0 with the components of another vector or
+     * scalar, storing the smaller values in resultVec.
+     *
+     * @param {goog.vec.vec2f.Type} vec0 The source vector.
+     * @param {goog.vec.vec2f.Type|number} limit The limit vector or scalar.
+     * @param {goog.vec.vec2f.Type} resultVec The vector to receive the
+     *     results (may be vec0 or limit).
+     * @return {!goog.vec.vec2f.Type} Return resultVec so that operations can be
+     *     chained together.
+     */
+    function min(vec0: goog.vec.vec2f.Type, limit: number, resultVec: goog.vec.vec2f.Type): goog.vec.vec2f.Type;
 
     /**
      * Returns true if the components of vec0 are equal to the components of vec1.
@@ -235,4 +283,3 @@ declare module goog.vec.vec2f {
      */
     function equals(vec0: goog.vec.vec2f.Type, vec1: goog.vec.vec2f.Type): boolean;
 }
-

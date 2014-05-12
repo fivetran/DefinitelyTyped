@@ -1,32 +1,6 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/testing/stacktrace.d.ts" />
-/// <reference path="../../../closure/goog/testing/asserts.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/iter/iter.d.ts" />
-/// <reference path="../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../closure/goog/dom/dom.d.ts" />
-/// <reference path="../../../closure/goog/dom/tagiterator.d.ts" />
-/// <reference path="../../../closure/goog/dom/classlist.d.ts" />
-/// <reference path="../../../closure/goog/math/box.d.ts" />
-/// <reference path="../../../closure/goog/math/rect.d.ts" />
-/// <reference path="../../../closure/goog/dom/vendor.d.ts" />
-/// <reference path="../../../closure/goog/style/style.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodeiterator.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../iter/iter.d.ts" />
+/// <reference path="../dom/abstractrange.d.ts" />
 
 declare module goog.testing.dom {
 
@@ -49,7 +23,7 @@ declare module goog.testing.dom {
      *             after "#".
      *         other string: Match the text node's contents.
      */
-    function assertNodesMatch(it: goog.iter.Iterator<Node>, array: any /*Node|number|string*/[]): void;
+    function assertNodesMatch(it: goog.iter.Iterator<any>, array: any /*Node|number|string*/[]): void;
 
     /**
      * Exposes a node as a string.
@@ -104,7 +78,17 @@ declare module goog.testing.dom {
      * @param {Element} root The element to search in.
      * @return {Node} The first text node that matches, or null if none is found.
      */
-    function findTextNode(textOrRegexp: any /*string|RegExp*/, root: Element): Node;
+    function findTextNode(textOrRegexp: string, root: Element): Node;
+    /**
+     * Finds the first text node descendant of root with the given content.  Note
+     * that this operates on a text node level, so if text nodes get split this
+     * may not match the user visible text.  Using normalize() may help here.
+     * @param {string|RegExp} textOrRegexp The text to find, or a regular
+     *     expression to find a match of.
+     * @param {Element} root The element to search in.
+     * @return {Node} The first text node that matches, or null if none is found.
+     */
+    function findTextNode(textOrRegexp: RegExp, root: Element): Node;
 
     /**
      * Assert the end points of a range.
@@ -122,4 +106,3 @@ declare module goog.testing.dom {
      */
     function assertRangeEquals(start: Node, startOffset: number, end: Node, endOffset: number, range: goog.dom.AbstractRange): void;
 }
-

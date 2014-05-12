@@ -1,27 +1,21 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/events/eventid.d.ts" />
-/// <reference path="../../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../../closure/goog/disposable/disposable.d.ts" />
-/// <reference path="../../../../closure/goog/events/event.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
+/// <reference path="../../events/event.d.ts" />
 
 declare module goog.ui.equation {
 
-    /**
-     * Event fired when equation changes.
-     * @constructor
-     * @param {boolean} isValid Whether the equation is valid.
-     * @extends {goog.events.Event}
-     * @final
-     */
-    class ChangeEvent extends goog.events.Event {
-        /**
-         * Event fired when equation changes.
-         * @constructor
-         * @param {boolean} isValid Whether the equation is valid.
-         * @extends {goog.events.Event}
-         * @final
-         */
-        constructor(isValid: boolean);
+    class ChangeEvent extends ChangeEvent.__Class { }
+    module ChangeEvent {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.events.Event.__Class {
+    
+            /**
+             * Event fired when equation changes.
+             * @constructor
+             * @param {boolean} isValid Whether the equation is valid.
+             * @extends {goog.events.Event}
+             * @final
+             */
+            constructor(isValid: boolean);
+        }
     }
 }
-

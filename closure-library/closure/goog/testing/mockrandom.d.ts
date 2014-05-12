@@ -1,66 +1,64 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../closure/goog/disposable/disposable.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../disposable/disposable.d.ts" />
 
 declare module goog.testing {
 
-    /**
-     * Class for unit testing code that uses Math.random.
-     *
-     * @param {Array.<number>} sequence The sequence of numbers to return.
-     * @param {boolean=} opt_install Whether to install the MockRandom at
-     *     construction time.
-     * @extends {goog.Disposable}
-     * @constructor
-     * @final
-     */
-    class MockRandom extends goog.Disposable {
-        /**
-         * Class for unit testing code that uses Math.random.
-         *
-         * @param {Array.<number>} sequence The sequence of numbers to return.
-         * @param {boolean=} opt_install Whether to install the MockRandom at
-         *     construction time.
-         * @extends {goog.Disposable}
-         * @constructor
-         * @final
-         */
-        constructor(sequence: number[], opt_install?: boolean);
+    class MockRandom extends MockRandom.__Class { }
+    module MockRandom {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.Disposable.__Class {
     
-        /**
-         * Installs this MockRandom as the system number generator.
-         */
-        install(): void;
+            /**
+             * Class for unit testing code that uses Math.random.
+             *
+             * @param {Array.<number>} sequence The sequence of numbers to return.
+             * @param {boolean=} opt_install Whether to install the MockRandom at
+             *     construction time.
+             * @extends {goog.Disposable}
+             * @constructor
+             * @final
+             */
+            constructor(sequence: number[], opt_install?: boolean);
     
-        /**
-         * @return {number} The next number in the sequence. If there are no more values
-         *     left, this will return a random number, unless
-         *     {@code this.strictlyFromSequence_} is true, in which case an error will
-         *     be thrown.
-         */
-        random(): number;
+            /**
+             * Installs this MockRandom as the system number generator.
+             */
+            install(): void;
     
-        /**
-         * @return {boolean} Whether there are more numbers left in the sequence.
-         */
-        hasMoreValues(): boolean;
+            /**
+             * @return {number} The next number in the sequence. If there are no more values
+             *     left, this will return a random number, unless
+             *     {@code this.strictlyFromSequence_} is true, in which case an error will
+             *     be thrown.
+             */
+            random(): number;
     
-        /**
-         * Injects new numbers into the beginning of the sequence.
-         * @param {Array.<number>|number} values Number or array of numbers to inject.
-         */
-        inject(values: any /*number[]|number*/): void;
+            /**
+             * @return {boolean} Whether there are more numbers left in the sequence.
+             */
+            hasMoreValues(): boolean;
     
-        /**
-         * Uninstalls the MockRandom.
-         */
-        uninstall(): void;
+            /**
+             * Injects new numbers into the beginning of the sequence.
+             * @param {Array.<number>|number} values Number or array of numbers to inject.
+             */
+            inject(values: number[]): void;
+            /**
+             * Injects new numbers into the beginning of the sequence.
+             * @param {Array.<number>|number} values Number or array of numbers to inject.
+             */
+            inject(values: number): void;
     
-        /**
-         * @param {boolean} strictlyFromSequence Whether to throw an exception when
-         *     Math.random() is called when there is nothing left in the sequence.
-         */
-        setStrictlyFromSequence(strictlyFromSequence: boolean): void;
+            /**
+             * Uninstalls the MockRandom.
+             */
+            uninstall(): void;
+    
+            /**
+             * @param {boolean} strictlyFromSequence Whether to throw an exception when
+             *     Math.random() is called when there is nothing left in the sequence.
+             */
+            setStrictlyFromSequence(strictlyFromSequence: boolean): void;
+        }
     }
 }
-

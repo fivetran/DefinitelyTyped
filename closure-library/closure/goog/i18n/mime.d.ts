@@ -1,9 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.i18n.mime {
 
@@ -25,4 +20,3 @@ declare module goog.i18n.mime {
      */
     function getHexCharArray(c: string): string[];
 }
-

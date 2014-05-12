@@ -1,4 +1,7 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
+/// <reference path="../../html/safehtml.d.ts" />
+/// <reference path="../../html/safestyle.d.ts" />
+/// <reference path="../../html/safeurl.d.ts" />
 
 declare module goog.labs.html {
 
@@ -57,4 +60,3 @@ declare module goog.labs.html {
      */
     function attributeRewriterPresubmitWorkaround(): void;
 }
-

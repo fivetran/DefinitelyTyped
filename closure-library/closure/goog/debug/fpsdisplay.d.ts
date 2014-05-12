@@ -1,76 +1,53 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../closure/goog/math/box.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../closure/goog/math/rect.d.ts" />
-/// <reference path="../../../closure/goog/dom/vendor.d.ts" />
-/// <reference path="../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/dom/dom.d.ts" />
-/// <reference path="../../../closure/goog/style/style.d.ts" />
-/// <reference path="../../../closure/goog/events/eventid.d.ts" />
-/// <reference path="../../../closure/goog/events/listenable.d.ts" />
-/// <reference path="../../../closure/goog/events/listener.d.ts" />
-/// <reference path="../../../closure/goog/events/listenermap.d.ts" />
-/// <reference path="../../../closure/goog/events/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/debug/entrypointregistry.d.ts" />
-/// <reference path="../../../closure/goog/events/eventtype.d.ts" />
-/// <reference path="../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../closure/goog/disposable/disposable.d.ts" />
-/// <reference path="../../../closure/goog/events/event.d.ts" />
-/// <reference path="../../../closure/goog/reflect/reflect.d.ts" />
-/// <reference path="../../../closure/goog/events/browserevent.d.ts" />
-/// <reference path="../../../closure/goog/events/events.d.ts" />
-/// <reference path="../../../closure/goog/events/eventhandler.d.ts" />
-/// <reference path="../../../closure/goog/ui/idgenerator.d.ts" />
-/// <reference path="../../../closure/goog/events/eventtarget.d.ts" />
-/// <reference path="../../../closure/goog/ui/component.d.ts" />
-/// <reference path="../../../closure/goog/async/animationdelay.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../ui/component.d.ts" />
+/// <reference path="../dom/dom.d.ts" />
 
 declare module goog.debug {
 
-    /**
-     * Displays frames per seconds that the window this component is
-     * rendered in is animating at.
-     *
-     * @param {goog.dom.DomHelper=} opt_domHelper An optional dom helper.
-     * @constructor
-     * @extends {goog.ui.Component}
-     * @final
-     */
-    class FpsDisplay extends goog.ui._Component {
-        /**
-         * Displays frames per seconds that the window this component is
-         * rendered in is animating at.
-         *
-         * @param {goog.dom.DomHelper=} opt_domHelper An optional dom helper.
-         * @constructor
-         * @extends {goog.ui.Component}
-         * @final
-         */
-        constructor(opt_domHelper?: goog.dom.DomHelper);
+    class FpsDisplay extends FpsDisplay.__Class { }
+    module FpsDisplay {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.ui.Component.__Class {
     
-        /**
-         * @return {number} The average frames per second.
-         */
-        getFps(): number;
+            /**
+             * Displays frames per seconds that the window this component is
+             * rendered in is animating at.
+             *
+             * @param {goog.dom.DomHelper=} opt_domHelper An optional dom helper.
+             * @constructor
+             * @extends {goog.ui.Component}
+             * @final
+             */
+            constructor(opt_domHelper?: goog.dom.DomHelper);
+    
+            /**
+             * @return {number} The average frames per second.
+             */
+            getFps(): number;
+        }
     }
 }
 
 declare module goog.debug.FpsDisplay {
+
+    class FpsAnimation_ extends FpsAnimation_.__Class { }
+    module FpsAnimation_ {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
+    
+            /**
+             * @param {Element} elem An element to hold the FPS count.
+             * @constructor
+             * @private
+             */
+            constructor(elem: Element);
+    
+            /**
+             * @param {number} now The current time.
+             */
+            onAnimationFrame(now: number): void;
+        }
+    }
 
     /**
      * CSS class for the FPS display.
@@ -82,4 +59,3 @@ declare module goog.debug.FpsDisplay {
      */
     var SAMPLES: any /*missing*/;
 }
-

@@ -1,37 +1,24 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/proto2/fielddescriptor.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/proto2/descriptor.d.ts" />
-/// <reference path="../../../closure/goog/proto2/message.d.ts" />
-/// <reference path="../../../closure/goog/proto2/serializer.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./serializer.d.ts" />
 
 declare module goog.proto2 {
 
-    /**
-     * ObjectSerializer, a serializer which turns Messages into simplified
-     * ECMAScript objects.
-     *
-     * @param {goog.proto2.ObjectSerializer.KeyOption=} opt_keyOption If specified,
-     *     which key option to use when serializing/deserializing.
-     * @constructor
-     * @extends {goog.proto2.Serializer}
-     */
-    class ObjectSerializer extends goog.proto2.Serializer {
-        /**
-         * ObjectSerializer, a serializer which turns Messages into simplified
-         * ECMAScript objects.
-         *
-         * @param {goog.proto2.ObjectSerializer.KeyOption=} opt_keyOption If specified,
-         *     which key option to use when serializing/deserializing.
-         * @constructor
-         * @extends {goog.proto2.Serializer}
-         */
-        constructor(opt_keyOption?: goog.proto2.ObjectSerializer.KeyOption);
+    class ObjectSerializer extends ObjectSerializer.__Class { }
+    module ObjectSerializer {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.proto2.Serializer.__Class {
+    
+            /**
+             * ObjectSerializer, a serializer which turns Messages into simplified
+             * ECMAScript objects.
+             *
+             * @param {goog.proto2.ObjectSerializer.KeyOption=} opt_keyOption If specified,
+             *     which key option to use when serializing/deserializing.
+             * @constructor
+             * @extends {goog.proto2.Serializer}
+             */
+            constructor(opt_keyOption?: goog.proto2.ObjectSerializer.KeyOption);
+        }
     }
 }
 
@@ -45,4 +32,3 @@ declare module goog.proto2.ObjectSerializer {
      */
     enum KeyOption { TAG, NAME } 
 }
-

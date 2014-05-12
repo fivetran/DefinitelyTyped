@@ -1,28 +1,23 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../debug/error.d.ts" />
 
 declare module goog.asserts {
 
-    /**
-     * Error object for failed assertions.
-     * @param {string} messagePattern The pattern that was used to form message.
-     * @param {!Array.<*>} messageArgs The items to substitute into the pattern.
-     * @constructor
-     * @extends {goog.debug.Error}
-     * @final
-     */
-    class AssertionError extends goog.debug.Error {
-        /**
-         * Error object for failed assertions.
-         * @param {string} messagePattern The pattern that was used to form message.
-         * @param {!Array.<*>} messageArgs The items to substitute into the pattern.
-         * @constructor
-         * @extends {goog.debug.Error}
-         * @final
-         */
-        constructor(messagePattern: string, messageArgs: any[]);
+    class AssertionError extends AssertionError.__Class { }
+    module AssertionError {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.debug.Error.__Class {
+    
+            /**
+             * Error object for failed assertions.
+             * @param {string} messagePattern The pattern that was used to form message.
+             * @param {!Array.<*>} messageArgs The items to substitute into the pattern.
+             * @constructor
+             * @extends {goog.debug.Error}
+             * @final
+             */
+            constructor(messagePattern: string, messageArgs: any[]);
+        }
     }
 
     /**
@@ -153,4 +148,3 @@ declare module goog.asserts {
      */
     function assertObjectPrototypeIsIntact(): void;
 }
-

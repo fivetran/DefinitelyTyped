@@ -1,6 +1,7 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/testing/stacktrace.d.ts" />
-/// <reference path="../../../closure/goog/testing/asserts.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./mechanism/iterablemechanism.d.ts" />
+/// <reference path="../testing/mockclock.d.ts" />
+/// <reference path="./collectablestorage.d.ts" />
 
 declare module goog.storage.collectableStorageTester {
 
@@ -13,4 +14,3 @@ declare module goog.storage.collectableStorageTester {
       */
     function runBasicTests(mechanism: goog.storage.mechanism.IterableMechanism, clock: goog.testing.MockClock, storage: goog.storage.CollectableStorage): void;
 }
-

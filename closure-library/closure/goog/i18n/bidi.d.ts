@@ -1,30 +1,23 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.i18n.bidi {
 
-    /**
-     * Strings that have an (optional) known direction.
-     *
-     * Implementations of this interface are string-like objects that carry an
-     * attached direction, if known.
-     * @interface
-     */
     interface DirectionalString {
     
         /**
-         * Interface marker of the DirectionalString interface.
-         *
-         * This property can be used to determine at runtime whether or not an object
-         * implements this interface.  All implementations of this interface set this
-         * property to {@code true}.
-         * @type {boolean}
-         */
+          * Interface marker of the DirectionalString interface.
+          *
+          * This property can be used to determine at runtime whether or not an object
+          * implements this interface.  All implementations of this interface set this
+          * property to {@code true}.
+          * @type {boolean}
+          */
         implementsGoogI18nBidiDirectionalString: boolean;
     
         /**
-         * Retrieves this object's known direction (if any).
-         * @return {?goog.i18n.bidi.Dir} The known direction. Null if unknown.
-         */
+          * Retrieves this object's known direction (if any).
+          * @return {?goog.i18n.bidi.Dir} The known direction. Null if unknown.
+          */
         getDirection(): goog.i18n.bidi.Dir;
     }
 
@@ -105,7 +98,61 @@ declare module goog.i18n.bidi {
      * @return {?goog.i18n.bidi.Dir} A goog.i18n.bidi.Dir constant matching the
      *     given directionality. If given null, returns null (i.e. unknown).
      */
-    function toDir(givenDir: any /*goog.i18n.bidi.Dir|number|boolean|any (null)*/, opt_noNeutral?: boolean): goog.i18n.bidi.Dir;
+    function toDir(givenDir: goog.i18n.bidi.Dir, opt_noNeutral?: boolean): goog.i18n.bidi.Dir;
+    /**
+     * Convert a directionality given in various formats to a goog.i18n.bidi.Dir
+     * constant. Useful for interaction with different standards of directionality
+     * representation.
+     *
+     * @param {goog.i18n.bidi.Dir|number|boolean|null} givenDir Directionality given
+     *     in one of the following formats:
+     *     1. A goog.i18n.bidi.Dir constant.
+     *     2. A number (positive = LTR, negative = RTL, 0 = neutral).
+     *     3. A boolean (true = RTL, false = LTR).
+     *     4. A null for unknown directionality.
+     * @param {boolean=} opt_noNeutral Whether a givenDir of zero or
+     *     goog.i18n.bidi.Dir.NEUTRAL should be treated as null, i.e. unknown, in
+     *     order to preserve legacy behavior.
+     * @return {?goog.i18n.bidi.Dir} A goog.i18n.bidi.Dir constant matching the
+     *     given directionality. If given null, returns null (i.e. unknown).
+     */
+    function toDir(givenDir: number, opt_noNeutral?: boolean): goog.i18n.bidi.Dir;
+    /**
+     * Convert a directionality given in various formats to a goog.i18n.bidi.Dir
+     * constant. Useful for interaction with different standards of directionality
+     * representation.
+     *
+     * @param {goog.i18n.bidi.Dir|number|boolean|null} givenDir Directionality given
+     *     in one of the following formats:
+     *     1. A goog.i18n.bidi.Dir constant.
+     *     2. A number (positive = LTR, negative = RTL, 0 = neutral).
+     *     3. A boolean (true = RTL, false = LTR).
+     *     4. A null for unknown directionality.
+     * @param {boolean=} opt_noNeutral Whether a givenDir of zero or
+     *     goog.i18n.bidi.Dir.NEUTRAL should be treated as null, i.e. unknown, in
+     *     order to preserve legacy behavior.
+     * @return {?goog.i18n.bidi.Dir} A goog.i18n.bidi.Dir constant matching the
+     *     given directionality. If given null, returns null (i.e. unknown).
+     */
+    function toDir(givenDir: boolean, opt_noNeutral?: boolean): goog.i18n.bidi.Dir;
+    /**
+     * Convert a directionality given in various formats to a goog.i18n.bidi.Dir
+     * constant. Useful for interaction with different standards of directionality
+     * representation.
+     *
+     * @param {goog.i18n.bidi.Dir|number|boolean|null} givenDir Directionality given
+     *     in one of the following formats:
+     *     1. A goog.i18n.bidi.Dir constant.
+     *     2. A number (positive = LTR, negative = RTL, 0 = neutral).
+     *     3. A boolean (true = RTL, false = LTR).
+     *     4. A null for unknown directionality.
+     * @param {boolean=} opt_noNeutral Whether a givenDir of zero or
+     *     goog.i18n.bidi.Dir.NEUTRAL should be treated as null, i.e. unknown, in
+     *     order to preserve legacy behavior.
+     * @return {?goog.i18n.bidi.Dir} A goog.i18n.bidi.Dir constant matching the
+     *     given directionality. If given null, returns null (i.e. unknown).
+     */
+    function toDir(givenDir: any /*null*/, opt_noNeutral?: boolean): goog.i18n.bidi.Dir;
 
     /**
      * Test whether the given string has any RTL characters in it.
@@ -388,6 +435,44 @@ declare module goog.i18n.bidi {
      *     3. A boolean (true = RTL, false = LTR).
      *     4. A null for unknown directionality.
      */
-    function setElementDirAndAlign(element: Element, dir: any /*goog.i18n.bidi.Dir|number|boolean|any (null)*/): void;
+    function setElementDirAndAlign(element: Element, dir: goog.i18n.bidi.Dir): void;
+    /**
+     * Sets text input element's directionality and text alignment based on a
+     * given directionality. Does nothing if the given directionality is unknown or
+     * neutral.
+     * @param {Element} element Input field element to set directionality to.
+     * @param {goog.i18n.bidi.Dir|number|boolean|null} dir Desired directionality,
+     *     given in one of the following formats:
+     *     1. A goog.i18n.bidi.Dir constant.
+     *     2. A number (positive = LRT, negative = RTL, 0 = neutral).
+     *     3. A boolean (true = RTL, false = LTR).
+     *     4. A null for unknown directionality.
+     */
+    function setElementDirAndAlign(element: Element, dir: number): void;
+    /**
+     * Sets text input element's directionality and text alignment based on a
+     * given directionality. Does nothing if the given directionality is unknown or
+     * neutral.
+     * @param {Element} element Input field element to set directionality to.
+     * @param {goog.i18n.bidi.Dir|number|boolean|null} dir Desired directionality,
+     *     given in one of the following formats:
+     *     1. A goog.i18n.bidi.Dir constant.
+     *     2. A number (positive = LRT, negative = RTL, 0 = neutral).
+     *     3. A boolean (true = RTL, false = LTR).
+     *     4. A null for unknown directionality.
+     */
+    function setElementDirAndAlign(element: Element, dir: boolean): void;
+    /**
+     * Sets text input element's directionality and text alignment based on a
+     * given directionality. Does nothing if the given directionality is unknown or
+     * neutral.
+     * @param {Element} element Input field element to set directionality to.
+     * @param {goog.i18n.bidi.Dir|number|boolean|null} dir Desired directionality,
+     *     given in one of the following formats:
+     *     1. A goog.i18n.bidi.Dir constant.
+     *     2. A number (positive = LRT, negative = RTL, 0 = neutral).
+     *     3. A boolean (true = RTL, false = LTR).
+     *     4. A null for unknown directionality.
+     */
+    function setElementDirAndAlign(element: Element, dir: any /*null*/): void;
 }
-

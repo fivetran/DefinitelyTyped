@@ -1,21 +1,19 @@
-/// <reference path="../../../../../closure/goog/base.d.ts" />
+/// <reference path="../../../../../globals.d.ts" />
 
 declare module goog.labs.net.webChannel {
 
-    /**
-     * The connectivity state of the channel.
-     *
-     * @constructor
-     * @struct
-     */
-    class ConnectionState {
-        /**
-         * The connectivity state of the channel.
-         *
-         * @constructor
-         * @struct
-         */
-        constructor();
+    class ConnectionState extends ConnectionState.__Class { }
+    module ConnectionState {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
+    
+            /**
+             * The connectivity state of the channel.
+             *
+             * @constructor
+             * @struct
+             */
+            constructor();
+        }
     }
 }
-

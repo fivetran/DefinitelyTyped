@@ -1,116 +1,135 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./coordinate.d.ts" />
 
 declare module goog.math {
 
-    /**
-     * Class for representing a box. A box is specified as a top, right, bottom,
-     * and left. A box is useful for representing margins and padding.
-     *
-     * @param {number} top Top.
-     * @param {number} right Right.
-     * @param {number} bottom Bottom.
-     * @param {number} left Left.
-     * @constructor
-     */
-    class Box {
-        /**
-         * Class for representing a box. A box is specified as a top, right, bottom,
-         * and left. A box is useful for representing margins and padding.
-         *
-         * @param {number} top Top.
-         * @param {number} right Right.
-         * @param {number} bottom Bottom.
-         * @param {number} left Left.
-         * @constructor
-         */
-        constructor(top: number, right: number, bottom: number, left: number);
+    class Box extends Box.__Class { }
+    module Box {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * Creates a copy of the box with the same dimensions.
-         * @return {!goog.math.Box} A clone of this Box.
-         */
-        clone(): goog.math.Box;
+            /**
+             * Class for representing a box. A box is specified as a top, right, bottom,
+             * and left. A box is useful for representing margins and padding.
+             *
+             * @param {number} top Top.
+             * @param {number} right Right.
+             * @param {number} bottom Bottom.
+             * @param {number} left Left.
+             * @constructor
+             */
+            constructor(top: number, right: number, bottom: number, left: number);
     
-        /**
-         * Returns whether the box contains a coordinate or another box.
-         *
-         * @param {goog.math.Coordinate|goog.math.Box} other A Coordinate or a Box.
-         * @return {boolean} Whether the box contains the coordinate or other box.
-         */
-        contains(other: any /*goog.math.Coordinate|goog.math.Box*/): boolean;
+            /**
+             * Creates a copy of the box with the same dimensions.
+             * @return {!goog.math.Box} A clone of this Box.
+             */
+            clone(): goog.math.Box;
     
-        /**
-         * Expands box with the given margins.
-         *
-         * @param {number|goog.math.Box} top Top margin or box with all margins.
-         * @param {number=} opt_right Right margin.
-         * @param {number=} opt_bottom Bottom margin.
-         * @param {number=} opt_left Left margin.
-         * @return {!goog.math.Box} A reference to this Box.
-         */
-        expand(top: any /*number|goog.math.Box*/, opt_right?: number, opt_bottom?: number, opt_left?: number): goog.math.Box;
+            /**
+             * Returns whether the box contains a coordinate or another box.
+             *
+             * @param {goog.math.Coordinate|goog.math.Box} other A Coordinate or a Box.
+             * @return {boolean} Whether the box contains the coordinate or other box.
+             */
+            contains(other: goog.math.Coordinate): boolean;
+            /**
+             * Returns whether the box contains a coordinate or another box.
+             *
+             * @param {goog.math.Coordinate|goog.math.Box} other A Coordinate or a Box.
+             * @return {boolean} Whether the box contains the coordinate or other box.
+             */
+            contains(other: goog.math.Box): boolean;
     
-        /**
-         * Expand this box to include another box.
-         * NOTE(user): This is used in code that needs to be very fast, please don't
-         * add functionality to this function at the expense of speed (variable
-         * arguments, accepting multiple argument types, etc).
-         * @param {goog.math.Box} box The box to include in this one.
-         */
-        expandToInclude(box: goog.math.Box): void;
+            /**
+             * Expands box with the given margins.
+             *
+             * @param {number|goog.math.Box} top Top margin or box with all margins.
+             * @param {number=} opt_right Right margin.
+             * @param {number=} opt_bottom Bottom margin.
+             * @param {number=} opt_left Left margin.
+             * @return {!goog.math.Box} A reference to this Box.
+             */
+            expand(top: number, opt_right?: number, opt_bottom?: number, opt_left?: number): goog.math.Box;
+            /**
+             * Expands box with the given margins.
+             *
+             * @param {number|goog.math.Box} top Top margin or box with all margins.
+             * @param {number=} opt_right Right margin.
+             * @param {number=} opt_bottom Bottom margin.
+             * @param {number=} opt_left Left margin.
+             * @return {!goog.math.Box} A reference to this Box.
+             */
+            expand(top: goog.math.Box, opt_right?: number, opt_bottom?: number, opt_left?: number): goog.math.Box;
     
-        /**
-         * Rounds the fields to the next larger integer values.
-         *
-         * @return {!goog.math.Box} This box with ceil'd fields.
-         */
-        ceil(): goog.math.Box;
+            /**
+             * Expand this box to include another box.
+             * NOTE(user): This is used in code that needs to be very fast, please don't
+             * add functionality to this function at the expense of speed (variable
+             * arguments, accepting multiple argument types, etc).
+             * @param {goog.math.Box} box The box to include in this one.
+             */
+            expandToInclude(box: goog.math.Box): void;
     
-        /**
-         * Rounds the fields to the next smaller integer values.
-         *
-         * @return {!goog.math.Box} This box with floored fields.
-         */
-        floor(): goog.math.Box;
+            /**
+             * Rounds the fields to the next larger integer values.
+             *
+             * @return {!goog.math.Box} This box with ceil'd fields.
+             */
+            ceil(): goog.math.Box;
     
-        /**
-         * Rounds the fields to nearest integer values.
-         *
-         * @return {!goog.math.Box} This box with rounded fields.
-         */
-        round(): goog.math.Box;
+            /**
+             * Rounds the fields to the next smaller integer values.
+             *
+             * @return {!goog.math.Box} This box with floored fields.
+             */
+            floor(): goog.math.Box;
     
-        /**
-         * Translates this box by the given offsets. If a {@code goog.math.Coordinate}
-         * is given, then the left and right values are translated by the coordinate's
-         * x value and the top and bottom values are translated by the coordinate's y
-         * value.  Otherwise, {@code tx} and {@code opt_ty} are used to translate the x
-         * and y dimension values.
-         *
-         * @param {number|goog.math.Coordinate} tx The value to translate the x
-         *     dimension values by or the the coordinate to translate this box by.
-         * @param {number=} opt_ty The value to translate y dimension values by.
-         * @return {!goog.math.Box} This box after translating.
-         */
-        translate(tx: any /*number|goog.math.Coordinate*/, opt_ty?: number): goog.math.Box;
+            /**
+             * Rounds the fields to nearest integer values.
+             *
+             * @return {!goog.math.Box} This box with rounded fields.
+             */
+            round(): goog.math.Box;
     
-        /**
-         * Scales this coordinate by the given scale factors. The x and y dimension
-         * values are scaled by {@code sx} and {@code opt_sy} respectively.
-         * If {@code opt_sy} is not given, then {@code sx} is used for both x and y.
-         *
-         * @param {number} sx The scale factor to use for the x dimension.
-         * @param {number=} opt_sy The scale factor to use for the y dimension.
-         * @return {!goog.math.Box} This box after scaling.
-         */
-        scale(sx: number, opt_sy?: number): goog.math.Box;
+            /**
+             * Translates this box by the given offsets. If a {@code goog.math.Coordinate}
+             * is given, then the left and right values are translated by the coordinate's
+             * x value and the top and bottom values are translated by the coordinate's y
+             * value.  Otherwise, {@code tx} and {@code opt_ty} are used to translate the x
+             * and y dimension values.
+             *
+             * @param {number|goog.math.Coordinate} tx The value to translate the x
+             *     dimension values by or the the coordinate to translate this box by.
+             * @param {number=} opt_ty The value to translate y dimension values by.
+             * @return {!goog.math.Box} This box after translating.
+             */
+            translate(tx: number, opt_ty?: number): goog.math.Box;
+            /**
+             * Translates this box by the given offsets. If a {@code goog.math.Coordinate}
+             * is given, then the left and right values are translated by the coordinate's
+             * x value and the top and bottom values are translated by the coordinate's y
+             * value.  Otherwise, {@code tx} and {@code opt_ty} are used to translate the x
+             * and y dimension values.
+             *
+             * @param {number|goog.math.Coordinate} tx The value to translate the x
+             *     dimension values by or the the coordinate to translate this box by.
+             * @param {number=} opt_ty The value to translate y dimension values by.
+             * @return {!goog.math.Box} This box after translating.
+             */
+            translate(tx: goog.math.Coordinate, opt_ty?: number): goog.math.Box;
+    
+            /**
+             * Scales this coordinate by the given scale factors. The x and y dimension
+             * values are scaled by {@code sx} and {@code opt_sy} respectively.
+             * If {@code opt_sy} is not given, then {@code sx} is used for both x and y.
+             *
+             * @param {number} sx The scale factor to use for the x dimension.
+             * @param {number=} opt_sy The scale factor to use for the y dimension.
+             * @return {!goog.math.Box} This box after scaling.
+             */
+            scale(sx: number, opt_sy?: number): goog.math.Box;
+        }
     }
 }
 
@@ -139,7 +158,15 @@ declare module goog.math.Box {
      * @param {goog.math.Coordinate|goog.math.Box} other A Coordinate or a Box.
      * @return {boolean} Whether the box contains the coordinate or other box.
      */
-    function contains(box: goog.math.Box, other: any /*goog.math.Coordinate|goog.math.Box*/): boolean;
+    function contains(box: goog.math.Box, other: goog.math.Coordinate): boolean;
+    /**
+     * Returns whether a box contains a coordinate or another box.
+     *
+     * @param {goog.math.Box} box A Box.
+     * @param {goog.math.Coordinate|goog.math.Box} other A Coordinate or a Box.
+     * @return {boolean} Whether the box contains the coordinate or other box.
+     */
+    function contains(box: goog.math.Box, other: goog.math.Box): boolean;
 
     /**
      * Returns the relative x position of a coordinate compared to a box.  Returns
@@ -194,4 +221,3 @@ declare module goog.math.Box {
      */
     function intersectsWithPadding(a: goog.math.Box, b: goog.math.Box, padding: number): boolean;
 }
-

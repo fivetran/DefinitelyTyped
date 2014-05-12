@@ -1,2 +1,1 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-
+/// <reference path="../../../globals.d.ts" />

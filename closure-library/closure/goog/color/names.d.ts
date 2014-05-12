@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.color {
 
@@ -10,4 +10,3 @@ declare module goog.color {
      */
     var names: any /*missing*/;
 }
-

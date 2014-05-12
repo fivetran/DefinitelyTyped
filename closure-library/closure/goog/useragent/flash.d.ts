@@ -1,5 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.userAgent.flash {
 
@@ -23,4 +22,3 @@ declare module goog.userAgent.flash {
      */
     function isVersion(version: string): boolean;
 }
-

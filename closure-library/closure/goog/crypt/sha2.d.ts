@@ -1,31 +1,23 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/crypt/hash.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./hash.d.ts" />
 
 declare module goog.crypt {
 
-    /**
-     * SHA-2 cryptographic hash constructor.
-     * This constructor should not be used directly to create the object. Rather,
-     * one should use the constructor of the sub-classes.
-     * @constructor
-     * @extends {goog.crypt.Hash}
-     * @struct
-     */
-    class Sha2 extends goog.crypt.Hash {
-        /**
-         * SHA-2 cryptographic hash constructor.
-         * This constructor should not be used directly to create the object. Rather,
-         * one should use the constructor of the sub-classes.
-         * @constructor
-         * @extends {goog.crypt.Hash}
-         * @struct
-         */
-        constructor();
+    class Sha2 extends Sha2.__Class { }
+    module Sha2 {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.crypt.Hash.__Class {
+    
+            /**
+             * SHA-2 cryptographic hash constructor.
+             * This constructor should not be used directly to create the object. Rather,
+             * one should use the constructor of the sub-classes.
+             * @constructor
+             * @extends {goog.crypt.Hash}
+             * @struct
+             */
+            constructor();
+        }
     }
 }
 
@@ -38,4 +30,3 @@ declare module goog.crypt.Sha2 {
      */
     var K_: any /*missing*/;
 }
-

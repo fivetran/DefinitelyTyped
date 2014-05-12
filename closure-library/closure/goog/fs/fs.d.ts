@@ -1,47 +1,15 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/events/eventid.d.ts" />
-/// <reference path="../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../closure/goog/disposable/disposable.d.ts" />
-/// <reference path="../../../closure/goog/events/event.d.ts" />
-/// <reference path="../../../closure/goog/fs/progressevent.d.ts" />
-/// <reference path="../../../closure/goog/promise/resolver.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/testing/watchers.d.ts" />
-/// <reference path="../../../closure/goog/debug/entrypointregistry.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/async/nexttick.d.ts" />
-/// <reference path="../../../closure/goog/async/run.d.ts" />
-/// <reference path="../../../closure/goog/promise/thenable.d.ts" />
-/// <reference path="../../../closure/goog/promise/promise.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 /// <reference path="../../../third_party/closure/goog/mochikit/async/deferred.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/fs/error.d.ts" />
-/// <reference path="../../../closure/goog/events/listenable.d.ts" />
-/// <reference path="../../../closure/goog/events/listener.d.ts" />
-/// <reference path="../../../closure/goog/events/listenermap.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/events/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/events/eventtype.d.ts" />
-/// <reference path="../../../closure/goog/reflect/reflect.d.ts" />
-/// <reference path="../../../closure/goog/events/browserevent.d.ts" />
-/// <reference path="../../../closure/goog/events/events.d.ts" />
-/// <reference path="../../../closure/goog/events/eventtarget.d.ts" />
-/// <reference path="../../../closure/goog/fs/filereader.d.ts" />
-/// <reference path="../../../closure/goog/fs/entry.d.ts" />
-/// <reference path="../../../closure/goog/fs/filesaver.d.ts" />
-/// <reference path="../../../closure/goog/fs/filewriter.d.ts" />
-/// <reference path="../../../closure/goog/fs/entryimpl.d.ts" />
-/// <reference path="../../../closure/goog/fs/filesystem.d.ts" />
-/// <reference path="../../../closure/goog/fs/filesystemimpl.d.ts" />
 
 declare module goog.fs {
+
+    /**
+     * The two types of filesystem.
+     *
+     * @enum {number}
+     * @private
+     */
+    enum FileSystemType_ { TEMPORARY, PERSISTENT } 
 
     /**
      * Returns a temporary FileSystem object. A temporary filesystem may be deleted
@@ -65,6 +33,7 @@ declare module goog.fs {
 
     /**
      * Creates a blob URL for a blob object.
+     * Throws an error if the browser does not support Object Urls.
      *
      * @param {!Blob} blob The object for which to create the URL.
      * @return {string} The URL for the object.
@@ -73,6 +42,7 @@ declare module goog.fs {
 
     /**
      * Revokes a URL created by {@link goog.fs.createObjectUrl}.
+     * Throws an error if the browser does not support Object Urls.
      *
      * @param {string} url The URL to revoke.
      */
@@ -80,9 +50,20 @@ declare module goog.fs {
 
     /**
      * @typedef {!{createObjectURL: (function(!Blob): string),
-     *             revokeObjectURL: function(string): void}}
+     *            revokeObjectURL: function(string): void}}
      */
-    interface UrlObject_ { /*{ createObjectURL: any ((_0: Blob) => string); revokeObjectURL: (_0: string) => void }*/ }
+    interface UrlObject_ {
+        createObjectURL: any /*(_0: Blob) => string*/;
+        revokeObjectURL: (_0: string) => void
+    }
+
+    /**
+     * Checks whether this browser supports Object Urls. If not, calls to
+     * createObjectUrl and revokeObjectUrl will result in an error.
+     *
+     * @return {boolean} True if this browser supports Object Urls.
+     */
+    function browserSupportsObjectUrls(): boolean;
 
     /**
      * Concatenates one or more values together and converts them to a Blob.
@@ -91,7 +72,36 @@ declare module goog.fs {
      *     the resulting blob.
      * @return {!Blob} The blob.
      */
-    function getBlob(...var_args: any /*string|Blob|ArrayBuffer*/[]): Blob;
+    function getBlob(...var_args: string[]): Blob;
+    /**
+     * Concatenates one or more values together and converts them to a Blob.
+     *
+     * @param {...(string|!Blob|!ArrayBuffer)} var_args The values that will make up
+     *     the resulting blob.
+     * @return {!Blob} The blob.
+     */
+    function getBlob(...var_args: Blob[]): Blob;
+    /**
+     * Concatenates one or more values together and converts them to a Blob.
+     *
+     * @param {...(string|!Blob|!ArrayBuffer)} var_args The values that will make up
+     *     the resulting blob.
+     * @return {!Blob} The blob.
+     */
+    function getBlob(...var_args: ArrayBuffer[]): Blob;
+
+    /**
+     * Creates a blob with the given properties.
+     * See https://developer.mozilla.org/en-US/docs/Web/API/Blob for more details.
+     *
+     * @param {Array.<string|!Blob>} parts The values that will make up the
+     *     resulting blob.
+     * @param {string=} opt_type The MIME type of the Blob.
+     * @param {string=} opt_endings Specifies how strings containing newlines are to
+     *     be written out.
+     * @return {!Blob} The blob.
+     */
+    function getBlobWithProperties(parts: any /*string|Blob*/[], opt_type?: string, opt_endings?: string): Blob;
 
     /**
      * Converts a Blob or a File into a string. This should only be used when the
@@ -119,4 +129,3 @@ declare module goog.fs {
      */
     function sliceBlob(blob: Blob, start: number, opt_end?: number): Blob;
 }
-

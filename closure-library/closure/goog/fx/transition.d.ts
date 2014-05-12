@@ -1,22 +1,17 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.fx {
 
-    /**
-     * An interface for programmatic transition. Must extend
-     * {@code goog.events.EventTarget}.
-     * @interface
-     */
     interface Transition {
     
         /**
-         * Plays the transition.
-         */
+          * Plays the transition.
+          */
         play: any /*missing*/;
     
         /**
-         * Stops the transition.
-         */
+          * Stops the transition.
+          */
         stop: any /*missing*/;
     }
 }
@@ -29,4 +24,3 @@ declare module goog.fx.Transition {
      */
     enum EventType { PLAY, BEGIN, RESUME, END, STOP, FINISH, PAUSE } 
 }
-

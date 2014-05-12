@@ -1,38 +1,38 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/net/xhrlike.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./xhrlike.d.ts" />
 
 declare module goog.net {
 
-    /**
-     * Abstract base class for an XmlHttpRequest factory.
-     * @constructor
-     */
-    class XmlHttpFactory {
-        /**
-         * Abstract base class for an XmlHttpRequest factory.
-         * @constructor
-         */
-        constructor();
+    class XmlHttpFactory extends XmlHttpFactory.__Class { }
+    module XmlHttpFactory {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * @return {!goog.net.XhrLike.OrNative} A new XhrLike instance.
-         */
-        createInstance(): goog.net.XhrLike.OrNative;
+            /**
+             * Abstract base class for an XmlHttpRequest factory.
+             * @constructor
+             */
+            constructor();
     
-        /**
-         * @return {Object} Options describing how xhr objects obtained from this
-         *     factory should be used.
-         */
-        getOptions(): Object;
+            /**
+             * @return {!goog.net.XhrLike.OrNative} A new XhrLike instance.
+             */
+            createInstance(): goog.net.XhrLike.OrNative;
     
-        /**
-         * Override this method in subclasses to preserve the caching offered by
-         * getOptions().
-         * @return {Object} Options describing how xhr objects obtained from this
-         *     factory should be used.
-         * @protected
-         */
-        internalGetOptions(): Object;
+            /**
+             * @return {Object} Options describing how xhr objects obtained from this
+             *     factory should be used.
+             */
+            getOptions(): Object;
+    
+            /**
+             * Override this method in subclasses to preserve the caching offered by
+             * getOptions().
+             * @return {Object} Options describing how xhr objects obtained from this
+             *     factory should be used.
+             * @protected
+             */
+            internalGetOptions(): Object;
+        }
     }
 }
-

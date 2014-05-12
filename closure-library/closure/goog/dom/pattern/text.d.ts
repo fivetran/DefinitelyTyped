@@ -1,28 +1,31 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../../closure/goog/dom/pattern/pattern.d.ts" />
-/// <reference path="../../../../closure/goog/dom/pattern/abstractpattern.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
+/// <reference path="./abstractpattern.d.ts" />
 
 declare module goog.dom.pattern {
 
-    /**
-     * Pattern object that matches text by exact matching or regular expressions.
-     *
-     * @param {string|RegExp} match String or regular expression to match against.
-     * @constructor
-     * @extends {goog.dom.pattern.AbstractPattern}
-     * @final
-     */
-    class Text extends goog.dom.pattern.AbstractPattern {
-        /**
-         * Pattern object that matches text by exact matching or regular expressions.
-         *
-         * @param {string|RegExp} match String or regular expression to match against.
-         * @constructor
-         * @extends {goog.dom.pattern.AbstractPattern}
-         * @final
-         */
-        constructor(match: any /*string|RegExp*/);
+    class Text extends Text.__Class { }
+    module Text {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.dom.pattern.AbstractPattern.__Class {
+    
+            /**
+             * Pattern object that matches text by exact matching or regular expressions.
+             *
+             * @param {string|RegExp} match String or regular expression to match against.
+             * @constructor
+             * @extends {goog.dom.pattern.AbstractPattern}
+             * @final
+             */
+            constructor(match: string);
+            /**
+             * Pattern object that matches text by exact matching or regular expressions.
+             *
+             * @param {string|RegExp} match String or regular expression to match against.
+             * @constructor
+             * @extends {goog.dom.pattern.AbstractPattern}
+             * @final
+             */
+            constructor(match: RegExp);
+        }
     }
 }
-

@@ -1,37 +1,50 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/iter/iter.d.ts" />
-/// <reference path="../../../closure/goog/structs/collection.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/structs/structs.d.ts" />
-/// <reference path="../../../closure/goog/structs/map.d.ts" />
-/// <reference path="../../../closure/goog/structs/set.d.ts" />
-/// <reference path="../../../closure/goog/debug/debug.d.ts" />
-/// <reference path="../../../closure/goog/debug/logrecord.d.ts" />
-/// <reference path="../../../closure/goog/debug/logbuffer.d.ts" />
-/// <reference path="../../../closure/goog/debug/logger.d.ts" />
-/// <reference path="../../../closure/goog/log/log.d.ts" />
-/// <reference path="../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../closure/goog/disposable/disposable.d.ts" />
-/// <reference path="../../../closure/goog/structs/simplepool.d.ts" />
-/// <reference path="../../../closure/goog/debug/tracer.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./debug.d.ts" />
 
 declare module goog.debug {
+
+    class GcDiagnostics_ extends GcDiagnostics_.__Class { }
+    module GcDiagnostics_ {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
+    
+            /**
+             * Class used for singleton goog.debug.GcDiagnostics.  Used to hook into
+             * the L2 ActiveX controller to profile garbage collection information in IE.
+             * Can be used in combination with tracers (goog.debug.Trace), to provide object
+             * allocation counts from within the tracers or used alone by invoking start and
+             * stop.
+             *
+             * See http://go/l2binary for the install.
+             * TODO(user): Move the L2 installer somewhere more general.
+             * @constructor
+             * @private
+             */
+            constructor();
+    
+            /**
+             * Install the GcDiagnostics tool.
+             */
+            install(): void;
+    
+            /**
+             * Starts recording garbage collection information.  If a trace is already in
+             * progress, it is ended.
+             */
+            start(): void;
+    
+            /**
+             * Stops recording garbage collection information.  Logs details on the garbage
+             * collections that occurred between start and stop.  If tracers are in use,
+             * adds comments where each GC occurs.
+             */
+            stop(): void;
+        }
+    }
 
     /**
      * Singleton GcDiagnostics object
      * @type {goog.debug.GcDiagnostics_}
      */
-    var GcDiagnostics: any;
+    var GcDiagnostics: goog.debug.GcDiagnostics_;
 }
-

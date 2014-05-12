@@ -1,5 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/locale/nativenameconstants.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.locale {
 
@@ -120,7 +119,15 @@ declare module goog.locale {
      *     the type of resource.
      * @param {string} localeName Locale ID.
      */
-    function registerResource(dataObj: Object, resourceName: any /*goog.locale.Resource|string*/, localeName: string): void;
+    function registerResource(dataObj: Object, resourceName: goog.locale.Resource, localeName: string): void;
+    /**
+     * Register a resource object for certain locale.
+     * @param {Object} dataObj The resource object being registered.
+     * @param {goog.locale.Resource|string} resourceName String that represents
+     *     the type of resource.
+     * @param {string} localeName Locale ID.
+     */
+    function registerResource(dataObj: Object, resourceName: string, localeName: string): void;
 
     /**
      * Returns true if the required resource has already been registered.
@@ -129,7 +136,15 @@ declare module goog.locale {
      * @param {string} localeName Locale ID.
      * @return {boolean} Whether the required resource has already been registered.
      */
-    function isResourceRegistered(resourceName: any /*goog.locale.Resource|string*/, localeName: string): boolean;
+    function isResourceRegistered(resourceName: goog.locale.Resource, localeName: string): boolean;
+    /**
+     * Returns true if the required resource has already been registered.
+     * @param {goog.locale.Resource|string} resourceName String that represents
+     *     the type of resource.
+     * @param {string} localeName Locale ID.
+     * @return {boolean} Whether the required resource has already been registered.
+     */
+    function isResourceRegistered(resourceName: string, localeName: string): boolean;
 
     /**
      * Registers the timezone constants object for a given locale name.
@@ -199,4 +214,3 @@ declare module goog.locale {
      */
     function getResourceWithFallback(resourceName: string, opt_locale?: string): any /*Object|any (undefined)*/;
 }
-

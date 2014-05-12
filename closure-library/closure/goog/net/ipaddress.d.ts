@@ -1,116 +1,117 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/math/integer.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../math/integer.d.ts" />
 
 declare module goog.net {
 
-    /**
-     * Abstract class defining an IP Address.
-     *
-     * Please use goog.net.IpAddress static methods or
-     * goog.net.Ipv4Address/Ipv6Address classes.
-     *
-     * @param {!goog.math.Integer} address The Ip Address.
-     * @param {number} version The version number (4, 6).
-     * @constructor
-     */
-    class IpAddress {
-        /**
-         * Abstract class defining an IP Address.
-         *
-         * Please use goog.net.IpAddress static methods or
-         * goog.net.Ipv4Address/Ipv6Address classes.
-         *
-         * @param {!goog.math.Integer} address The Ip Address.
-         * @param {number} version The version number (4, 6).
-         * @constructor
-         */
-        constructor(address: goog.math.Integer, version: number);
+    class IpAddress extends IpAddress.__Class { }
+    module IpAddress {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * @return {number} The IP Address version.
-         */
-        getVersion(): number;
+            /**
+             * Abstract class defining an IP Address.
+             *
+             * Please use goog.net.IpAddress static methods or
+             * goog.net.Ipv4Address/Ipv6Address classes.
+             *
+             * @param {!goog.math.Integer} address The Ip Address.
+             * @param {number} version The version number (4, 6).
+             * @constructor
+             */
+            constructor(address: goog.math.Integer, version: number);
     
-        /**
-         * @param {!goog.net.IpAddress} other The other IP Address.
-         * @return {boolean} true if the IP Addresses are equal.
-         */
-        equals(other: goog.net.IpAddress): boolean;
+            /**
+             * @return {number} The IP Address version.
+             */
+            getVersion(): number;
     
-        /**
-         * @return {goog.math.Integer} The IP Address, as an Integer.
-         */
-        toInteger(): goog.math.Integer;
+            /**
+             * @param {!goog.net.IpAddress} other The other IP Address.
+             * @return {boolean} true if the IP Addresses are equal.
+             */
+            equals(other: goog.net.IpAddress): boolean;
     
-        /**
-         * @return {string} The IP Address, as an URI string following RFC 3986.
-         */
-        toUriString(): string;
+            /**
+             * @return {goog.math.Integer} The IP Address, as an Integer.
+             */
+            toInteger(): goog.math.Integer;
+    
+            /**
+             * @return {string} The IP Address, as an URI string following RFC 3986.
+             */
+            toUriString(): string;
+        }
     }
 
-    /**
-     * Takes a string or a number and returns a IPv4 Address.
-     *
-     * This constructor accepts strings and instance of goog.math.Integer.
-     * If you pass a goog.math.Integer, make sure that its sign is set to positive.
-     * @param {(string|!goog.math.Integer)} address The address to store.
-     * @extends {goog.net.IpAddress}
-     * @constructor
-     * @final
-     */
-    class Ipv4Address extends goog.net.IpAddress {
-        /**
-         * Takes a string or a number and returns a IPv4 Address.
-         *
-         * This constructor accepts strings and instance of goog.math.Integer.
-         * If you pass a goog.math.Integer, make sure that its sign is set to positive.
-         * @param {(string|!goog.math.Integer)} address The address to store.
-         * @extends {goog.net.IpAddress}
-         * @constructor
-         * @final
-         */
-        constructor(address: any /*string|goog.math.Integer*/);
+    class Ipv4Address extends Ipv4Address.__Class { }
+    module Ipv4Address {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.net.IpAddress.__Class {
+    
+            /**
+             * Takes a string or a number and returns a IPv4 Address.
+             *
+             * This constructor accepts strings and instance of goog.math.Integer.
+             * If you pass a goog.math.Integer, make sure that its sign is set to positive.
+             * @param {(string|!goog.math.Integer)} address The address to store.
+             * @extends {goog.net.IpAddress}
+             * @constructor
+             * @final
+             */
+            constructor(address: string);
+            /**
+             * Takes a string or a number and returns a IPv4 Address.
+             *
+             * This constructor accepts strings and instance of goog.math.Integer.
+             * If you pass a goog.math.Integer, make sure that its sign is set to positive.
+             * @param {(string|!goog.math.Integer)} address The address to store.
+             * @extends {goog.net.IpAddress}
+             * @constructor
+             * @final
+             */
+            constructor(address: goog.math.Integer);
+        }
     }
 
-    /**
-     * Takes a string or a number and returns an IPv6 Address.
-     *
-     * This constructor accepts strings and instance of goog.math.Integer.
-     * If you pass a goog.math.Integer, make sure that its sign is set to positive.
-     * @param {(string|!goog.math.Integer)} address The address to store.
-     * @constructor
-     * @extends {goog.net.IpAddress}
-     * @final
-     */
-    class Ipv6Address extends goog.net.IpAddress {
-        /**
-         * Takes a string or a number and returns an IPv6 Address.
-         *
-         * This constructor accepts strings and instance of goog.math.Integer.
-         * If you pass a goog.math.Integer, make sure that its sign is set to positive.
-         * @param {(string|!goog.math.Integer)} address The address to store.
-         * @constructor
-         * @extends {goog.net.IpAddress}
-         * @final
-         */
-        constructor(address: any /*string|goog.math.Integer*/);
+    class Ipv6Address extends Ipv6Address.__Class { }
+    module Ipv6Address {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.net.IpAddress.__Class {
     
-        /**
-         * @return {boolean} true if the IPv6 contains a mapped IPv4.
-         */
-        isMappedIpv4Address(): boolean;
+            /**
+             * Takes a string or a number and returns an IPv6 Address.
+             *
+             * This constructor accepts strings and instance of goog.math.Integer.
+             * If you pass a goog.math.Integer, make sure that its sign is set to positive.
+             * @param {(string|!goog.math.Integer)} address The address to store.
+             * @constructor
+             * @extends {goog.net.IpAddress}
+             * @final
+             */
+            constructor(address: string);
+            /**
+             * Takes a string or a number and returns an IPv6 Address.
+             *
+             * This constructor accepts strings and instance of goog.math.Integer.
+             * If you pass a goog.math.Integer, make sure that its sign is set to positive.
+             * @param {(string|!goog.math.Integer)} address The address to store.
+             * @constructor
+             * @extends {goog.net.IpAddress}
+             * @final
+             */
+            constructor(address: goog.math.Integer);
     
-        /**
-         * Will return the mapped IPv4 address in this IPv6 address.
-         * @return {goog.net.Ipv4Address} an IPv4 or null.
-         */
-        getMappedIpv4Address(): goog.net.Ipv4Address;
+            /**
+             * @return {boolean} true if the IPv6 contains a mapped IPv4.
+             */
+            isMappedIpv4Address(): boolean;
+    
+            /**
+             * Will return the mapped IPv4 address in this IPv6 address.
+             * @return {goog.net.Ipv4Address} an IPv4 or null.
+             */
+            getMappedIpv4Address(): goog.net.Ipv4Address;
+        }
     }
 }
 
@@ -161,4 +162,3 @@ declare module goog.net.Ipv6Address {
      */
     var MAX_NETMASK_LENGTH: number;
 }
-

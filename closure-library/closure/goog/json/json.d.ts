@@ -1,45 +1,45 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.json {
 
-    /**
-     * Class that is used to serialize JSON objects to a string.
-     * @param {?goog.json.Replacer=} opt_replacer Replacer.
-     * @constructor
-     */
-    class Serializer {
-        /**
-         * Class that is used to serialize JSON objects to a string.
-         * @param {?goog.json.Replacer=} opt_replacer Replacer.
-         * @constructor
-         */
-        constructor(opt_replacer?: goog.json.Replacer);
+    class Serializer extends Serializer.__Class { }
+    module Serializer {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * Serializes an object or a value to a JSON string.
-         *
-         * @param {*} object The object to serialize.
-         * @throws Error if there are loops in the object graph.
-         * @return {string} A JSON string representation of the input.
-         */
-        serialize(object: any): string;
+            /**
+             * Class that is used to serialize JSON objects to a string.
+             * @param {?goog.json.Replacer=} opt_replacer Replacer.
+             * @constructor
+             */
+            constructor(opt_replacer?: goog.json.Replacer);
     
-        /**
-         * Serializes a generic value to a JSON string
-         * @protected
-         * @param {*} object The object to serialize.
-         * @param {Array} sb Array used as a string builder.
-         * @throws Error if there are loops in the object graph.
-         */
-        serializeInternal(object: any, sb: any[]): void;
+            /**
+             * Serializes an object or a value to a JSON string.
+             *
+             * @param {*} object The object to serialize.
+             * @throws Error if there are loops in the object graph.
+             * @return {string} A JSON string representation of the input.
+             */
+            serialize(object: any): string;
     
-        /**
-         * Serializes an array to a JSON string
-         * @param {Array} arr The array to serialize.
-         * @param {Array} sb Array used as a string builder.
-         * @protected
-         */
-        serializeArray(arr: any[], sb: any[]): void;
+            /**
+             * Serializes a generic value to a JSON string
+             * @protected
+             * @param {*} object The object to serialize.
+             * @param {Array} sb Array used as a string builder.
+             * @throws Error if there are loops in the object graph.
+             */
+            serializeInternal(object: any, sb: any[]): void;
+    
+            /**
+             * Serializes an array to a JSON string
+             * @param {Array} arr The array to serialize.
+             * @param {Array} sb Array used as a string builder.
+             * @protected
+             */
+            serializeArray(arr: any[], sb: any[]): void;
+        }
     }
 
     /**
@@ -99,4 +99,3 @@ declare module goog.json {
      */
     function serialize(object: any, opt_replacer?: goog.json.Replacer): string;
 }
-

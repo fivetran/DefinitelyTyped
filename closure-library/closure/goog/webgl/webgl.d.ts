@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.webgl {
 
@@ -1861,4 +1861,3 @@ declare module goog.webgl {
      */
     var MAX_TEXTURE_MAX_ANISOTROPY_EXT: number;
 }
-

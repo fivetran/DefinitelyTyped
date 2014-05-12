@@ -1,28 +1,21 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/testing/stacktrace.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.testing {
 
-    /**
-     * @param {string} comment A summary for the exception.
-     * @param {?string=} opt_message A description of the exception.
-     * @constructor
-     * @extends {Error}
-     * @final
-     */
-    class JsUnitException implements Error {
-        /**
-         * @param {string} comment A summary for the exception.
-         * @param {?string=} opt_message A description of the exception.
-         * @constructor
-         * @extends {Error}
-         * @final
-         */
-        constructor(comment: string, opt_message?: string);
-
-        name: string;
-
-        message: string;
+    class JsUnitException extends JsUnitException.__Class { }
+    module JsUnitException {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends _Error {
+    
+            /**
+             * @param {string} comment A summary for the exception.
+             * @param {?string=} opt_message A description of the exception.
+             * @constructor
+             * @extends {Error}
+             * @final
+             */
+            constructor(comment: string, opt_message?: string);
+        }
     }
 }
 
@@ -70,7 +63,7 @@ declare module goog.testing.asserts {
      *     the types of var1 and var2 are identical.
      * @return {?string} Null on success, error message on failure.
      */
-    function findDifferences(expected: any, actual: any, opt_equalityPredicate?: any /*(_0: string, _1: any, _2: any) => string*/): string;
+    function findDifferences(expected: any, actual: any, opt_equalityPredicate?: (_0: string, _1: any, _2: any) => string): string;
 
     /**
      * Raises a JsUnit exception with the given comment.
@@ -79,4 +72,3 @@ declare module goog.testing.asserts {
      */
     function raiseException(comment: string, opt_message?: string): void;
 }
-

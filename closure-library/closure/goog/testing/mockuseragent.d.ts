@@ -1,66 +1,51 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/testing/objectpropertystring.d.ts" />
-/// <reference path="../../../closure/goog/testing/propertyreplacer.d.ts" />
-/// <reference path="../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../closure/goog/disposable/disposable.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../disposable/disposable.d.ts" />
 
 declare module goog.testing {
 
-    /**
-     * Class for unit testing code that uses goog.userAgent.
-     *
-     * @extends {goog.Disposable}
-     * @constructor
-     * @final
-     */
-    class MockUserAgent extends goog.Disposable {
-        /**
-         * Class for unit testing code that uses goog.userAgent.
-         *
-         * @extends {goog.Disposable}
-         * @constructor
-         * @final
-         */
-        constructor();
+    class MockUserAgent extends MockUserAgent.__Class { }
+    module MockUserAgent {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.Disposable.__Class {
     
-        /**
-         * Installs this MockUserAgent.
-         */
-        install(): void;
+            /**
+             * Class for unit testing code that uses goog.userAgent.
+             *
+             * @extends {goog.Disposable}
+             * @constructor
+             * @final
+             */
+            constructor();
     
-        /**
-         * @return {?string} The userAgent set in this class.
-         */
-        getUserAgentString(): string;
+            /**
+             * Installs this MockUserAgent.
+             */
+            install(): void;
     
-        /**
-         * @param {string} userAgent The desired userAgent string to use.
-         */
-        setUserAgentString(userAgent: string): void;
+            /**
+             * @return {?string} The userAgent set in this class.
+             */
+            getUserAgentString(): string;
     
-        /**
-         * @return {Object} The Navigator set in this class.
-         */
-        getNavigator(): Object;
+            /**
+             * @param {string} userAgent The desired userAgent string to use.
+             */
+            setUserAgentString(userAgent: string): void;
     
-        /**
-         * @param {Object} navigator The desired Navigator object to use.
-         */
-        setNavigator(navigator: Object): void;
+            /**
+             * @return {Object} The Navigator set in this class.
+             */
+            getNavigator(): Object;
     
-        /**
-         * Uninstalls the MockUserAgent.
-         */
-        uninstall(): void;
+            /**
+             * @param {Object} navigator The desired Navigator object to use.
+             */
+            setNavigator(navigator: Object): void;
+    
+            /**
+             * Uninstalls the MockUserAgent.
+             */
+            uninstall(): void;
+        }
     }
 }
-

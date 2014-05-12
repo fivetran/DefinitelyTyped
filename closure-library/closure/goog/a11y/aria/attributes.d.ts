@@ -1,4 +1,4 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
 
 declare module goog.a11y.aria {
 
@@ -80,4 +80,3 @@ declare module goog.a11y.aria {
      */
     enum SelectedValues { TRUE, FALSE, UNDEFINED } 
 }
-

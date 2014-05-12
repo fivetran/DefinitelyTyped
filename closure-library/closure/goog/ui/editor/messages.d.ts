@@ -1,4 +1,4 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
 
 declare module goog.ui.editor.messages {
 
@@ -69,4 +69,3 @@ declare module goog.ui.editor.messages {
     /** @desc Image bubble caption. */
     var MSG_IMAGE_CAPTION: any /*missing*/;
 }
-

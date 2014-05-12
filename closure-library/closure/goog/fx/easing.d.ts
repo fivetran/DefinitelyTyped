@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.fx.easing {
 
@@ -30,4 +30,3 @@ declare module goog.fx.easing {
      */
     function inAndOut(t: number): number;
 }
-

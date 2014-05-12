@@ -1,55 +1,48 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../closure/goog/disposable/disposable.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../disposable/disposable.d.ts" />
 
 declare module goog.testing {
 
-    /**
-     * Class for unit testing code that uses Math.random. Generates deterministic
-     * random numbers.
-     *
-     * @param {number=} opt_seed The seed to use.
-     * @param {boolean=} opt_install Whether to install the PseudoRandom at
-     *     construction time.
-     * @extends {goog.Disposable}
-     * @constructor
-     * @final
-     */
-    class PseudoRandom extends goog.Disposable {
-        /**
-         * Class for unit testing code that uses Math.random. Generates deterministic
-         * random numbers.
-         *
-         * @param {number=} opt_seed The seed to use.
-         * @param {boolean=} opt_install Whether to install the PseudoRandom at
-         *     construction time.
-         * @extends {goog.Disposable}
-         * @constructor
-         * @final
-         */
-        constructor(opt_seed?: number, opt_install?: boolean);
+    class PseudoRandom extends PseudoRandom.__Class { }
+    module PseudoRandom {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.Disposable.__Class {
     
-        /**
-         * Installs this PseudoRandom as the system number generator.
-         */
-        install(): void;
+            /**
+             * Class for unit testing code that uses Math.random. Generates deterministic
+             * random numbers.
+             *
+             * @param {number=} opt_seed The seed to use.
+             * @param {boolean=} opt_install Whether to install the PseudoRandom at
+             *     construction time.
+             * @extends {goog.Disposable}
+             * @constructor
+             * @final
+             */
+            constructor(opt_seed?: number, opt_install?: boolean);
     
-        /**
-         * Uninstalls the PseudoRandom.
-         */
-        uninstall(): void;
+            /**
+             * Installs this PseudoRandom as the system number generator.
+             */
+            install(): void;
     
-        /**
-         * Seed the generator.
-         *
-         * @param {number=} seed The seed to use.
-         */
-        seed(seed?: number): void;
+            /**
+             * Uninstalls the PseudoRandom.
+             */
+            uninstall(): void;
     
-        /**
-         * @return {number} The next number in the sequence.
-         */
-        random(): number;
+            /**
+             * Seed the generator.
+             *
+             * @param {number=} seed The seed to use.
+             */
+            seed(seed?: number): void;
+    
+            /**
+             * @return {number} The next number in the sequence.
+             */
+            random(): number;
+        }
     }
 }
 
@@ -85,4 +78,3 @@ declare module goog.testing.PseudoRandom {
      */
     var ONE_OVER_M_MINUS_ONE: number;
 }
-

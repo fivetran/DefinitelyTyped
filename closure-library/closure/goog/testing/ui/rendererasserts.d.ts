@@ -1,6 +1,4 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/testing/stacktrace.d.ts" />
-/// <reference path="../../../../closure/goog/testing/asserts.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
 
 declare module goog.testing.ui.rendererasserts {
 
@@ -12,4 +10,3 @@ declare module goog.testing.ui.rendererasserts {
      */
     function assertNoGetCssClassCallsInConstructor(rendererClassUnderTest: () => any /*missing*/): void;
 }
-

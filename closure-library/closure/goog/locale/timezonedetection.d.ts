@@ -1,7 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/locale/timezonefingerprint.d.ts" />
-/// <reference path="../../../closure/goog/locale/nativenameconstants.d.ts" />
-/// <reference path="../../../closure/goog/locale/locale.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.locale.timeZoneDetection {
 
@@ -36,4 +33,3 @@ declare module goog.locale.timeZoneDetection {
      */
     function getTimeZoneList(opt_country?: string, opt_date?: Date): string[];
 }
-

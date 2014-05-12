@@ -1,7 +1,6 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/vec/float64array.d.ts" />
-/// <reference path="../../../closure/goog/vec/float32array.d.ts" />
-/// <reference path="../../../closure/goog/vec/vec.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./vec.d.ts" />
+/// <reference path="./vec3.d.ts" />
 
 declare module goog.vec.Mat3 {
 
@@ -672,4 +671,3 @@ declare module goog.vec.Mat3 {
      */
     function toEulerZXZ(mat: goog.vec.Mat3.AnyType, euler: goog.vec.Vec3.AnyType, opt_theta2IsNegative?: boolean): goog.vec.Vec3.AnyType;
 }
-

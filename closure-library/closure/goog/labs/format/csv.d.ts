@@ -1,41 +1,29 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../../closure/goog/string/newlines.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
+/// <reference path="../../debug/error.d.ts" />
 
 declare module goog.labs.format.csv {
 
-    /**
-     * Error thrown when parsing fails.
-     *
-     * @param {string} text The CSV source text being parsed.
-     * @param {number} index The index, in the string, of the position of the
-     *      error.
-     * @param {string=} opt_message A description of the violated parse expectation.
-     * @constructor
-     * @extends {goog.debug.Error}
-     * @final
-     */
-    class ParseError extends goog.debug.Error {
-        /**
-         * Error thrown when parsing fails.
-         *
-         * @param {string} text The CSV source text being parsed.
-         * @param {number} index The index, in the string, of the position of the
-         *      error.
-         * @param {string=} opt_message A description of the violated parse expectation.
-         * @constructor
-         * @extends {goog.debug.Error}
-         * @final
-         */
-        constructor(text: string, index: number, opt_message?: string);
+    class ParseError extends ParseError.__Class { }
+    module ParseError {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.debug.Error.__Class {
     
-        /** @inheritDoc */
-        name: any /*missing*/;
+            /**
+             * Error thrown when parsing fails.
+             *
+             * @param {string} text The CSV source text being parsed.
+             * @param {number} index The index, in the string, of the position of the
+             *      error.
+             * @param {string=} opt_message A description of the violated parse expectation.
+             * @constructor
+             * @extends {goog.debug.Error}
+             * @final
+             */
+            constructor(text: string, index: number, opt_message?: string);
+    
+            /** @inheritDoc */
+            name: any /*missing*/;
+        }
     }
 
     /**
@@ -63,5 +51,11 @@ declare module goog.labs.format.csv {
      * @return {!Array.<!Array.<string>>} The parsed CSV.
      */
     function parse(text: string, opt_ignoreErrors?: boolean): string[][];
-}
 
+    /**
+     * Sentinel tracking objects.
+     * @enum {Object}
+     * @private
+     */
+    enum Sentinels_ { EMPTY, EOF, EOR, NEWLINE } 
+}

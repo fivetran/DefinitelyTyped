@@ -1,23 +1,20 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/dom/pattern/pattern.d.ts" />
-/// <reference path="../../../../closure/goog/dom/pattern/abstractpattern.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
+/// <reference path="./abstractpattern.d.ts" />
 
 declare module goog.dom.pattern {
 
-    /**
-     * Pattern object that matches any nodes at or below the current tree depth.
-     *
-     * @constructor
-     * @extends {goog.dom.pattern.AbstractPattern}
-     */
-    class AllChildren extends goog.dom.pattern.AbstractPattern {
-        /**
-         * Pattern object that matches any nodes at or below the current tree depth.
-         *
-         * @constructor
-         * @extends {goog.dom.pattern.AbstractPattern}
-         */
-        constructor();
+    class AllChildren extends AllChildren.__Class { }
+    module AllChildren {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.dom.pattern.AbstractPattern.__Class {
+    
+            /**
+             * Pattern object that matches any nodes at or below the current tree depth.
+             *
+             * @constructor
+             * @extends {goog.dom.pattern.AbstractPattern}
+             */
+            constructor();
+        }
     }
 }
-

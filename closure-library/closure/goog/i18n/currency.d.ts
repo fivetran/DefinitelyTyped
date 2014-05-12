@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.i18n.currency {
 
@@ -128,4 +128,3 @@ declare module goog.i18n.currency {
      */
     var CurrencyInfoTier2: { [key: string]: any /*missing*/ };
 }
-

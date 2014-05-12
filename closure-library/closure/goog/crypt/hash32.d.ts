@@ -1,10 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/crypt/crypt.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.crypt.hash32 {
 
@@ -55,4 +49,3 @@ declare module goog.crypt.hash32 {
      */
     function encodeByteArray(bytes: number[], opt_offset?: number, opt_length?: number, opt_seed?: number): number;
 }
-

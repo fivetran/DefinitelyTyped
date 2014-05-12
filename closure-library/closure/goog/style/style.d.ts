@@ -1,25 +1,10 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../closure/goog/math/box.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../closure/goog/math/rect.d.ts" />
-/// <reference path="../../../closure/goog/dom/vendor.d.ts" />
-/// <reference path="../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/dom/dom.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../math/coordinate.d.ts" />
+/// <reference path="../math/box.d.ts" />
+/// <reference path="../math/rect.d.ts" />
+/// <reference path="../dom/dom.d.ts" />
+/// <reference path="../events/event.d.ts" />
+/// <reference path="../math/size.d.ts" />
 
 declare module goog.style {
 
@@ -39,7 +24,92 @@ declare module goog.style {
      * @param {string|number|boolean=} opt_value If style was a string, then this
      *     should be the value.
      */
-    function setStyle(element: Element, style: any /*string|Object*/, opt_value?: any /*string|number|boolean*/): void;
+    function setStyle(element: Element, style: string, opt_value?: string): void;
+    /**
+     * Sets a style value on an element.
+     *
+     * This function is not indended to patch issues in the browser's style
+     * handling, but to allow easy programmatic access to setting dash-separated
+     * style properties.  An example is setting a batch of properties from a data
+     * object without overwriting old styles.  When possible, use native APIs:
+     * elem.style.propertyKey = 'value' or (if obliterating old styles is fine)
+     * elem.style.cssText = 'property1: value1; property2: value2'.
+     *
+     * @param {Element} element The element to change.
+     * @param {string|Object} style If a string, a style name. If an object, a hash
+     *     of style names to style values.
+     * @param {string|number|boolean=} opt_value If style was a string, then this
+     *     should be the value.
+     */
+    function setStyle(element: Element, style: string, opt_value?: number): void;
+    /**
+     * Sets a style value on an element.
+     *
+     * This function is not indended to patch issues in the browser's style
+     * handling, but to allow easy programmatic access to setting dash-separated
+     * style properties.  An example is setting a batch of properties from a data
+     * object without overwriting old styles.  When possible, use native APIs:
+     * elem.style.propertyKey = 'value' or (if obliterating old styles is fine)
+     * elem.style.cssText = 'property1: value1; property2: value2'.
+     *
+     * @param {Element} element The element to change.
+     * @param {string|Object} style If a string, a style name. If an object, a hash
+     *     of style names to style values.
+     * @param {string|number|boolean=} opt_value If style was a string, then this
+     *     should be the value.
+     */
+    function setStyle(element: Element, style: string, opt_value?: boolean): void;
+    /**
+     * Sets a style value on an element.
+     *
+     * This function is not indended to patch issues in the browser's style
+     * handling, but to allow easy programmatic access to setting dash-separated
+     * style properties.  An example is setting a batch of properties from a data
+     * object without overwriting old styles.  When possible, use native APIs:
+     * elem.style.propertyKey = 'value' or (if obliterating old styles is fine)
+     * elem.style.cssText = 'property1: value1; property2: value2'.
+     *
+     * @param {Element} element The element to change.
+     * @param {string|Object} style If a string, a style name. If an object, a hash
+     *     of style names to style values.
+     * @param {string|number|boolean=} opt_value If style was a string, then this
+     *     should be the value.
+     */
+    function setStyle(element: Element, style: Object, opt_value?: string): void;
+    /**
+     * Sets a style value on an element.
+     *
+     * This function is not indended to patch issues in the browser's style
+     * handling, but to allow easy programmatic access to setting dash-separated
+     * style properties.  An example is setting a batch of properties from a data
+     * object without overwriting old styles.  When possible, use native APIs:
+     * elem.style.propertyKey = 'value' or (if obliterating old styles is fine)
+     * elem.style.cssText = 'property1: value1; property2: value2'.
+     *
+     * @param {Element} element The element to change.
+     * @param {string|Object} style If a string, a style name. If an object, a hash
+     *     of style names to style values.
+     * @param {string|number|boolean=} opt_value If style was a string, then this
+     *     should be the value.
+     */
+    function setStyle(element: Element, style: Object, opt_value?: number): void;
+    /**
+     * Sets a style value on an element.
+     *
+     * This function is not indended to patch issues in the browser's style
+     * handling, but to allow easy programmatic access to setting dash-separated
+     * style properties.  An example is setting a batch of properties from a data
+     * object without overwriting old styles.  When possible, use native APIs:
+     * elem.style.propertyKey = 'value' or (if obliterating old styles is fine)
+     * elem.style.cssText = 'property1: value1; property2: value2'.
+     *
+     * @param {Element} element The element to change.
+     * @param {string|Object} style If a string, a style name. If an object, a hash
+     *     of style names to style values.
+     * @param {string|number|boolean=} opt_value If style was a string, then this
+     *     should be the value.
+     */
+    function setStyle(element: Element, style: Object, opt_value?: boolean): void;
 
     /**
      * Retrieves an explicitly-set style value of a node. This returns '' if there
@@ -162,7 +232,57 @@ declare module goog.style {
      * @param {string|number|goog.math.Coordinate} arg1 Left position or coordinate.
      * @param {string|number=} opt_arg2 Top position.
      */
-    function setPosition(el: Element, arg1: any /*string|number|goog.math.Coordinate*/, opt_arg2?: any /*string|number*/): void;
+    function setPosition(el: Element, arg1: string, opt_arg2?: string): void;
+    /**
+     * Sets the top/left values of an element.  If no unit is specified in the
+     * argument then it will add px. The second argument is required if the first
+     * argument is a string or number and is ignored if the first argument
+     * is a coordinate.
+     * @param {Element} el Element to move.
+     * @param {string|number|goog.math.Coordinate} arg1 Left position or coordinate.
+     * @param {string|number=} opt_arg2 Top position.
+     */
+    function setPosition(el: Element, arg1: string, opt_arg2?: number): void;
+    /**
+     * Sets the top/left values of an element.  If no unit is specified in the
+     * argument then it will add px. The second argument is required if the first
+     * argument is a string or number and is ignored if the first argument
+     * is a coordinate.
+     * @param {Element} el Element to move.
+     * @param {string|number|goog.math.Coordinate} arg1 Left position or coordinate.
+     * @param {string|number=} opt_arg2 Top position.
+     */
+    function setPosition(el: Element, arg1: number, opt_arg2?: string): void;
+    /**
+     * Sets the top/left values of an element.  If no unit is specified in the
+     * argument then it will add px. The second argument is required if the first
+     * argument is a string or number and is ignored if the first argument
+     * is a coordinate.
+     * @param {Element} el Element to move.
+     * @param {string|number|goog.math.Coordinate} arg1 Left position or coordinate.
+     * @param {string|number=} opt_arg2 Top position.
+     */
+    function setPosition(el: Element, arg1: number, opt_arg2?: number): void;
+    /**
+     * Sets the top/left values of an element.  If no unit is specified in the
+     * argument then it will add px. The second argument is required if the first
+     * argument is a string or number and is ignored if the first argument
+     * is a coordinate.
+     * @param {Element} el Element to move.
+     * @param {string|number|goog.math.Coordinate} arg1 Left position or coordinate.
+     * @param {string|number=} opt_arg2 Top position.
+     */
+    function setPosition(el: Element, arg1: goog.math.Coordinate, opt_arg2?: string): void;
+    /**
+     * Sets the top/left values of an element.  If no unit is specified in the
+     * argument then it will add px. The second argument is required if the first
+     * argument is a string or number and is ignored if the first argument
+     * is a coordinate.
+     * @param {Element} el Element to move.
+     * @param {string|number|goog.math.Coordinate} arg1 Left position or coordinate.
+     * @param {string|number=} opt_arg2 Top position.
+     */
+    function setPosition(el: Element, arg1: goog.math.Coordinate, opt_arg2?: number): void;
 
     /**
      * Gets the offsetLeft and offsetTop properties of an element and returns them
@@ -305,7 +425,87 @@ declare module goog.style {
      *     is relative to.
      * @return {!goog.math.Coordinate} The relative position.
      */
-    function getRelativePosition(a: any /*Element|Event|goog.events.Event*/, b: any /*Element|Event|goog.events.Event*/): goog.math.Coordinate;
+    function getRelativePosition(a: Element, b: Element): goog.math.Coordinate;
+    /**
+     * Returns the position of an element relative to another element in the
+     * document.  A relative to B
+     * @param {Element|Event|goog.events.Event} a Element or mouse event whose
+     *     position we're calculating.
+     * @param {Element|Event|goog.events.Event} b Element or mouse event position
+     *     is relative to.
+     * @return {!goog.math.Coordinate} The relative position.
+     */
+    function getRelativePosition(a: Element, b: Event): goog.math.Coordinate;
+    /**
+     * Returns the position of an element relative to another element in the
+     * document.  A relative to B
+     * @param {Element|Event|goog.events.Event} a Element or mouse event whose
+     *     position we're calculating.
+     * @param {Element|Event|goog.events.Event} b Element or mouse event position
+     *     is relative to.
+     * @return {!goog.math.Coordinate} The relative position.
+     */
+    function getRelativePosition(a: Element, b: goog.events.Event): goog.math.Coordinate;
+    /**
+     * Returns the position of an element relative to another element in the
+     * document.  A relative to B
+     * @param {Element|Event|goog.events.Event} a Element or mouse event whose
+     *     position we're calculating.
+     * @param {Element|Event|goog.events.Event} b Element or mouse event position
+     *     is relative to.
+     * @return {!goog.math.Coordinate} The relative position.
+     */
+    function getRelativePosition(a: Event, b: Element): goog.math.Coordinate;
+    /**
+     * Returns the position of an element relative to another element in the
+     * document.  A relative to B
+     * @param {Element|Event|goog.events.Event} a Element or mouse event whose
+     *     position we're calculating.
+     * @param {Element|Event|goog.events.Event} b Element or mouse event position
+     *     is relative to.
+     * @return {!goog.math.Coordinate} The relative position.
+     */
+    function getRelativePosition(a: Event, b: Event): goog.math.Coordinate;
+    /**
+     * Returns the position of an element relative to another element in the
+     * document.  A relative to B
+     * @param {Element|Event|goog.events.Event} a Element or mouse event whose
+     *     position we're calculating.
+     * @param {Element|Event|goog.events.Event} b Element or mouse event position
+     *     is relative to.
+     * @return {!goog.math.Coordinate} The relative position.
+     */
+    function getRelativePosition(a: Event, b: goog.events.Event): goog.math.Coordinate;
+    /**
+     * Returns the position of an element relative to another element in the
+     * document.  A relative to B
+     * @param {Element|Event|goog.events.Event} a Element or mouse event whose
+     *     position we're calculating.
+     * @param {Element|Event|goog.events.Event} b Element or mouse event position
+     *     is relative to.
+     * @return {!goog.math.Coordinate} The relative position.
+     */
+    function getRelativePosition(a: goog.events.Event, b: Element): goog.math.Coordinate;
+    /**
+     * Returns the position of an element relative to another element in the
+     * document.  A relative to B
+     * @param {Element|Event|goog.events.Event} a Element or mouse event whose
+     *     position we're calculating.
+     * @param {Element|Event|goog.events.Event} b Element or mouse event position
+     *     is relative to.
+     * @return {!goog.math.Coordinate} The relative position.
+     */
+    function getRelativePosition(a: goog.events.Event, b: Event): goog.math.Coordinate;
+    /**
+     * Returns the position of an element relative to another element in the
+     * document.  A relative to B
+     * @param {Element|Event|goog.events.Event} a Element or mouse event whose
+     *     position we're calculating.
+     * @param {Element|Event|goog.events.Event} b Element or mouse event position
+     *     is relative to.
+     * @return {!goog.math.Coordinate} The relative position.
+     */
+    function getRelativePosition(a: goog.events.Event, b: goog.events.Event): goog.math.Coordinate;
 
     /**
      * Returns the position of the event or the element's border box relative to
@@ -313,7 +513,21 @@ declare module goog.style {
      * @param {Element|Event|goog.events.Event} el Element or a mouse / touch event.
      * @return {!goog.math.Coordinate} The position.
      */
-    function getClientPosition(el: any /*Element|Event|goog.events.Event*/): goog.math.Coordinate;
+    function getClientPosition(el: Element): goog.math.Coordinate;
+    /**
+     * Returns the position of the event or the element's border box relative to
+     * the client viewport.
+     * @param {Element|Event|goog.events.Event} el Element or a mouse / touch event.
+     * @return {!goog.math.Coordinate} The position.
+     */
+    function getClientPosition(el: Event): goog.math.Coordinate;
+    /**
+     * Returns the position of the event or the element's border box relative to
+     * the client viewport.
+     * @param {Element|Event|goog.events.Event} el Element or a mouse / touch event.
+     * @return {!goog.math.Coordinate} The position.
+     */
+    function getClientPosition(el: goog.events.Event): goog.math.Coordinate;
 
     /**
      * Moves an element to the given coordinates relative to the client viewport.
@@ -323,7 +537,16 @@ declare module goog.style {
      *     box or a coordinate object.
      * @param {number=} opt_y Top position of the element's margin box.
      */
-    function setPageOffset(el: Element, x: any /*number|goog.math.Coordinate*/, opt_y?: number): void;
+    function setPageOffset(el: Element, x: number, opt_y?: number): void;
+    /**
+     * Moves an element to the given coordinates relative to the client viewport.
+     * @param {Element} el Absolutely positioned element to set page offset for.
+     *     It must be in the document.
+     * @param {number|goog.math.Coordinate} x Left position of the element's margin
+     *     box or a coordinate object.
+     * @param {number=} opt_y Top position of the element's margin box.
+     */
+    function setPageOffset(el: Element, x: goog.math.Coordinate, opt_y?: number): void;
 
     /**
      * Sets the width/height values of an element.  If an argument is numeric,
@@ -338,7 +561,77 @@ declare module goog.style {
      * @param {string|number=} opt_h Height of the element. Required if w is not a
      *     size object.
      */
-    function setSize(element: Element, w: any /*string|number|goog.math.Size*/, opt_h?: any /*string|number*/): void;
+    function setSize(element: Element, w: string, opt_h?: string): void;
+    /**
+     * Sets the width/height values of an element.  If an argument is numeric,
+     * or a goog.math.Size is passed, it is assumed to be pixels and will add
+     * 'px' after converting it to an integer in string form. (This just sets the
+     * CSS width and height properties so it might set content-box or border-box
+     * size depending on the box model the browser is using.)
+     *
+     * @param {Element} element Element to set the size of.
+     * @param {string|number|goog.math.Size} w Width of the element, or a
+     *     size object.
+     * @param {string|number=} opt_h Height of the element. Required if w is not a
+     *     size object.
+     */
+    function setSize(element: Element, w: string, opt_h?: number): void;
+    /**
+     * Sets the width/height values of an element.  If an argument is numeric,
+     * or a goog.math.Size is passed, it is assumed to be pixels and will add
+     * 'px' after converting it to an integer in string form. (This just sets the
+     * CSS width and height properties so it might set content-box or border-box
+     * size depending on the box model the browser is using.)
+     *
+     * @param {Element} element Element to set the size of.
+     * @param {string|number|goog.math.Size} w Width of the element, or a
+     *     size object.
+     * @param {string|number=} opt_h Height of the element. Required if w is not a
+     *     size object.
+     */
+    function setSize(element: Element, w: number, opt_h?: string): void;
+    /**
+     * Sets the width/height values of an element.  If an argument is numeric,
+     * or a goog.math.Size is passed, it is assumed to be pixels and will add
+     * 'px' after converting it to an integer in string form. (This just sets the
+     * CSS width and height properties so it might set content-box or border-box
+     * size depending on the box model the browser is using.)
+     *
+     * @param {Element} element Element to set the size of.
+     * @param {string|number|goog.math.Size} w Width of the element, or a
+     *     size object.
+     * @param {string|number=} opt_h Height of the element. Required if w is not a
+     *     size object.
+     */
+    function setSize(element: Element, w: number, opt_h?: number): void;
+    /**
+     * Sets the width/height values of an element.  If an argument is numeric,
+     * or a goog.math.Size is passed, it is assumed to be pixels and will add
+     * 'px' after converting it to an integer in string form. (This just sets the
+     * CSS width and height properties so it might set content-box or border-box
+     * size depending on the box model the browser is using.)
+     *
+     * @param {Element} element Element to set the size of.
+     * @param {string|number|goog.math.Size} w Width of the element, or a
+     *     size object.
+     * @param {string|number=} opt_h Height of the element. Required if w is not a
+     *     size object.
+     */
+    function setSize(element: Element, w: goog.math.Size, opt_h?: string): void;
+    /**
+     * Sets the width/height values of an element.  If an argument is numeric,
+     * or a goog.math.Size is passed, it is assumed to be pixels and will add
+     * 'px' after converting it to an integer in string form. (This just sets the
+     * CSS width and height properties so it might set content-box or border-box
+     * size depending on the box model the browser is using.)
+     *
+     * @param {Element} element Element to set the size of.
+     * @param {string|number|goog.math.Size} w Width of the element, or a
+     *     size object.
+     * @param {string|number=} opt_h Height of the element. Required if w is not a
+     *     size object.
+     */
+    function setSize(element: Element, w: goog.math.Size, opt_h?: number): void;
 
     /**
      * Set the height of an element.  Sets the element's style property.
@@ -346,7 +639,14 @@ declare module goog.style {
      * @param {string|number} height The height value to set.  If a number, 'px'
      *     will be appended, otherwise the value will be applied directly.
      */
-    function setHeight(element: Element, height: any /*string|number*/): void;
+    function setHeight(element: Element, height: string): void;
+    /**
+     * Set the height of an element.  Sets the element's style property.
+     * @param {Element} element Element to set the height of.
+     * @param {string|number} height The height value to set.  If a number, 'px'
+     *     will be appended, otherwise the value will be applied directly.
+     */
+    function setHeight(element: Element, height: number): void;
 
     /**
      * Set the width of an element.  Sets the element's style property.
@@ -354,7 +654,14 @@ declare module goog.style {
      * @param {string|number} width The width value to set.  If a number, 'px'
      *     will be appended, otherwise the value will be applied directly.
      */
-    function setWidth(element: Element, width: any /*string|number*/): void;
+    function setWidth(element: Element, width: string): void;
+    /**
+     * Set the width of an element.  Sets the element's style property.
+     * @param {Element} element Element to set the width of.
+     * @param {string|number} width The width value to set.  If a number, 'px'
+     *     will be appended, otherwise the value will be applied directly.
+     */
+    function setWidth(element: Element, width: number): void;
 
     /**
      * Gets the height and width of an element, even if its display is none.
@@ -425,7 +732,14 @@ declare module goog.style {
      * @param {number|string} alpha Opacity between 0 and 1 or an empty string
      *     {@code ''} to clear the opacity.
      */
-    function setOpacity(el: Element, alpha: any /*number|string*/): void;
+    function setOpacity(el: Element, alpha: number): void;
+    /**
+     * Sets the opacity of a node (x-browser).
+     * @param {Element} el Elements whose opacity has to be set.
+     * @param {number|string} alpha Opacity between 0 and 1 or an empty string
+     *     {@code ''} to clear the opacity.
+     */
+    function setOpacity(el: Element, alpha: string): void;
 
     /**
      * Sets the background of an element to a transparent image in a browser-
@@ -521,7 +835,13 @@ declare module goog.style {
      * @param {Element|StyleSheet} styleSheet The value returned by
      *     {@link #installStyles}.
      */
-    function uninstallStyles(styleSheet: any /*Element|StyleSheet*/): void;
+    function uninstallStyles(styleSheet: Element): void;
+    /**
+     * Removes the styles added by {@link #installStyles}.
+     * @param {Element|StyleSheet} styleSheet The value returned by
+     *     {@link #installStyles}.
+     */
+    function uninstallStyles(styleSheet: StyleSheet): void;
 
     /**
      * Sets the content of a style element.  The style element can be any valid
@@ -531,7 +851,16 @@ declare module goog.style {
      *     installStyles.
      * @param {string} stylesString The new content of the stylesheet.
      */
-    function setStyles(element: any /*Element|StyleSheet*/, stylesString: string): void;
+    function setStyles(element: Element, stylesString: string): void;
+    /**
+     * Sets the content of a style element.  The style element can be any valid
+     * style element.  This element will have its content completely replaced by
+     * the new stylesString.
+     * @param {Element|StyleSheet} element A stylesheet element as returned by
+     *     installStyles.
+     * @param {string} stylesString The new content of the stylesheet.
+     */
+    function setStyles(element: StyleSheet, stylesString: string): void;
 
     /**
      * Sets 'white-space: pre-wrap' for a node (x-browser).
@@ -712,4 +1041,3 @@ declare module goog.style {
      */
     function getCssTranslation(element: Element): goog.math.Coordinate;
 }
-

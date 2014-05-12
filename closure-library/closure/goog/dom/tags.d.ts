@@ -1,5 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.dom.tags {
 
@@ -11,4 +10,3 @@ declare module goog.dom.tags {
      */
     function isVoidTag(tagName: string): boolean;
 }
-

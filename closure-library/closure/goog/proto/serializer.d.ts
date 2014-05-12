@@ -1,23 +1,20 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/json/json.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../json/json.d.ts" />
 
 declare module goog.proto {
 
-    /**
-     * Object that can serialize objects or values to a protocol buffer string.
-     * @constructor
-     * @extends {goog.json.Serializer}
-     * @final
-     */
-    class Serializer extends goog.json.Serializer {
-        /**
-         * Object that can serialize objects or values to a protocol buffer string.
-         * @constructor
-         * @extends {goog.json.Serializer}
-         * @final
-         */
-        constructor();
+    class Serializer extends Serializer.__Class { }
+    module Serializer {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.json.Serializer.__Class {
+    
+            /**
+             * Object that can serialize objects or values to a protocol buffer string.
+             * @constructor
+             * @extends {goog.json.Serializer}
+             * @final
+             */
+            constructor();
+        }
     }
 }
-

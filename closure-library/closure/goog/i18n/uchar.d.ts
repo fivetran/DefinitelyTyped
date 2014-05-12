@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.i18n.uChar {
 
@@ -118,4 +118,3 @@ declare module goog.i18n.uChar {
      */
     function createCharData(): void;
 }
-

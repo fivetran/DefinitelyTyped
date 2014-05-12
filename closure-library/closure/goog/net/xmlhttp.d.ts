@@ -1,28 +1,22 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/net/xhrlike.d.ts" />
-/// <reference path="../../../closure/goog/net/xmlhttpfactory.d.ts" />
-/// <reference path="../../../closure/goog/net/wrapperxmlhttpfactory.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./xmlhttpfactory.d.ts" />
+/// <reference path="./xhrlike.d.ts" />
 
 declare module goog.net {
 
-    /**
-     * Default factory to use when creating xhr objects.  You probably shouldn't be
-     * instantiating this directly, but rather using it via goog.net.XmlHttp.
-     * @extends {goog.net.XmlHttpFactory}
-     * @constructor
-     */
-    class DefaultXmlHttpFactory extends goog.net.XmlHttpFactory {
-        /**
-         * Default factory to use when creating xhr objects.  You probably shouldn't be
-         * instantiating this directly, but rather using it via goog.net.XmlHttp.
-         * @extends {goog.net.XmlHttpFactory}
-         * @constructor
-         */
-        constructor();
+    class DefaultXmlHttpFactory extends DefaultXmlHttpFactory.__Class { }
+    module DefaultXmlHttpFactory {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.net.XmlHttpFactory.__Class {
+    
+            /**
+             * Default factory to use when creating xhr objects.  You probably shouldn't be
+             * instantiating this directly, but rather using it via goog.net.XmlHttp.
+             * @extends {goog.net.XmlHttpFactory}
+             * @constructor
+             */
+            constructor();
+        }
     }
 
     /**
@@ -72,4 +66,3 @@ declare module goog.net.XmlHttp {
      */
     function setGlobalFactory(factory: goog.net.XmlHttpFactory): void;
 }
-

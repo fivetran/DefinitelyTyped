@@ -1,9 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/testing/stacktrace.d.ts" />
-/// <reference path="../../../closure/goog/testing/asserts.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/testing/testcase.d.ts" />
-/// <reference path="../../../closure/goog/testing/testrunner.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.testing.jsunit {
 
@@ -19,4 +14,3 @@ declare module goog.testing.jsunit {
      */
     var CORE_SCRIPT: string;
 }
-

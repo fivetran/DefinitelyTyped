@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.net {
 
@@ -24,4 +24,3 @@ declare module goog.net.HttpStatus {
      */
     function isSuccess(status: number): boolean;
 }
-

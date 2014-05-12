@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.i18n.ordinalRules {
 
@@ -13,4 +13,3 @@ declare module goog.i18n.ordinalRules {
      */
     var select: any /*missing*/;
 }
-

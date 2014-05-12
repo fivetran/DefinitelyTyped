@@ -1,13 +1,7 @@
-/// <reference path="../../../../../closure/goog/base.d.ts" />
+/// <reference path="../../../../../globals.d.ts" />
 
 declare module goog.labs.net.webChannel {
 
-    /**
-     * The interface class.
-     *
-     * @interface
-     */
     interface Wire {
     }
 }
-

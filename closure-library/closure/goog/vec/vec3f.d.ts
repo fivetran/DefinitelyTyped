@@ -1,7 +1,5 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/vec/float64array.d.ts" />
-/// <reference path="../../../closure/goog/vec/float32array.d.ts" />
-/// <reference path="../../../closure/goog/vec/vec.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./vec.d.ts" />
 
 declare module goog.vec.vec3f {
 
@@ -225,7 +223,19 @@ declare module goog.vec.vec3f {
      * @return {!goog.vec.vec3f.Type} Return resultVec so that operations can be
      *     chained together.
      */
-    function max(vec0: goog.vec.vec3f.Type, limit: any /*goog.vec.vec3f.Type|number*/, resultVec: goog.vec.vec3f.Type): goog.vec.vec3f.Type;
+    function max(vec0: goog.vec.vec3f.Type, limit: goog.vec.vec3f.Type, resultVec: goog.vec.vec3f.Type): goog.vec.vec3f.Type;
+    /**
+     * Compares the components of vec0 with the components of another vector or
+     * scalar, storing the larger values in resultVec.
+     *
+     * @param {goog.vec.vec3f.Type} vec0 The source vector.
+     * @param {goog.vec.vec3f.Type|number} limit The limit vector or scalar.
+     * @param {goog.vec.vec3f.Type} resultVec The vector to receive the
+     *     results (may be vec0 or limit).
+     * @return {!goog.vec.vec3f.Type} Return resultVec so that operations can be
+     *     chained together.
+     */
+    function max(vec0: goog.vec.vec3f.Type, limit: number, resultVec: goog.vec.vec3f.Type): goog.vec.vec3f.Type;
 
     /**
      * Compares the components of vec0 with the components of another vector or
@@ -238,7 +248,19 @@ declare module goog.vec.vec3f {
      * @return {!goog.vec.vec3f.Type} Return resultVec so that operations can be
      *     chained together.
      */
-    function min(vec0: goog.vec.vec3f.Type, limit: any /*goog.vec.vec3f.Type|number*/, resultVec: goog.vec.vec3f.Type): goog.vec.vec3f.Type;
+    function min(vec0: goog.vec.vec3f.Type, limit: goog.vec.vec3f.Type, resultVec: goog.vec.vec3f.Type): goog.vec.vec3f.Type;
+    /**
+     * Compares the components of vec0 with the components of another vector or
+     * scalar, storing the smaller values in resultVec.
+     *
+     * @param {goog.vec.vec3f.Type} vec0 The source vector.
+     * @param {goog.vec.vec3f.Type|number} limit The limit vector or scalar.
+     * @param {goog.vec.vec3f.Type} resultVec The vector to receive the
+     *     results (may be vec0 or limit).
+     * @return {!goog.vec.vec3f.Type} Return resultVec so that operations can be
+     *     chained together.
+     */
+    function min(vec0: goog.vec.vec3f.Type, limit: number, resultVec: goog.vec.vec3f.Type): goog.vec.vec3f.Type;
 
     /**
      * Returns true if the components of v0 are equal to the components of v1.
@@ -249,4 +271,3 @@ declare module goog.vec.vec3f {
      */
     function equals(v0: goog.vec.vec3f.Type, v1: goog.vec.vec3f.Type): boolean;
 }
-

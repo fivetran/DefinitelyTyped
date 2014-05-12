@@ -1,65 +1,79 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../debug/error.d.ts" />
 
 declare module goog.db {
 
-    /**
-     * A database error. Since the stack trace can be unhelpful in an asynchronous
-     * context, the error provides a message about where it was produced.
-     *
-     * @param {number|!DOMError} error The DOMError instance returned by the
-     *     browser for Chrome22+, or an error code for previous versions.
-     * @param {string} context A description of where the error occured.
-     * @param {string=} opt_message Additional message.
-     * @constructor
-     * @extends {goog.debug.Error}
-     * @final
-     */
-    class Error extends goog.debug.Error {
-        /**
-         * A database error. Since the stack trace can be unhelpful in an asynchronous
-         * context, the error provides a message about where it was produced.
-         *
-         * @param {number|!DOMError} error The DOMError instance returned by the
-         *     browser for Chrome22+, or an error code for previous versions.
-         * @param {string} context A description of where the error occured.
-         * @param {string=} opt_message Additional message.
-         * @constructor
-         * @extends {goog.debug.Error}
-         * @final
-         */
-        constructor(error: any /*number|DOMError*/, context: string, opt_message?: string);
+    class Error extends Error.__Class { }
+    module Error {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.debug.Error.__Class {
     
-        /**
-         * @return {string} The name of the error.
-         */
-        getName(): string;
+            /**
+             * A database error. Since the stack trace can be unhelpful in an asynchronous
+             * context, the error provides a message about where it was produced.
+             *
+             * @param {number|!DOMError} error The DOMError instance returned by the
+             *     browser for Chrome22+, or an error code for previous versions.
+             * @param {string} context A description of where the error occured.
+             * @param {string=} opt_message Additional message.
+             * @constructor
+             * @extends {goog.debug.Error}
+             * @final
+             */
+            constructor(error: number, context: string, opt_message?: string);
+            /**
+             * A database error. Since the stack trace can be unhelpful in an asynchronous
+             * context, the error provides a message about where it was produced.
+             *
+             * @param {number|!DOMError} error The DOMError instance returned by the
+             *     browser for Chrome22+, or an error code for previous versions.
+             * @param {string} context A description of where the error occured.
+             * @param {string=} opt_message Additional message.
+             * @constructor
+             * @extends {goog.debug.Error}
+             * @final
+             */
+            constructor(error: DOMError, context: string, opt_message?: string);
+    
+            /**
+             * @return {string} The name of the error.
+             */
+            getName(): string;
+        }
     }
 }
 
 declare module goog.db.Error {
 
-    /**
-     * A specific kind of database error. If a Version Change is unable to proceed
-     * due to other open database connections, it will block and this error will be
-     * thrown.
-     *
-     * @constructor
-     * @extends {goog.debug.Error}
-     * @final
-     */
-    class VersionChangeBlockedError extends goog.debug.Error {
-        /**
-         * A specific kind of database error. If a Version Change is unable to proceed
-         * due to other open database connections, it will block and this error will be
-         * thrown.
-         *
-         * @constructor
-         * @extends {goog.debug.Error}
-         * @final
-         */
-        constructor();
+    class VersionChangeBlockedError extends VersionChangeBlockedError.__Class { }
+    module VersionChangeBlockedError {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.debug.Error.__Class {
+    
+            /**
+             * A specific kind of database error. If a Version Change is unable to proceed
+             * due to other open database connections, it will block and this error will be
+             * thrown.
+             *
+             * @constructor
+             * @extends {goog.debug.Error}
+             * @final
+             */
+            constructor();
+        }
     }
+
+    /**
+     * Synthetic error codes for database errors, for use when IndexedDB
+     * support is not available. This numbering differs in practice
+     * from the browser implementations, but it is not meant to be reliable:
+     * this object merely ensures that goog.db.Error is loadable on platforms
+     * that do not support IndexedDB.
+     *
+     * @enum {number}
+     * @private
+     */
+    enum DatabaseErrorCode_ { UNKNOWN_ERR, NON_TRANSIENT_ERR, NOT_FOUND_ERR, CONSTRAINT_ERR, DATA_ERR, NOT_ALLOWED_ERR, TRANSACTION_INACTIVE_ERR, ABORT_ERR, READ_ONLY_ERR, TRANSIENT_ERR, TIMEOUT_ERR, QUOTA_ERR, INVALID_ACCESS_ERR, INVALID_STATE_ERR } 
 
     /**
      * Error codes for database errors.
@@ -101,7 +115,16 @@ declare module goog.db.Error {
      * @param {!goog.db.Error.ErrorCode|number} code The error code to convert.
      * @return {!goog.db.Error.ErrorName} The corresponding name of the error.
      */
-    function getName(code: any /*goog.db.Error.ErrorCode|number*/): goog.db.Error.ErrorName;
+    function getName(code: goog.db.Error.ErrorCode): goog.db.Error.ErrorName;
+    /**
+     * Converts an error code used by the old spec, to an error name used by the
+     * latest spec.
+     * @see http://www.w3.org/TR/IndexedDB/#exceptions
+     *
+     * @param {!goog.db.Error.ErrorCode|number} code The error code to convert.
+     * @return {!goog.db.Error.ErrorName} The corresponding name of the error.
+     */
+    function getName(code: number): goog.db.Error.ErrorName;
 
     /**
      * Constructs an goog.db.Error instance from an IDBRequest. This abstraction is
@@ -123,6 +146,5 @@ declare module goog.db.Error {
      * @suppress {invalidCasts} The cast from IDBDatabaseException to DOMError
      *     is invalid and will not compile.
      */
-    function fromException(ex: any, message: string): goog.db.Error;
+    function fromException(ex: IDBDatabaseException, message: string): goog.db.Error;
 }
-

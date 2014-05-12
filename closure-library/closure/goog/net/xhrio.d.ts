@@ -1,303 +1,493 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/net/httpstatus.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../closure/goog/disposable/disposable.d.ts" />
-/// <reference path="../../../closure/goog/events/eventid.d.ts" />
-/// <reference path="../../../closure/goog/events/listenable.d.ts" />
-/// <reference path="../../../closure/goog/events/listener.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/events/listenermap.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/events/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/debug/entrypointregistry.d.ts" />
-/// <reference path="../../../closure/goog/events/eventtype.d.ts" />
-/// <reference path="../../../closure/goog/events/event.d.ts" />
-/// <reference path="../../../closure/goog/reflect/reflect.d.ts" />
-/// <reference path="../../../closure/goog/events/browserevent.d.ts" />
-/// <reference path="../../../closure/goog/events/events.d.ts" />
-/// <reference path="../../../closure/goog/events/eventtarget.d.ts" />
-/// <reference path="../../../closure/goog/timer/timer.d.ts" />
-/// <reference path="../../../closure/goog/structs/collection.d.ts" />
-/// <reference path="../../../closure/goog/structs/structs.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/iter/iter.d.ts" />
-/// <reference path="../../../closure/goog/structs/map.d.ts" />
-/// <reference path="../../../closure/goog/structs/set.d.ts" />
-/// <reference path="../../../closure/goog/debug/debug.d.ts" />
-/// <reference path="../../../closure/goog/debug/logrecord.d.ts" />
-/// <reference path="../../../closure/goog/debug/logbuffer.d.ts" />
-/// <reference path="../../../closure/goog/debug/logger.d.ts" />
-/// <reference path="../../../closure/goog/log/log.d.ts" />
-/// <reference path="../../../closure/goog/net/errorcode.d.ts" />
-/// <reference path="../../../closure/goog/json/json.d.ts" />
-/// <reference path="../../../closure/goog/net/xhrlike.d.ts" />
-/// <reference path="../../../closure/goog/net/xmlhttpfactory.d.ts" />
-/// <reference path="../../../closure/goog/net/wrapperxmlhttpfactory.d.ts" />
-/// <reference path="../../../closure/goog/net/xmlhttp.d.ts" />
-/// <reference path="../../../closure/goog/uri/utils.d.ts" />
-/// <reference path="../../../closure/goog/net/eventtype.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../events/eventtarget.d.ts" />
+/// <reference path="./xmlhttpfactory.d.ts" />
+/// <reference path="../structs/map.d.ts" />
+/// <reference path="../uri/uri.d.ts" />
+/// <reference path="./xhrlike.d.ts" />
+/// <reference path="./errorcode.d.ts" />
+/// <reference path="./xmlhttp.d.ts" />
+/// <reference path="../debug/errorhandler.d.ts" />
 
 declare module goog.net {
 
-    /**
-     * Basic class for handling XMLHttpRequests.
-     * @param {goog.net.XmlHttpFactory=} opt_xmlHttpFactory Factory to use when
-     *     creating XMLHttpRequest objects.
-     * @constructor
-     * @extends {goog.events.EventTarget}
-     */
-    class XhrIo extends goog.events.EventTarget {
-        /**
-         * Basic class for handling XMLHttpRequests.
-         * @param {goog.net.XmlHttpFactory=} opt_xmlHttpFactory Factory to use when
-         *     creating XMLHttpRequest objects.
-         * @constructor
-         * @extends {goog.events.EventTarget}
-         */
-        constructor(opt_xmlHttpFactory?: goog.net.XmlHttpFactory);
+    class XhrIo extends XhrIo.__Class { }
+    module XhrIo {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.events.EventTarget.__Class {
     
-        /**
-         * A reference to the XhrIo logger
-         * @private {goog.debug.Logger}
-         * @const
-         */
-        logger_: any /*missing*/;
+            /**
+             * Basic class for handling XMLHttpRequests.
+             * @param {goog.net.XmlHttpFactory=} opt_xmlHttpFactory Factory to use when
+             *     creating XMLHttpRequest objects.
+             * @constructor
+             * @extends {goog.events.EventTarget}
+             */
+            constructor(opt_xmlHttpFactory?: goog.net.XmlHttpFactory);
     
-        /**
-         * Returns the number of milliseconds after which an incomplete request will be
-         * aborted, or 0 if no timeout is set.
-         * @return {number} Timeout interval in milliseconds.
-         */
-        getTimeoutInterval(): number;
+            /**
+             * A reference to the XhrIo logger
+             * @private {goog.debug.Logger}
+             * @const
+             */
+            logger_: any /*missing*/;
     
-        /**
-         * Sets the number of milliseconds after which an incomplete request will be
-         * aborted and a {@link goog.net.EventType.TIMEOUT} event raised; 0 means no
-         * timeout is set.
-         * @param {number} ms Timeout interval in milliseconds; 0 means none.
-         */
-        setTimeoutInterval(ms: number): void;
+            /**
+             * Returns the number of milliseconds after which an incomplete request will be
+             * aborted, or 0 if no timeout is set.
+             * @return {number} Timeout interval in milliseconds.
+             */
+            getTimeoutInterval(): number;
     
-        /**
-         * Sets the desired type for the response. At time of writing, this is only
-         * supported in very recent versions of WebKit (10.0.612.1 dev and later).
-         *
-         * If this is used, the response may only be accessed via {@link #getResponse}.
-         *
-         * @param {goog.net.XhrIo.ResponseType} type The desired type for the response.
-         */
-        setResponseType(type: goog.net.XhrIo.ResponseType): void;
+            /**
+             * Sets the number of milliseconds after which an incomplete request will be
+             * aborted and a {@link goog.net.EventType.TIMEOUT} event raised; 0 means no
+             * timeout is set.
+             * @param {number} ms Timeout interval in milliseconds; 0 means none.
+             */
+            setTimeoutInterval(ms: number): void;
     
-        /**
-         * Gets the desired type for the response.
-         * @return {goog.net.XhrIo.ResponseType} The desired type for the response.
-         */
-        getResponseType(): goog.net.XhrIo.ResponseType;
+            /**
+             * Sets the desired type for the response. At time of writing, this is only
+             * supported in very recent versions of WebKit (10.0.612.1 dev and later).
+             *
+             * If this is used, the response may only be accessed via {@link #getResponse}.
+             *
+             * @param {goog.net.XhrIo.ResponseType} type The desired type for the response.
+             */
+            setResponseType(type: goog.net.XhrIo.ResponseType): void;
     
-        /**
-         * Sets whether a "credentialed" request that is aware of cookie and
-         * authentication information should be made. This option is only supported by
-         * browsers that support HTTP Access Control. As of this writing, this option
-         * is not supported in IE.
-         *
-         * @param {boolean} withCredentials Whether this should be a "credentialed"
-         *     request.
-         */
-        setWithCredentials(withCredentials: boolean): void;
+            /**
+             * Gets the desired type for the response.
+             * @return {goog.net.XhrIo.ResponseType} The desired type for the response.
+             */
+            getResponseType(): goog.net.XhrIo.ResponseType;
     
-        /**
-         * Gets whether a "credentialed" request is to be sent.
-         * @return {boolean} The desired type for the response.
-         */
-        getWithCredentials(): boolean;
+            /**
+             * Sets whether a "credentialed" request that is aware of cookie and
+             * authentication information should be made. This option is only supported by
+             * browsers that support HTTP Access Control. As of this writing, this option
+             * is not supported in IE.
+             *
+             * @param {boolean} withCredentials Whether this should be a "credentialed"
+             *     request.
+             */
+            setWithCredentials(withCredentials: boolean): void;
     
-        /**
-         * Instance send that actually uses XMLHttpRequest to make a server call.
-         * @param {string|goog.Uri} url Uri to make request to.
-         * @param {string=} opt_method Send method, default: GET.
-         * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
-         *     opt_content Body data.
-         * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
-         *     request.
-         */
-        send(url: any /*string|goog.Uri*/, opt_method?: string, opt_content?: any /*ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string*/, opt_headers?: any /*Object|goog.structs.Map<any, any>*/): void;
+            /**
+             * Gets whether a "credentialed" request is to be sent.
+             * @return {boolean} The desired type for the response.
+             */
+            getWithCredentials(): boolean;
     
-        /**
-         * Creates a new XHR object.
-         * @return {!goog.net.XhrLike.OrNative} The newly created XHR object.
-         * @protected
-         */
-        createXhr(): goog.net.XhrLike.OrNative;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: ArrayBuffer, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: ArrayBuffer, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: ArrayBufferView, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: ArrayBufferView, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: Blob, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: Blob, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: Document, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: Document, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: FormData, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: FormData, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: string, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: string, opt_method?: string, opt_content?: string, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: ArrayBuffer, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: ArrayBuffer, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: ArrayBufferView, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: ArrayBufferView, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: Blob, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: Blob, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: Document, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: Document, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: FormData, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: FormData, opt_headers?: goog.structs.Map<any, any>): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: string, opt_headers?: Object): void;
+            /**
+             * Instance send that actually uses XMLHttpRequest to make a server call.
+             * @param {string|goog.Uri} url Uri to make request to.
+             * @param {string=} opt_method Send method, default: GET.
+             * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+             *     opt_content Body data.
+             * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+             *     request.
+             */
+            send(url: goog.Uri, opt_method?: string, opt_content?: string, opt_headers?: goog.structs.Map<any, any>): void;
     
-        /**
-         * Abort the current XMLHttpRequest
-         * @param {goog.net.ErrorCode=} opt_failureCode Optional error code to use -
-         *     defaults to ABORT.
-         */
-        abort(opt_failureCode?: goog.net.ErrorCode): void;
+            /**
+             * Creates a new XHR object.
+             * @return {!goog.net.XhrLike.OrNative} The newly created XHR object.
+             * @protected
+             */
+            createXhr(): goog.net.XhrLike.OrNative;
     
-        /**
-         * @return {boolean} Whether there is an active request.
-         */
-        isActive(): boolean;
+            /**
+             * Abort the current XMLHttpRequest
+             * @param {goog.net.ErrorCode=} opt_failureCode Optional error code to use -
+             *     defaults to ABORT.
+             */
+            abort(opt_failureCode?: goog.net.ErrorCode): void;
     
-        /**
-         * @return {boolean} Whether the request has completed.
-         */
-        isComplete(): boolean;
+            /**
+             * @return {boolean} Whether there is an active request.
+             */
+            isActive(): boolean;
     
-        /**
-         * @return {boolean} Whether the request completed with a success.
-         */
-        isSuccess(): boolean;
+            /**
+             * @return {boolean} Whether the request has completed.
+             */
+            isComplete(): boolean;
     
-        /**
-         * Get the readystate from the Xhr object
-         * Will only return correct result when called from the context of a callback
-         * @return {goog.net.XmlHttp.ReadyState} goog.net.XmlHttp.ReadyState.*.
-         */
-        getReadyState(): goog.net.XmlHttp.ReadyState;
+            /**
+             * @return {boolean} Whether the request completed with a success.
+             */
+            isSuccess(): boolean;
     
-        /**
-         * Get the status from the Xhr object
-         * Will only return correct result when called from the context of a callback
-         * @return {number} Http status.
-         */
-        getStatus(): number;
+            /**
+             * Get the readystate from the Xhr object
+             * Will only return correct result when called from the context of a callback
+             * @return {goog.net.XmlHttp.ReadyState} goog.net.XmlHttp.ReadyState.*.
+             */
+            getReadyState(): goog.net.XmlHttp.ReadyState;
     
-        /**
-         * Get the status text from the Xhr object
-         * Will only return correct result when called from the context of a callback
-         * @return {string} Status text.
-         */
-        getStatusText(): string;
+            /**
+             * Get the status from the Xhr object
+             * Will only return correct result when called from the context of a callback
+             * @return {number} Http status.
+             */
+            getStatus(): number;
     
-        /**
-         * Get the last Uri that was requested
-         * @return {string} Last Uri.
-         */
-        getLastUri(): string;
+            /**
+             * Get the status text from the Xhr object
+             * Will only return correct result when called from the context of a callback
+             * @return {string} Status text.
+             */
+            getStatusText(): string;
     
-        /**
-         * Get the response text from the Xhr object
-         * Will only return correct result when called from the context of a callback.
-         * @return {string} Result from the server, or '' if no result available.
-         */
-        getResponseText(): string;
+            /**
+             * Get the last Uri that was requested
+             * @return {string} Last Uri.
+             */
+            getLastUri(): string;
     
-        /**
-         * Get the response body from the Xhr object. This property is only available
-         * in IE since version 7 according to MSDN:
-         * http://msdn.microsoft.com/en-us/library/ie/ms534368(v=vs.85).aspx
-         * Will only return correct result when called from the context of a callback.
-         *
-         * One option is to construct a VBArray from the returned object and convert
-         * it to a JavaScript array using the toArray method:
-         * {@code (new window['VBArray'](xhrIo.getResponseBody())).toArray()}
-         * This will result in an array of numbers in the range of [0..255]
-         *
-         * Another option is to use the VBScript CStr method to convert it into a
-         * string as outlined in http://stackoverflow.com/questions/1919972
-         *
-         * @return {Object} Binary result from the server or null if not available.
-         */
-        getResponseBody(): Object;
+            /**
+             * Get the response text from the Xhr object
+             * Will only return correct result when called from the context of a callback.
+             * @return {string} Result from the server, or '' if no result available.
+             */
+            getResponseText(): string;
     
-        /**
-         * Get the response XML from the Xhr object
-         * Will only return correct result when called from the context of a callback.
-         * @return {Document} The DOM Document representing the XML file, or null
-         * if no result available.
-         */
-        getResponseXml(): Document;
+            /**
+             * Get the response body from the Xhr object. This property is only available
+             * in IE since version 7 according to MSDN:
+             * http://msdn.microsoft.com/en-us/library/ie/ms534368(v=vs.85).aspx
+             * Will only return correct result when called from the context of a callback.
+             *
+             * One option is to construct a VBArray from the returned object and convert
+             * it to a JavaScript array using the toArray method:
+             * {@code (new window['VBArray'](xhrIo.getResponseBody())).toArray()}
+             * This will result in an array of numbers in the range of [0..255]
+             *
+             * Another option is to use the VBScript CStr method to convert it into a
+             * string as outlined in http://stackoverflow.com/questions/1919972
+             *
+             * @return {Object} Binary result from the server or null if not available.
+             */
+            getResponseBody(): Object;
     
-        /**
-         * Get the response and evaluates it as JSON from the Xhr object
-         * Will only return correct result when called from the context of a callback
-         * @param {string=} opt_xssiPrefix Optional XSSI prefix string to use for
-         *     stripping of the response before parsing. This needs to be set only if
-         *     your backend server prepends the same prefix string to the JSON response.
-         * @return {Object|undefined} JavaScript object.
-         */
-        getResponseJson(opt_xssiPrefix?: string): any /*Object|any (undefined)*/;
+            /**
+             * Get the response XML from the Xhr object
+             * Will only return correct result when called from the context of a callback.
+             * @return {Document} The DOM Document representing the XML file, or null
+             * if no result available.
+             */
+            getResponseXml(): Document;
     
-        /**
-         * Get the response as the type specificed by {@link #setResponseType}. At time
-         * of writing, this is only directly supported in very recent versions of WebKit
-         * (10.0.612.1 dev and later). If the field is not supported directly, we will
-         * try to emulate it.
-         *
-         * Emulating the response means following the rules laid out at
-         * http://www.w3.org/TR/XMLHttpRequest/#the-response-attribute
-         *
-         * On browsers with no support for this (Chrome < 10, Firefox < 4, etc), only
-         * response types of DEFAULT or TEXT may be used, and the response returned will
-         * be the text response.
-         *
-         * On browsers with Mozilla's draft support for array buffers (Firefox 4, 5),
-         * only response types of DEFAULT, TEXT, and ARRAY_BUFFER may be used, and the
-         * response returned will be either the text response or the Mozilla
-         * implementation of the array buffer response.
-         *
-         * On browsers will full support, any valid response type supported by the
-         * browser may be used, and the response provided by the browser will be
-         * returned.
-         *
-         * @return {*} The response.
-         */
-        getResponse(): any;
+            /**
+             * Get the response and evaluates it as JSON from the Xhr object
+             * Will only return correct result when called from the context of a callback
+             * @param {string=} opt_xssiPrefix Optional XSSI prefix string to use for
+             *     stripping of the response before parsing. This needs to be set only if
+             *     your backend server prepends the same prefix string to the JSON response.
+             * @return {Object|undefined} JavaScript object.
+             */
+            getResponseJson(opt_xssiPrefix?: string): any /*Object|any (undefined)*/;
     
-        /**
-         * Get the value of the response-header with the given name from the Xhr object
-         * Will only return correct result when called from the context of a callback
-         * and the request has completed
-         * @param {string} key The name of the response-header to retrieve.
-         * @return {string|undefined} The value of the response-header named key.
-         */
-        getResponseHeader(key: string): any /*string|any (undefined)*/;
+            /**
+             * Get the response as the type specificed by {@link #setResponseType}. At time
+             * of writing, this is only directly supported in very recent versions of WebKit
+             * (10.0.612.1 dev and later). If the field is not supported directly, we will
+             * try to emulate it.
+             *
+             * Emulating the response means following the rules laid out at
+             * http://www.w3.org/TR/XMLHttpRequest/#the-response-attribute
+             *
+             * On browsers with no support for this (Chrome < 10, Firefox < 4, etc), only
+             * response types of DEFAULT or TEXT may be used, and the response returned will
+             * be the text response.
+             *
+             * On browsers with Mozilla's draft support for array buffers (Firefox 4, 5),
+             * only response types of DEFAULT, TEXT, and ARRAY_BUFFER may be used, and the
+             * response returned will be either the text response or the Mozilla
+             * implementation of the array buffer response.
+             *
+             * On browsers will full support, any valid response type supported by the
+             * browser may be used, and the response provided by the browser will be
+             * returned.
+             *
+             * @return {*} The response.
+             */
+            getResponse(): any;
     
-        /**
-         * Gets the text of all the headers in the response.
-         * Will only return correct result when called from the context of a callback
-         * and the request has completed.
-         * @return {string} The value of the response headers or empty string.
-         */
-        getAllResponseHeaders(): string;
+            /**
+             * Get the value of the response-header with the given name from the Xhr object
+             * Will only return correct result when called from the context of a callback
+             * and the request has completed
+             * @param {string} key The name of the response-header to retrieve.
+             * @return {string|undefined} The value of the response-header named key.
+             */
+            getResponseHeader(key: string): any /*string|any (undefined)*/;
     
-        /**
-         * Returns all response headers as a key-value map.
-         * Multiple values for the same header key can be combined into one,
-         * separated by a comma and a space.
-         * Note that the native getResponseHeader method for retrieving a single header
-         * does a case insensitive match on the header name. This method does not
-         * include any case normalization logic, it will just return a key-value
-         * representation of the headers.
-         * See: http://www.w3.org/TR/XMLHttpRequest/#the-getresponseheader()-method
-         * @return {!Object.<string, string>} An object with the header keys as keys
-         *     and header values as values.
-         */
-        getResponseHeaders(): { [key: string]: string };
+            /**
+             * Gets the text of all the headers in the response.
+             * Will only return correct result when called from the context of a callback
+             * and the request has completed.
+             * @return {string} The value of the response headers or empty string.
+             */
+            getAllResponseHeaders(): string;
     
-        /**
-         * Get the last error message
-         * @return {goog.net.ErrorCode} Last error code.
-         */
-        getLastErrorCode(): goog.net.ErrorCode;
+            /**
+             * Returns all response headers as a key-value map.
+             * Multiple values for the same header key can be combined into one,
+             * separated by a comma and a space.
+             * Note that the native getResponseHeader method for retrieving a single header
+             * does a case insensitive match on the header name. This method does not
+             * include any case normalization logic, it will just return a key-value
+             * representation of the headers.
+             * See: http://www.w3.org/TR/XMLHttpRequest/#the-getresponseheader()-method
+             * @return {!Object.<string, string>} An object with the header keys as keys
+             *     and header values as values.
+             */
+            getResponseHeaders(): { [key: string]: string };
     
-        /**
-         * Get the last error message
-         * @return {string} Last error message.
-         */
-        getLastError(): string;
+            /**
+             * Get the last error message
+             * @return {goog.net.ErrorCode} Last error code.
+             */
+            getLastErrorCode(): goog.net.ErrorCode;
+    
+            /**
+             * Get the last error message
+             * @return {string} Last error message.
+             */
+            getLastError(): string;
+        }
     }
 }
 
@@ -379,7 +569,421 @@ declare module goog.net.XhrIo {
      * @param {boolean=} opt_withCredentials Whether to send credentials with the
      *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
      */
-    function send(url: any /*string|goog.Uri*/, opt_callback?: Function, opt_method?: string, opt_content?: any /*ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string*/, opt_headers?: any /*Object|goog.structs.Map<any, any>*/, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: ArrayBuffer, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: ArrayBuffer, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: ArrayBufferView, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: ArrayBufferView, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: Blob, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: Blob, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: Document, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: Document, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: FormData, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: FormData, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: string, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: string, opt_callback?: Function, opt_method?: string, opt_content?: string, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: ArrayBuffer, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: ArrayBuffer, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: ArrayBufferView, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: ArrayBufferView, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: Blob, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: Blob, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: Document, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: Document, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: FormData, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: FormData, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: string, opt_headers?: Object, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
+    /**
+     * Static send that creates a short lived instance of XhrIo to send the
+     * request.
+     * @see goog.net.XhrIo.cleanup
+     * @param {string|goog.Uri} url Uri to make request to.
+     * @param {Function=} opt_callback Callback function for when request is
+     *     complete.
+     * @param {string=} opt_method Send method, default: GET.
+     * @param {ArrayBuffer|ArrayBufferView|Blob|Document|FormData|string=}
+     *     opt_content Body data.
+     * @param {Object|goog.structs.Map=} opt_headers Map of headers to add to the
+     *     request.
+     * @param {number=} opt_timeoutInterval Number of milliseconds after which an
+     *     incomplete request will be aborted; 0 means no timeout is set.
+     * @param {boolean=} opt_withCredentials Whether to send credentials with the
+     *     request. Default to false. See {@link goog.net.XhrIo#setWithCredentials}.
+     */
+    function send(url: goog.Uri, opt_callback?: Function, opt_method?: string, opt_content?: string, opt_headers?: goog.structs.Map<any, any>, opt_timeoutInterval?: number, opt_withCredentials?: boolean): void;
 
     /**
      * Disposes all non-disposed instances of goog.net.XhrIo created by
@@ -411,4 +1015,3 @@ declare module goog.net.XhrIo {
      */
     function protectEntryPoints(errorHandler: goog.debug.ErrorHandler): void;
 }
-

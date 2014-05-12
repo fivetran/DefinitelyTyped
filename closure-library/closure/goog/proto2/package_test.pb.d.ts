@@ -1,97 +1,87 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/proto2/fielddescriptor.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/proto2/descriptor.d.ts" />
-/// <reference path="../../../closure/goog/proto2/message.d.ts" />
-/// <reference path="../../../closure/goog/proto2/test.pb.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./message.d.ts" />
+/// <reference path="./test.pb.d.ts" />
 
 declare module someprotopackage {
 
-    /**
-     * Message TestPackageTypes.
-     * @constructor
-     * @extends {goog.proto2.Message}
-     * @final
-     */
-    class TestPackageTypes extends goog.proto2.Message {
-        /**
-         * Message TestPackageTypes.
-         * @constructor
-         * @extends {goog.proto2.Message}
-         * @final
-         */
-        constructor();
+    class TestPackageTypes extends TestPackageTypes.__Class { }
+    module TestPackageTypes {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.proto2.Message.__Class {
     
-        /**
-         * Gets the value of the optional_int32 field.
-         * @return {?number} The value.
-         */
-        getOptionalInt32(): number;
+            /**
+             * Message TestPackageTypes.
+             * @constructor
+             * @extends {goog.proto2.Message}
+             * @final
+             */
+            constructor();
     
-        /**
-         * Gets the value of the optional_int32 field or the default value if not set.
-         * @return {number} The value.
-         */
-        getOptionalInt32OrDefault(): number;
+            /**
+             * Gets the value of the optional_int32 field.
+             * @return {?number} The value.
+             */
+            getOptionalInt32(): number;
     
-        /**
-         * Sets the value of the optional_int32 field.
-         * @param {number} value The value.
-         */
-        setOptionalInt32(value: number): void;
+            /**
+             * Gets the value of the optional_int32 field or the default value if not set.
+             * @return {number} The value.
+             */
+            getOptionalInt32OrDefault(): number;
     
-        /**
-         * @return {boolean} Whether the optional_int32 field has a value.
-         */
-        hasOptionalInt32(): boolean;
+            /**
+             * Sets the value of the optional_int32 field.
+             * @param {number} value The value.
+             */
+            setOptionalInt32(value: number): void;
     
-        /**
-         * @return {number} The number of values in the optional_int32 field.
-         */
-        optionalInt32Count(): number;
+            /**
+             * @return {boolean} Whether the optional_int32 field has a value.
+             */
+            hasOptionalInt32(): boolean;
     
-        /**
-         * Clears the values in the optional_int32 field.
-         */
-        clearOptionalInt32(): void;
+            /**
+             * @return {number} The number of values in the optional_int32 field.
+             */
+            optionalInt32Count(): number;
     
-        /**
-         * Gets the value of the other_all field.
-         * @return {proto2.TestAllTypes} The value.
-         */
-        getOtherAll(): proto2.TestAllTypes;
+            /**
+             * Clears the values in the optional_int32 field.
+             */
+            clearOptionalInt32(): void;
     
-        /**
-         * Gets the value of the other_all field or the default value if not set.
-         * @return {!proto2.TestAllTypes} The value.
-         */
-        getOtherAllOrDefault(): proto2.TestAllTypes;
+            /**
+             * Gets the value of the other_all field.
+             * @return {proto2.TestAllTypes} The value.
+             */
+            getOtherAll(): proto2.TestAllTypes;
     
-        /**
-         * Sets the value of the other_all field.
-         * @param {!proto2.TestAllTypes} value The value.
-         */
-        setOtherAll(value: proto2.TestAllTypes): void;
+            /**
+             * Gets the value of the other_all field or the default value if not set.
+             * @return {!proto2.TestAllTypes} The value.
+             */
+            getOtherAllOrDefault(): proto2.TestAllTypes;
     
-        /**
-         * @return {boolean} Whether the other_all field has a value.
-         */
-        hasOtherAll(): boolean;
+            /**
+             * Sets the value of the other_all field.
+             * @param {!proto2.TestAllTypes} value The value.
+             */
+            setOtherAll(value: proto2.TestAllTypes): void;
     
-        /**
-         * @return {number} The number of values in the other_all field.
-         */
-        otherAllCount(): number;
+            /**
+             * @return {boolean} Whether the other_all field has a value.
+             */
+            hasOtherAll(): boolean;
     
-        /**
-         * Clears the values in the other_all field.
-         */
-        clearOtherAll(): void;
+            /**
+             * @return {number} The number of values in the other_all field.
+             */
+            otherAllCount(): number;
+    
+            /**
+             * Clears the values in the other_all field.
+             */
+            clearOtherAll(): void;
+        }
     }
 }
-

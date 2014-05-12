@@ -1,28 +1,23 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/labs/testing/matcher.d.ts" />
-/// <reference path="../../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../../closure/goog/asserts/asserts.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
+/// <reference path="../../debug/error.d.ts" />
+/// <reference path="./matcher.d.ts" />
 
 declare module goog.labs.testing {
 
-    /**
-     * Error thrown when a Matcher fails to match the input value.
-     * @param {string=} opt_message The error message.
-     * @constructor
-     * @extends {goog.debug.Error}
-     * @final
-     */
-    class MatcherError extends goog.debug.Error {
-        /**
-         * Error thrown when a Matcher fails to match the input value.
-         * @param {string=} opt_message The error message.
-         * @constructor
-         * @extends {goog.debug.Error}
-         * @final
-         */
-        constructor(opt_message?: string);
+    class MatcherError extends MatcherError.__Class { }
+    module MatcherError {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.debug.Error.__Class {
+    
+            /**
+             * Error thrown when a Matcher fails to match the input value.
+             * @param {string=} opt_message The error message.
+             * @constructor
+             * @extends {goog.debug.Error}
+             * @final
+             */
+            constructor(opt_message?: string);
+        }
     }
 
     /**
@@ -35,4 +30,3 @@ declare module goog.labs.testing {
      */
     function assertThat(actual: any, matcher: goog.labs.testing.Matcher, opt_reason?: string): void;
 }
-

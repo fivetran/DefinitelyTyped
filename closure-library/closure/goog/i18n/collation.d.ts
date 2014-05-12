@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.i18n.collation {
 
@@ -23,4 +23,3 @@ declare module goog.i18n.collation {
      */
     function hasNativeComparator(opt_locale?: string): boolean;
 }
-

@@ -1,21 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/structs/collection.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/structs/structs.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/iter/iter.d.ts" />
-/// <reference path="../../../closure/goog/structs/map.d.ts" />
-/// <reference path="../../../closure/goog/structs/set.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.debug {
 
@@ -36,7 +19,15 @@ declare module goog.debug {
      *     default is false.
      * @return {string} The string representation of {@code obj}.
      */
-    function expose(obj: any /*Object|any (null)|any (undefined)*/, opt_showFn?: boolean): string;
+    function expose(obj: Object, opt_showFn?: boolean): string;
+    /**
+     * Creates a string representing an object and all its properties.
+     * @param {Object|null|undefined} obj Object to expose.
+     * @param {boolean=} opt_showFn Show the functions as well as the properties,
+     *     default is false.
+     * @return {string} The string representation of {@code obj}.
+     */
+    function expose(obj: any /*null*/, opt_showFn?: boolean): string;
 
     /**
      * Creates a string representing a given primitive or object, and for an
@@ -85,7 +76,19 @@ declare module goog.debug {
      *     which is enhanced and returned.  Otherwise err itself is enhanced
      *     and returned.
      */
-    function enhanceError(err: any /*Error|string*/, opt_message?: string): Error;
+    function enhanceError(err: Error, opt_message?: string): Error;
+    /**
+     * Converts an object to an Error if it's a String,
+     * adds a stacktrace if there isn't one,
+     * and optionally adds an extra message.
+     * @param {Error|string} err  the original thrown object or string.
+     * @param {string=} opt_message  optional additional message to add to the
+     *     error.
+     * @return {!Error} If err is a string, it is used to create a new Error,
+     *     which is enhanced and returned.  Otherwise err itself is enhanced
+     *     and returned.
+     */
+    function enhanceError(err: string, opt_message?: string): Error;
 
     /**
      * Gets the current stack trace. Simple and iterative - doesn't worry about
@@ -136,4 +139,3 @@ declare module goog.debug {
      */
     function makeWhitespaceVisible(string: string): string;
 }
-

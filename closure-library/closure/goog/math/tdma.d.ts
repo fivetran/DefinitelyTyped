@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.math.tdma {
 
@@ -27,4 +27,3 @@ declare module goog.math.tdma {
      */
     function solve(subDiag: number[], mainDiag: number[], supDiag: number[], vecRight: number[], opt_result?: number[]): number[];
 }
-

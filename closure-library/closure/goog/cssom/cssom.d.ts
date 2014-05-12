@@ -1,22 +1,5 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../closure/goog/dom/dom.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../dom/dom.d.ts" />
 
 declare module goog.cssom {
 
@@ -32,7 +15,14 @@ declare module goog.cssom {
      * @param {(CSSStyleSheet|StyleSheetList)=} opt_styleSheet The CSSStyleSheet.
      * @return {string} css text.
      */
-    function getAllCssText(opt_styleSheet?: any /*CSSStyleSheet|StyleSheetList*/): string;
+    function getAllCssText(opt_styleSheet?: CSSStyleSheet): string;
+    /**
+     * Recursively gets all CSS as text, optionally starting from a given
+     * CSSStyleSheet.
+     * @param {(CSSStyleSheet|StyleSheetList)=} opt_styleSheet The CSSStyleSheet.
+     * @return {string} css text.
+     */
+    function getAllCssText(opt_styleSheet?: StyleSheetList): string;
 
     /**
      * Recursively gets all CSSStyleRules, optionally starting from a given
@@ -41,7 +31,15 @@ declare module goog.cssom {
      * @param {(CSSStyleSheet|StyleSheetList)=} opt_styleSheet The CSSStyleSheet.
      * @return {Array.<CSSStyleRule>} A list of CSSStyleRules.
      */
-    function getAllCssStyleRules(opt_styleSheet?: any /*CSSStyleSheet|StyleSheetList*/): CSSStyleRule[];
+    function getAllCssStyleRules(opt_styleSheet?: CSSStyleSheet): CSSStyleRule[];
+    /**
+     * Recursively gets all CSSStyleRules, optionally starting from a given
+     * CSSStyleSheet.
+     * Note that this excludes any CSSImportRules, CSSMediaRules, etc..
+     * @param {(CSSStyleSheet|StyleSheetList)=} opt_styleSheet The CSSStyleSheet.
+     * @return {Array.<CSSStyleRule>} A list of CSSStyleRules.
+     */
+    function getAllCssStyleRules(opt_styleSheet?: StyleSheetList): CSSStyleRule[];
 
     /**
      * Returns the CSSRules from a styleSheet.
@@ -67,7 +65,18 @@ declare module goog.cssom {
      *    defaults to false.
      * @return {!Array.<CSSStyleSheet>} A list of CSSStyleSheet objects.
      */
-    function getAllCssStyleSheets(opt_styleSheet?: any /*CSSStyleSheet|StyleSheetList*/, opt_includeDisabled?: boolean): CSSStyleSheet[];
+    function getAllCssStyleSheets(opt_styleSheet?: CSSStyleSheet, opt_includeDisabled?: boolean): CSSStyleSheet[];
+    /**
+     * Gets all CSSStyleSheet objects starting from some CSSStyleSheet. Note that we
+     * want to return the sheets in the order of the cascade, therefore if we
+     * encounter an import, we will splice that CSSStyleSheet object in front of
+     * the CSSStyleSheet that contains it in the returned array of CSSStyleSheets.
+     * @param {(CSSStyleSheet|StyleSheetList)=} opt_styleSheet A CSSStyleSheet.
+     * @param {boolean=} opt_includeDisabled If true, includes disabled stylesheets,
+     *    defaults to false.
+     * @return {!Array.<CSSStyleSheet>} A list of CSSStyleSheet objects.
+     */
+    function getAllCssStyleSheets(opt_styleSheet?: StyleSheetList, opt_includeDisabled?: boolean): CSSStyleSheet[];
 
     /**
      * Gets the cssText from a CSSRule object cross-browserly.
@@ -151,4 +160,3 @@ declare module goog.cssom {
      */
     function getFileNameFromStyleSheet(styleSheet: StyleSheet): string;
 }
-

@@ -1,5 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/i18n/datetimesymbols.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.i18n {
 
@@ -389,6 +388,11 @@ declare module goog.i18n {
     var DateTimeSymbols_ca_ES: any /*missing*/;
 
     /**
+     * Date/time formatting symbols for locale ca_ES_VALENCIA.
+     */
+    var DateTimeSymbols_ca_ES_VALENCIA: any /*missing*/;
+
+    /**
      * Date/time formatting symbols for locale ca_FR.
      */
     var DateTimeSymbols_ca_FR: any /*missing*/;
@@ -667,16 +671,6 @@ declare module goog.i18n {
      * Date/time formatting symbols for locale en_DM.
      */
     var DateTimeSymbols_en_DM: any /*missing*/;
-
-    /**
-     * Date/time formatting symbols for locale en_Dsrt.
-     */
-    var DateTimeSymbols_en_Dsrt: any /*missing*/;
-
-    /**
-     * Date/time formatting symbols for locale en_Dsrt_US.
-     */
-    var DateTimeSymbols_en_Dsrt_US: any /*missing*/;
 
     /**
      * Date/time formatting symbols for locale en_ER.
@@ -1179,6 +1173,21 @@ declare module goog.i18n {
     var DateTimeSymbols_ff: any /*missing*/;
 
     /**
+     * Date/time formatting symbols for locale ff_CM.
+     */
+    var DateTimeSymbols_ff_CM: any /*missing*/;
+
+    /**
+     * Date/time formatting symbols for locale ff_GN.
+     */
+    var DateTimeSymbols_ff_GN: any /*missing*/;
+
+    /**
+     * Date/time formatting symbols for locale ff_MR.
+     */
+    var DateTimeSymbols_ff_MR: any /*missing*/;
+
+    /**
      * Date/time formatting symbols for locale ff_SN.
      */
     var DateTimeSymbols_ff_SN: any /*missing*/;
@@ -1437,6 +1446,16 @@ declare module goog.i18n {
      * Date/time formatting symbols for locale fur_IT.
      */
     var DateTimeSymbols_fur_IT: any /*missing*/;
+
+    /**
+     * Date/time formatting symbols for locale fy.
+     */
+    var DateTimeSymbols_fy: any /*missing*/;
+
+    /**
+     * Date/time formatting symbols for locale fy_NL.
+     */
+    var DateTimeSymbols_fy_NL: any /*missing*/;
 
     /**
      * Date/time formatting symbols for locale ga.
@@ -2854,6 +2873,21 @@ declare module goog.i18n {
     var DateTimeSymbols_tzm_Latn_MA: any /*missing*/;
 
     /**
+     * Date/time formatting symbols for locale ug.
+     */
+    var DateTimeSymbols_ug: any /*missing*/;
+
+    /**
+     * Date/time formatting symbols for locale ug_Arab.
+     */
+    var DateTimeSymbols_ug_Arab: any /*missing*/;
+
+    /**
+     * Date/time formatting symbols for locale ug_Arab_CN.
+     */
+    var DateTimeSymbols_ug_Arab_CN: any /*missing*/;
+
+    /**
      * Date/time formatting symbols for locale uk_UA.
      */
     var DateTimeSymbols_uk_UA: any /*missing*/;
@@ -3083,4 +3117,3 @@ declare module goog.i18n {
      */
     var DateTimeSymbols_zu_ZA: any /*missing*/;
 }
-

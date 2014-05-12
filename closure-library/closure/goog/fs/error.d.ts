@@ -1,34 +1,26 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="../debug/error.d.ts" />
 
 declare module goog.fs {
 
-    /**
-     * A filesystem error. Since the filesystem API is asynchronous, stack traces
-     * are less useful for identifying where errors come from, so this includes a
-     * large amount of metadata in the message.
-     *
-     * @param {!DOMError} error
-     * @param {string} action The action being undertaken when the error was raised.
-     * @constructor
-     * @extends {goog.debug.Error}
-     * @final
-     */
-    class Error extends goog.debug.Error {
-        /**
-         * A filesystem error. Since the filesystem API is asynchronous, stack traces
-         * are less useful for identifying where errors come from, so this includes a
-         * large amount of metadata in the message.
-         *
-         * @param {!DOMError} error
-         * @param {string} action The action being undertaken when the error was raised.
-         * @constructor
-         * @extends {goog.debug.Error}
-         * @final
-         */
-        constructor(error: DOMError, action: string);
+    class Error extends Error.__Class { }
+    module Error {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.debug.Error.__Class {
+    
+            /**
+             * A filesystem error. Since the filesystem API is asynchronous, stack traces
+             * are less useful for identifying where errors come from, so this includes a
+             * large amount of metadata in the message.
+             *
+             * @param {!DOMError} error
+             * @param {string} action The action being undertaken when the error was raised.
+             * @constructor
+             * @extends {goog.debug.Error}
+             * @final
+             */
+            constructor(error: DOMError, action: string);
+        }
     }
 }
 
@@ -61,4 +53,3 @@ declare module goog.fs.Error {
      */
     var NameToCodeMap_: any /*missing*/;
 }
-

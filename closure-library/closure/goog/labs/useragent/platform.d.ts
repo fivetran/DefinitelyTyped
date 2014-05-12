@@ -1,6 +1,4 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../../closure/goog/labs/useragent/util.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
 
 declare module goog.labs.userAgent.platform {
 
@@ -65,6 +63,11 @@ declare module goog.labs.userAgent.platform {
      * @return {boolean} Whether the browser version is higher or the same as the
      *     given version.
      */
-    function isVersionOrHigher(version: any /*string|number*/): boolean;
+    function isVersionOrHigher(version: string): boolean;
+    /**
+     * @param {string|number} version The version to check.
+     * @return {boolean} Whether the browser version is higher or the same as the
+     *     given version.
+     */
+    function isVersionOrHigher(version: number): boolean;
 }
-

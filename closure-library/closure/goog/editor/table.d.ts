@@ -1,193 +1,153 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../closure/goog/math/box.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../closure/goog/math/rect.d.ts" />
-/// <reference path="../../../closure/goog/dom/vendor.d.ts" />
-/// <reference path="../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/dom/dom.d.ts" />
-/// <reference path="../../../closure/goog/style/style.d.ts" />
-/// <reference path="../../../closure/goog/structs/collection.d.ts" />
-/// <reference path="../../../closure/goog/structs/structs.d.ts" />
-/// <reference path="../../../closure/goog/iter/iter.d.ts" />
-/// <reference path="../../../closure/goog/structs/map.d.ts" />
-/// <reference path="../../../closure/goog/structs/set.d.ts" />
-/// <reference path="../../../closure/goog/debug/debug.d.ts" />
-/// <reference path="../../../closure/goog/debug/logrecord.d.ts" />
-/// <reference path="../../../closure/goog/debug/logbuffer.d.ts" />
-/// <reference path="../../../closure/goog/debug/logger.d.ts" />
-/// <reference path="../../../closure/goog/log/log.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.editor {
 
-    /**
-     * Class providing high level table editing functions.
-     * @param {Element} node Element that is a table or descendant of a table.
-     * @constructor
-     * @final
-     */
-    class Table {
-        /**
-         * Class providing high level table editing functions.
-         * @param {Element} node Element that is a table or descendant of a table.
-         * @constructor
-         * @final
-         */
-        constructor(node: Element);
+    class Table extends Table.__Class { }
+    module Table {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * Walks the dom structure of this object's table element and populates
-         * this.rows with goog.editor.TableRow objects. This is done initially
-         * to populate the internal data structures, and also after each time the
-         * DOM structure is modified. Currently this means that the all existing
-         * information is discarded and re-read from the DOM.
-         */
-        refresh(): void;
+            /**
+             * Class providing high level table editing functions.
+             * @param {Element} node Element that is a table or descendant of a table.
+             * @constructor
+             * @final
+             */
+            constructor(node: Element);
     
-        /**
-         * Inserts a new row in the table. The row will be populated with new
-         * cells, and existing rowspanned cells that overlap the new row will
-         * be extended.
-         * @param {number=} opt_rowIndex Index at which to insert the row. If
-         *     this is omitted the row will be appended to the end of the table.
-         * @return {!Element} The new row.
-         */
-        insertRow(opt_rowIndex?: number): Element;
+            /**
+             * Walks the dom structure of this object's table element and populates
+             * this.rows with goog.editor.TableRow objects. This is done initially
+             * to populate the internal data structures, and also after each time the
+             * DOM structure is modified. Currently this means that the all existing
+             * information is discarded and re-read from the DOM.
+             */
+            refresh(): void;
     
-        /**
-         * Inserts a new column in the table. The column will be created by
-         * inserting new TD elements in each row, or extending the colspan
-         * of existing TD elements.
-         * @param {number=} opt_colIndex Index at which to insert the column. If
-         *     this is omitted the column will be appended to the right side of
-         *     the table.
-         * @return {!Array.<Element>} Array of new cell elements that were created
-         *     to populate the new column.
-         */
-        insertColumn(opt_colIndex?: number): Element[];
+            /**
+             * Inserts a new row in the table. The row will be populated with new
+             * cells, and existing rowspanned cells that overlap the new row will
+             * be extended.
+             * @param {number=} opt_rowIndex Index at which to insert the row. If
+             *     this is omitted the row will be appended to the end of the table.
+             * @return {!Element} The new row.
+             */
+            insertRow(opt_rowIndex?: number): Element;
     
-        /**
-         * Removes a row from the table, removing the TR element and
-         * decrementing the rowspan of any cells in other rows that overlap the row.
-         * @param {number} rowIndex Index of the row to delete.
-         */
-        removeRow(rowIndex: number): void;
+            /**
+             * Inserts a new column in the table. The column will be created by
+             * inserting new TD elements in each row, or extending the colspan
+             * of existing TD elements.
+             * @param {number=} opt_colIndex Index at which to insert the column. If
+             *     this is omitted the column will be appended to the right side of
+             *     the table.
+             * @return {!Array.<Element>} Array of new cell elements that were created
+             *     to populate the new column.
+             */
+            insertColumn(opt_colIndex?: number): Element[];
     
-        /**
-         * Removes a column from the table. This is done by removing cell elements,
-         * or shrinking the colspan of elements that span multiple columns.
-         * @param {number} colIndex Index of the column to delete.
-         */
-        removeColumn(colIndex: number): void;
+            /**
+             * Removes a row from the table, removing the TR element and
+             * decrementing the rowspan of any cells in other rows that overlap the row.
+             * @param {number} rowIndex Index of the row to delete.
+             */
+            removeRow(rowIndex: number): void;
     
-        /**
-         * Merges multiple cells into a single cell, and sets the rowSpan and colSpan
-         * attributes of the cell to take up the same space as the original cells.
-         * @param {number} startRowIndex Top coordinate of the cells to merge.
-         * @param {number} startColIndex Left coordinate of the cells to merge.
-         * @param {number} endRowIndex Bottom coordinate of the cells to merge.
-         * @param {number} endColIndex Right coordinate of the cells to merge.
-         * @return {boolean} Whether or not the merge was possible. If the cells
-         *     in the supplied coordinates can't be merged this will return false.
-         */
-        mergeCells(startRowIndex: number, startColIndex: number, endRowIndex: number, endColIndex: number): boolean;
+            /**
+             * Removes a column from the table. This is done by removing cell elements,
+             * or shrinking the colspan of elements that span multiple columns.
+             * @param {number} colIndex Index of the column to delete.
+             */
+            removeColumn(colIndex: number): void;
     
-        /**
-         * Splits a cell with colspans or rowspans into multiple descrete cells.
-         * @param {number} rowIndex y coordinate of the cell to split.
-         * @param {number} colIndex x coordinate of the cell to split.
-         * @return {!Array.<Element>} Array of new cell elements created by splitting
-         *     the cell.
-         */
-        splitCell(rowIndex: number, colIndex: number): Element[];
+            /**
+             * Merges multiple cells into a single cell, and sets the rowSpan and colSpan
+             * attributes of the cell to take up the same space as the original cells.
+             * @param {number} startRowIndex Top coordinate of the cells to merge.
+             * @param {number} startColIndex Left coordinate of the cells to merge.
+             * @param {number} endRowIndex Bottom coordinate of the cells to merge.
+             * @param {number} endColIndex Right coordinate of the cells to merge.
+             * @return {boolean} Whether or not the merge was possible. If the cells
+             *     in the supplied coordinates can't be merged this will return false.
+             */
+            mergeCells(startRowIndex: number, startColIndex: number, endRowIndex: number, endColIndex: number): boolean;
     
-        /**
-         * Inserts a cell element at the given position. The colIndex is the logical
-         * column index, not the position in the dom. This takes into consideration
-         * that cells in a given logical  row may actually be children of a previous
-         * DOM row that have used rowSpan to extend into the row.
-         * @param {Element} td The new cell element to insert.
-         * @param {number} rowIndex Row in which to insert the element.
-         * @param {number} colIndex Column in which to insert the element.
-         */
-        insertCellElement(td: Element, rowIndex: number, colIndex: number): void;
+            /**
+             * Splits a cell with colspans or rowspans into multiple descrete cells.
+             * @param {number} rowIndex y coordinate of the cell to split.
+             * @param {number} colIndex x coordinate of the cell to split.
+             * @return {!Array.<Element>} Array of new cell elements created by splitting
+             *     the cell.
+             */
+            splitCell(rowIndex: number, colIndex: number): Element[];
     
-        /**
-         * Creates an empty TD element and fill it with some empty content so it will
-         * show up with borders even in IE pre-7 or if empty-cells is set to 'hide'
-         * @return {!Element} a new TD element.
-         */
-        createEmptyTd(): Element;
+            /**
+             * Inserts a cell element at the given position. The colIndex is the logical
+             * column index, not the position in the dom. This takes into consideration
+             * that cells in a given logical  row may actually be children of a previous
+             * DOM row that have used rowSpan to extend into the row.
+             * @param {Element} td The new cell element to insert.
+             * @param {number} rowIndex Row in which to insert the element.
+             * @param {number} colIndex Column in which to insert the element.
+             */
+            insertCellElement(td: Element, rowIndex: number, colIndex: number): void;
+    
+            /**
+             * Creates an empty TD element and fill it with some empty content so it will
+             * show up with borders even in IE pre-7 or if empty-cells is set to 'hide'
+             * @return {!Element} a new TD element.
+             */
+            createEmptyTd(): Element;
+        }
     }
 
-    /**
-     * Class representing a logical table row: a tr element and any cells
-     * that appear in that row.
-     * @param {Element} trElement This rows's underlying TR element.
-     * @param {number} rowIndex This row's index in its parent table.
-     * @constructor
-     * @final
-     */
-    class TableRow {
-        /**
-         * Class representing a logical table row: a tr element and any cells
-         * that appear in that row.
-         * @param {Element} trElement This rows's underlying TR element.
-         * @param {number} rowIndex This row's index in its parent table.
-         * @constructor
-         * @final
-         */
-        constructor(trElement: Element, rowIndex: number);
+    class TableRow extends TableRow.__Class { }
+    module TableRow {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
+    
+            /**
+             * Class representing a logical table row: a tr element and any cells
+             * that appear in that row.
+             * @param {Element} trElement This rows's underlying TR element.
+             * @param {number} rowIndex This row's index in its parent table.
+             * @constructor
+             * @final
+             */
+            constructor(trElement: Element, rowIndex: number);
+        }
     }
 
-    /**
-     * Class representing a table cell, which may span across multiple
-     * rows and columns
-     * @param {Element} td This cell's underlying TD or TH element.
-     * @param {number} startRow Index of the row where this cell begins.
-     * @param {number} startCol Index of the column where this cell begins.
-     * @constructor
-     * @final
-     */
-    class TableCell {
-        /**
-         * Class representing a table cell, which may span across multiple
-         * rows and columns
-         * @param {Element} td This cell's underlying TD or TH element.
-         * @param {number} startRow Index of the row where this cell begins.
-         * @param {number} startCol Index of the column where this cell begins.
-         * @constructor
-         * @final
-         */
-        constructor(td: Element, startRow: number, startCol: number);
+    class TableCell extends TableCell.__Class { }
+    module TableCell {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * Set this cell's colSpan, updating both its colSpan property and the
-         * underlying element's colSpan attribute.
-         * @param {number} colSpan The new colSpan.
-         */
-        setColSpan(colSpan: number): void;
+            /**
+             * Class representing a table cell, which may span across multiple
+             * rows and columns
+             * @param {Element} td This cell's underlying TD or TH element.
+             * @param {number} startRow Index of the row where this cell begins.
+             * @param {number} startCol Index of the column where this cell begins.
+             * @constructor
+             * @final
+             */
+            constructor(td: Element, startRow: number, startCol: number);
     
-        /**
-         * Set this cell's rowSpan, updating both its rowSpan property and the
-         * underlying element's rowSpan attribute.
-         * @param {number} rowSpan The new rowSpan.
-         */
-        setRowSpan(rowSpan: number): void;
+            /**
+             * Set this cell's colSpan, updating both its colSpan property and the
+             * underlying element's colSpan attribute.
+             * @param {number} colSpan The new colSpan.
+             */
+            setColSpan(colSpan: number): void;
+    
+            /**
+             * Set this cell's rowSpan, updating both its rowSpan property and the
+             * underlying element's rowSpan attribute.
+             * @param {number} rowSpan The new rowSpan.
+             */
+            setRowSpan(rowSpan: number): void;
+        }
     }
 }
 
@@ -229,4 +189,3 @@ declare module goog.editor.Table {
      */
     function createDomTable(doc: Document, columns: number, rows: number, opt_tableStyle?: Object): Element;
 }
-

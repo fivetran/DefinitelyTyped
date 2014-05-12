@@ -1,112 +1,96 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../closure/goog/events/eventid.d.ts" />
-/// <reference path="../../../closure/goog/events/listenable.d.ts" />
-/// <reference path="../../../closure/goog/events/listener.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/events/listenermap.d.ts" />
-/// <reference path="../../../closure/goog/events/browserfeature.d.ts" />
-/// <reference path="../../../closure/goog/debug/entrypointregistry.d.ts" />
-/// <reference path="../../../closure/goog/events/eventtype.d.ts" />
-/// <reference path="../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../closure/goog/disposable/disposable.d.ts" />
-/// <reference path="../../../closure/goog/events/event.d.ts" />
-/// <reference path="../../../closure/goog/reflect/reflect.d.ts" />
-/// <reference path="../../../closure/goog/events/browserevent.d.ts" />
-/// <reference path="../../../closure/goog/events/events.d.ts" />
-/// <reference path="../../../closure/goog/events/keycodes.d.ts" />
-/// <reference path="../../../closure/goog/events/eventtarget.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./eventtarget.d.ts" />
+/// <reference path="./browserevent.d.ts" />
 
 declare module goog.events {
 
-    /**
-     * A wrapper around an element that you want to listen to keyboard events on.
-     * @param {Element|Document=} opt_element The element or document to listen on.
-     * @param {boolean=} opt_capture Whether to listen for browser events in
-     *     capture phase (defaults to false).
-     * @constructor
-     * @extends {goog.events.EventTarget}
-     * @final
-     */
-    class KeyHandler extends goog.events.EventTarget {
-        /**
-         * A wrapper around an element that you want to listen to keyboard events on.
-         * @param {Element|Document=} opt_element The element or document to listen on.
-         * @param {boolean=} opt_capture Whether to listen for browser events in
-         *     capture phase (defaults to false).
-         * @constructor
-         * @extends {goog.events.EventTarget}
-         * @final
-         */
-        constructor(opt_element?: any /*Element|Document*/, opt_capture?: boolean);
+    class KeyHandler extends KeyHandler.__Class { }
+    module KeyHandler {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.events.EventTarget.__Class {
     
-        /**
-         * Resets the stored previous values. Needed to be called for webkit which will
-         * not generate a key up for meta key operations. This should only be called
-         * when having finished with repeat key possiblities.
-         */
-        resetState(): void;
+            /**
+             * A wrapper around an element that you want to listen to keyboard events on.
+             * @param {Element|Document=} opt_element The element or document to listen on.
+             * @param {boolean=} opt_capture Whether to listen for browser events in
+             *     capture phase (defaults to false).
+             * @constructor
+             * @extends {goog.events.EventTarget}
+             * @final
+             */
+            constructor(opt_element?: Element, opt_capture?: boolean);
+            /**
+             * A wrapper around an element that you want to listen to keyboard events on.
+             * @param {Element|Document=} opt_element The element or document to listen on.
+             * @param {boolean=} opt_capture Whether to listen for browser events in
+             *     capture phase (defaults to false).
+             * @constructor
+             * @extends {goog.events.EventTarget}
+             * @final
+             */
+            constructor(opt_element?: Document, opt_capture?: boolean);
     
-        /**
-         * Handles the events on the element.
-         * @param {goog.events.BrowserEvent} e  The keyboard event sent from the
-         *     browser.
-         */
-        handleEvent(e: goog.events.BrowserEvent): void;
+            /**
+             * Resets the stored previous values. Needed to be called for webkit which will
+             * not generate a key up for meta key operations. This should only be called
+             * when having finished with repeat key possiblities.
+             */
+            resetState(): void;
     
-        /**
-         * Returns the element listened on for the real keyboard events.
-         * @return {Element|Document|null} The element listened on for the real
-         *     keyboard events.
-         */
-        getElement(): any /*Element|Document|any (null)*/;
+            /**
+             * Handles the events on the element.
+             * @param {goog.events.BrowserEvent} e  The keyboard event sent from the
+             *     browser.
+             */
+            handleEvent(e: goog.events.BrowserEvent): void;
     
-        /**
-         * Adds the proper key event listeners to the element.
-         * @param {Element|Document} element The element to listen on.
-         * @param {boolean=} opt_capture Whether to listen for browser events in
-         *     capture phase (defaults to false).
-         */
-        attach(element: any /*Element|Document*/, opt_capture?: boolean): void;
+            /**
+             * Returns the element listened on for the real keyboard events.
+             * @return {Element|Document|null} The element listened on for the real
+             *     keyboard events.
+             */
+            getElement(): any /*Element|Document|any (null)*/;
     
-        /**
-         * Removes the listeners that may exist.
-         */
-        detach(): void;
+            /**
+             * Adds the proper key event listeners to the element.
+             * @param {Element|Document} element The element to listen on.
+             * @param {boolean=} opt_capture Whether to listen for browser events in
+             *     capture phase (defaults to false).
+             */
+            attach(element: Element, opt_capture?: boolean): void;
+            /**
+             * Adds the proper key event listeners to the element.
+             * @param {Element|Document} element The element to listen on.
+             * @param {boolean=} opt_capture Whether to listen for browser events in
+             *     capture phase (defaults to false).
+             */
+            attach(element: Document, opt_capture?: boolean): void;
+    
+            /**
+             * Removes the listeners that may exist.
+             */
+            detach(): void;
+        }
     }
 
-    /**
-     * This class is used for the goog.events.KeyHandler.EventType.KEY event and
-     * it overrides the key code with the fixed key code.
-     * @param {number} keyCode The adjusted key code.
-     * @param {number} charCode The unicode character code.
-     * @param {boolean} repeat Whether this event was generated by keyboard repeat.
-     * @param {Event} browserEvent Browser event object.
-     * @constructor
-     * @extends {goog.events.BrowserEvent}
-     * @final
-     */
-    class KeyEvent extends goog.events.BrowserEvent {
-        /**
-         * This class is used for the goog.events.KeyHandler.EventType.KEY event and
-         * it overrides the key code with the fixed key code.
-         * @param {number} keyCode The adjusted key code.
-         * @param {number} charCode The unicode character code.
-         * @param {boolean} repeat Whether this event was generated by keyboard repeat.
-         * @param {Event} browserEvent Browser event object.
-         * @constructor
-         * @extends {goog.events.BrowserEvent}
-         * @final
-         */
-        constructor(keyCode: number, charCode: number, repeat: boolean, browserEvent: Event);
+    class KeyEvent extends KeyEvent.__Class { }
+    module KeyEvent {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.events.BrowserEvent.__Class {
+    
+            /**
+             * This class is used for the goog.events.KeyHandler.EventType.KEY event and
+             * it overrides the key code with the fixed key code.
+             * @param {number} keyCode The adjusted key code.
+             * @param {number} charCode The unicode character code.
+             * @param {boolean} repeat Whether this event was generated by keyboard repeat.
+             * @param {Event} browserEvent Browser event object.
+             * @constructor
+             * @extends {goog.events.BrowserEvent}
+             * @final
+             */
+            constructor(keyCode: number, charCode: number, repeat: boolean, browserEvent: Event);
+        }
     }
 }
 
@@ -118,4 +102,3 @@ declare module goog.events.KeyHandler {
      */
     enum EventType { KEY } 
 }
-

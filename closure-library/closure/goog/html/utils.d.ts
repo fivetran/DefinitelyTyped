@@ -1,5 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.html.utils {
 
@@ -35,4 +34,3 @@ declare module goog.html.utils {
      */
     var HTML_TAG_REGEX_: any /*missing*/;
 }
-

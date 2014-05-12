@@ -1,5 +1,4 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/labs/i18n/listsymbols.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
 
 declare module goog.labs.i18n {
 
@@ -2574,6 +2573,21 @@ declare module goog.labs.i18n {
     var ListFormatSymbols_tzm_Latn_MA: any /*missing*/;
 
     /**
+     * List formatting symbols for locale ug.
+     */
+    var ListFormatSymbols_ug: any /*missing*/;
+
+    /**
+     * List formatting symbols for locale ug_Arab.
+     */
+    var ListFormatSymbols_ug_Arab: any /*missing*/;
+
+    /**
+     * List formatting symbols for locale ug_Arab_CN.
+     */
+    var ListFormatSymbols_ug_Arab_CN: any /*missing*/;
+
+    /**
      * List formatting symbols for locale uk_UA.
      */
     var ListFormatSymbols_uk_UA: any /*missing*/;
@@ -2753,4 +2767,3 @@ declare module goog.labs.i18n {
      */
     var ListFormatSymbols_zu_ZA: any /*missing*/;
 }
-

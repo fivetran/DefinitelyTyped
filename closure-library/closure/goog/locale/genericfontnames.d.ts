@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.locale.genericFontNames {
 
@@ -14,4 +14,3 @@ declare module goog.locale.genericFontNames {
      */
     function getList(locale: string): Object[];
 }
-

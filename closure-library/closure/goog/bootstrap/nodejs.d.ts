@@ -1,3 +1,4 @@
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog {
 
@@ -13,4 +14,3 @@ declare module goog {
      */
     function nodeGlobalRequire(file: string): void;
 }
-

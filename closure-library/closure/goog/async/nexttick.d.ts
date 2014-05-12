@@ -1,12 +1,15 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/debug/entrypointregistry.d.ts" />
-/// <reference path="../../../closure/goog/functions/functions.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.async {
+
+    /**
+     * Throw an item without interrupting the current execution context.  For
+     * example, if processing a group of items in a loop, sometimes it is useful
+     * to report an error while still allowing the rest of the batch to be
+     * processed.
+     * @param {*} exception
+     */
+    function throwException(exception: any): void;
 
     /**
      * Fires the provided callbacks as soon as possible after the current JS
@@ -19,4 +22,3 @@ declare module goog.async {
      */
     function nextTick<SCOPE>(callback: () => any /*missing*/, opt_context?: SCOPE): void;
 }
-

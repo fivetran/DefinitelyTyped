@@ -1,12 +1,6 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/dom/classlist.d.ts" />
-/// <reference path="../../../closure/goog/ui/controlrenderer.d.ts" />
-/// <reference path="../../../closure/goog/ui/component.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./controlrenderer.d.ts" />
+/// <reference path="./component.d.ts" />
 
 declare module goog.ui.registry {
 
@@ -70,4 +64,3 @@ declare module goog.ui.registry {
      */
     function reset(): void;
 }
-

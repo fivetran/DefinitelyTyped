@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.ui {
 
@@ -9,4 +9,3 @@ declare module goog.ui {
      */
     interface ControlContent { /*any (string|Node|Node[]|NodeList)*/ }
 }
-

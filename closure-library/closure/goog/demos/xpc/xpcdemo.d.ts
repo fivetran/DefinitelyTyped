@@ -1,16 +1,4 @@
-
-declare module goog.global {
-
-    /**
-     * Global function to kick off initialization in the containing document.
-     */
-    function initOuter(): void;
-
-    /**
-     * Global function to kick off initialization in the iframe.
-     */
-    function initInner(): void;
-}
+/// <reference path="../../../../globals.d.ts" />
 
 declare module xpcdemo {
 
@@ -57,4 +45,3 @@ declare module xpcdemo {
      */
     function sendN(n: number): void;
 }
-

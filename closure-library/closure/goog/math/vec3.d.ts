@@ -1,105 +1,91 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../closure/goog/math/coordinate3.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./coordinate3.d.ts" />
 
 declare module goog.math {
 
-    /**
-     * Class for a three-dimensional vector object and assorted functions useful for
-     * manipulation.
-     *
-     * Inherits from goog.math.Coordinate3 so that a Vec3 may be passed in to any
-     * function that requires a Coordinate.
-     *
-     * @param {number} x The x value for the vector.
-     * @param {number} y The y value for the vector.
-     * @param {number} z The z value for the vector.
-     * @constructor
-     * @extends {goog.math.Coordinate3}
-     */
-    class Vec3 extends goog.math.Coordinate3 {
-        /**
-         * Class for a three-dimensional vector object and assorted functions useful for
-         * manipulation.
-         *
-         * Inherits from goog.math.Coordinate3 so that a Vec3 may be passed in to any
-         * function that requires a Coordinate.
-         *
-         * @param {number} x The x value for the vector.
-         * @param {number} y The y value for the vector.
-         * @param {number} z The z value for the vector.
-         * @constructor
-         * @extends {goog.math.Coordinate3}
-         */
-        constructor(x: number, y: number, z: number);
+    class Vec3 extends Vec3.__Class { }
+    module Vec3 {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends goog.math.Coordinate3.__Class {
     
-        /**
-         * Returns the magnitude of the vector measured from the origin.
-         *
-         * @return {number} The length of the vector.
-         */
-        magnitude(): number;
+            /**
+             * Class for a three-dimensional vector object and assorted functions useful for
+             * manipulation.
+             *
+             * Inherits from goog.math.Coordinate3 so that a Vec3 may be passed in to any
+             * function that requires a Coordinate.
+             *
+             * @param {number} x The x value for the vector.
+             * @param {number} y The y value for the vector.
+             * @param {number} z The z value for the vector.
+             * @constructor
+             * @extends {goog.math.Coordinate3}
+             */
+            constructor(x: number, y: number, z: number);
     
-        /**
-         * Returns the squared magnitude of the vector measured from the origin.
-         * NOTE(brenneman): Leaving out the square root is not a significant
-         * optimization in JavaScript.
-         *
-         * @return {number} The length of the vector, squared.
-         */
-        squaredMagnitude(): number;
+            /**
+             * Returns the magnitude of the vector measured from the origin.
+             *
+             * @return {number} The length of the vector.
+             */
+            magnitude(): number;
     
-        /**
-         * Scales the current vector by a constant.
-         *
-         * @param {number} s The scale factor.
-         * @return {!goog.math.Vec3} This vector, scaled.
-         */
-        scale(s: number): goog.math.Vec3;
+            /**
+             * Returns the squared magnitude of the vector measured from the origin.
+             * NOTE(brenneman): Leaving out the square root is not a significant
+             * optimization in JavaScript.
+             *
+             * @return {number} The length of the vector, squared.
+             */
+            squaredMagnitude(): number;
     
-        /**
-         * Reverses the sign of the vector. Equivalent to scaling the vector by -1.
-         *
-         * @return {!goog.math.Vec3} This vector, inverted.
-         */
-        invert(): goog.math.Vec3;
+            /**
+             * Scales the current vector by a constant.
+             *
+             * @param {number} s The scale factor.
+             * @return {!goog.math.Vec3} This vector, scaled.
+             */
+            scale(s: number): goog.math.Vec3;
     
-        /**
-         * Normalizes the current vector to have a magnitude of 1.
-         *
-         * @return {!goog.math.Vec3} This vector, normalized.
-         */
-        normalize(): goog.math.Vec3;
+            /**
+             * Reverses the sign of the vector. Equivalent to scaling the vector by -1.
+             *
+             * @return {!goog.math.Vec3} This vector, inverted.
+             */
+            invert(): goog.math.Vec3;
     
-        /**
-         * Adds another vector to this vector in-place.
-         *
-         * @param {goog.math.Vec3} b The vector to add.
-         * @return {!goog.math.Vec3} This vector with {@code b} added.
-         */
-        add(b: goog.math.Vec3): goog.math.Vec3;
+            /**
+             * Normalizes the current vector to have a magnitude of 1.
+             *
+             * @return {!goog.math.Vec3} This vector, normalized.
+             */
+            normalize(): goog.math.Vec3;
     
-        /**
-         * Subtracts another vector from this vector in-place.
-         *
-         * @param {goog.math.Vec3} b The vector to subtract.
-         * @return {!goog.math.Vec3} This vector with {@code b} subtracted.
-         */
-        subtract(b: goog.math.Vec3): goog.math.Vec3;
+            /**
+             * Adds another vector to this vector in-place.
+             *
+             * @param {goog.math.Vec3} b The vector to add.
+             * @return {!goog.math.Vec3} This vector with {@code b} added.
+             */
+            add(b: goog.math.Vec3): goog.math.Vec3;
     
-        /**
-         * Compares this vector with another for equality.
-         *
-         * @param {goog.math.Vec3} b The other vector.
-         * @return {boolean} True if this vector's x, y and z equal the given vector's
-         *     x, y, and z, respectively.
-         */
-        equals(b: goog.math.Vec3): boolean;
+            /**
+             * Subtracts another vector from this vector in-place.
+             *
+             * @param {goog.math.Vec3} b The vector to subtract.
+             * @return {!goog.math.Vec3} This vector with {@code b} subtracted.
+             */
+            subtract(b: goog.math.Vec3): goog.math.Vec3;
+    
+            /**
+             * Compares this vector with another for equality.
+             *
+             * @param {goog.math.Vec3} b The other vector.
+             * @return {boolean} True if this vector's x, y and z equal the given vector's
+             *     x, y, and z, respectively.
+             */
+            equals(b: goog.math.Vec3): boolean;
+        }
     }
 }
 
@@ -203,4 +189,3 @@ declare module goog.math.Vec3 {
      */
     function lerp(a: goog.math.Vec3, b: goog.math.Vec3, x: number): goog.math.Vec3;
 }
-

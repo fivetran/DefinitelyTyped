@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog {
 
@@ -42,4 +42,3 @@ declare module goog.memoize {
      */
     function simpleSerializer(functionUid: number, args: Object): string;
 }
-

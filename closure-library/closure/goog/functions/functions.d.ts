@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.functions {
 
@@ -158,4 +158,3 @@ declare module goog.functions {
      */
     function cacheReturnValue<T>(fn: () => T): () => T;
 }
-

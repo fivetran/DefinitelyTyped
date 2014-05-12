@@ -1,10 +1,4 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../../closure/goog/array/array.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
 
 declare module goog.labs.userAgent.engine {
 
@@ -39,6 +33,11 @@ declare module goog.labs.userAgent.engine {
      * @return {boolean} Whether the rendering engine version is higher or the same
      *     as the given version.
      */
-    function isVersionOrHigher(version: any /*string|number*/): boolean;
+    function isVersionOrHigher(version: string): boolean;
+    /**
+     * @param {string|number} version The version to check.
+     * @return {boolean} Whether the rendering engine version is higher or the same
+     *     as the given version.
+     */
+    function isVersionOrHigher(version: number): boolean;
 }
-

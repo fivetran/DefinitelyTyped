@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.dom {
 
@@ -8,4 +8,3 @@ declare module goog.dom {
      */
     enum RangeEndpoint { START, END } 
 }
-

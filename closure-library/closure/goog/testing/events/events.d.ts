@@ -1,113 +1,47 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../../closure/goog/disposable/disposable.d.ts" />
-/// <reference path="../../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../../closure/goog/useragent/useragent.d.ts" />
-/// <reference path="../../../../closure/goog/events/eventid.d.ts" />
-/// <reference path="../../../../closure/goog/events/listenable.d.ts" />
-/// <reference path="../../../../closure/goog/events/listener.d.ts" />
-/// <reference path="../../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../../closure/goog/events/listenermap.d.ts" />
-/// <reference path="../../../../closure/goog/events/browserfeature.d.ts" />
-/// <reference path="../../../../closure/goog/debug/entrypointregistry.d.ts" />
-/// <reference path="../../../../closure/goog/events/eventtype.d.ts" />
-/// <reference path="../../../../closure/goog/events/event.d.ts" />
-/// <reference path="../../../../closure/goog/reflect/reflect.d.ts" />
-/// <reference path="../../../../closure/goog/events/browserevent.d.ts" />
-/// <reference path="../../../../closure/goog/events/events.d.ts" />
-/// <reference path="../../../../closure/goog/math/math.d.ts" />
-/// <reference path="../../../../closure/goog/math/coordinate.d.ts" />
-/// <reference path="../../../../closure/goog/math/box.d.ts" />
-/// <reference path="../../../../closure/goog/math/size.d.ts" />
-/// <reference path="../../../../closure/goog/math/rect.d.ts" />
-/// <reference path="../../../../closure/goog/dom/vendor.d.ts" />
-/// <reference path="../../../../closure/goog/dom/classes.d.ts" />
-/// <reference path="../../../../closure/goog/dom/tagname.d.ts" />
-/// <reference path="../../../../closure/goog/functions/functions.d.ts" />
-/// <reference path="../../../../closure/goog/dom/browserfeature.d.ts" />
-/// <reference path="../../../../closure/goog/dom/dom.d.ts" />
-/// <reference path="../../../../closure/goog/style/style.d.ts" />
-/// <reference path="../../../../closure/goog/events/keycodes.d.ts" />
-/// <reference path="../../../../closure/goog/events/eventtarget.d.ts" />
-
-declare module goog.testing.events_ {
-
-    class _Event implements Event {
-        /**
-         * goog.events.BrowserEvent expects an Event so we provide one for JSCompiler.
-         *
-         * This clones a lot of the functionality of goog.events.Event. This used to
-         * use a mixin, but the mixin results in confusing the two types when compiled.
-         *
-         * @param {string} type Event Type.
-         * @param {Object=} opt_target Reference to the object that is the target of
-         *     this event.
-         * @constructor
-         * @extends {Event}
-         */
-        constructor(type: string, opt_target?: Object);
-
-        /**
-         * Whether to cancel the event in internal capture/bubble processing for IE.
-         * @type {boolean}
-         * @public
-         * @suppress {underscore|visibility} Technically public, but referencing this
-         *     outside this package is strongly discouraged.
-         */
-        propagationStopped_: boolean;
-
-        /**
-         * Return value for in internal capture/bubble processing for IE.
-         * @type {boolean}
-         * @public
-         * @suppress {underscore|visibility} Technically public, but referencing this
-         *     outside this package is strongly discouraged.
-         */
-        returnValue_: boolean;
-
-        timeStamp: number;
-        defaultPrevented: boolean;
-        isTrusted: boolean;
-        currentTarget: EventTarget;
-        cancelBubble: boolean;
-        target: EventTarget;
-        eventPhase: number;
-        cancelable: boolean;
-        type: string;
-        srcElement: Element;
-        bubbles: boolean;
-        initEvent(eventTypeArg: string, canBubbleArg: boolean, cancelableArg: boolean): void;
-        stopPropagation(): void;
-        stopImmediatePropagation(): void;
-        preventDefault(): void;
-        CAPTURING_PHASE: number;
-        AT_TARGET: number;
-        BUBBLING_PHASE: number;
-    }
-}
+/// <reference path="../../../../globals.d.ts" />
+/// <reference path="../../events/browserevent.d.ts" />
+/// <reference path="../../math/coordinate.d.ts" />
 
 declare module goog.testing.events {
 
-    /**
-     * goog.events.BrowserEvent expects an Event so we provide one for JSCompiler.
-     *
-     * This clones a lot of the functionality of goog.events.Event. This used to
-     * use a mixin, but the mixin results in confusing the two types when compiled.
-     *
-     * @param {string} type Event Type.
-     * @param {Object=} opt_target Reference to the object that is the target of
-     *     this event.
-     * @constructor
-     * @extends {Event}
-     */
-    class Event extends goog.testing.events_._Event { }
+    class Event extends Event.__Class { }
+    module Event {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class extends _Event {
+    
+            /**
+             * goog.events.BrowserEvent expects an Event so we provide one for JSCompiler.
+             *
+             * This clones a lot of the functionality of goog.events.Event. This used to
+             * use a mixin, but the mixin results in confusing the two types when compiled.
+             *
+             * @param {string} type Event Type.
+             * @param {Object=} opt_target Reference to the object that is the target of
+             *     this event.
+             * @constructor
+             * @extends {Event}
+             */
+            constructor(type: string, opt_target?: Object);
+    
+            /**
+             * Whether to cancel the event in internal capture/bubble processing for IE.
+             * @type {boolean}
+             * @public
+             * @suppress {underscore|visibility} Technically public, but referencing this
+             *     outside this package is strongly discouraged.
+             */
+            propagationStopped_: boolean;
+    
+            /**
+             * Return value for in internal capture/bubble processing for IE.
+             * @type {boolean}
+             * @public
+             * @suppress {underscore|visibility} Technically public, but referencing this
+             *     outside this package is strongly discouraged.
+             */
+            returnValue_: boolean;
+        }
+    }
 
     /**
      * Simulates a mousedown, mouseup, and then click on the given event target,
@@ -369,4 +303,3 @@ declare module goog.testing.events {
      */
     function mixinListenable(obj: Object): void;
 }
-

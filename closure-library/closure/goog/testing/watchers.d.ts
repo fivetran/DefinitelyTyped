@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.testing.watchers {
 
@@ -16,4 +16,3 @@ declare module goog.testing.watchers {
      */
     function watchClockReset(fn: () => any /*missing*/): void;
 }
-

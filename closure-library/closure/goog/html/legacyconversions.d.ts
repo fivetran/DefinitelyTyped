@@ -1,18 +1,7 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/i18n/bidi.d.ts" />
-/// <reference path="../../../closure/goog/string/typedstring.d.ts" />
-/// <reference path="../../../closure/goog/string/const.d.ts" />
-/// <reference path="../../../closure/goog/html/safeurl.d.ts" />
-/// <reference path="../../../closure/goog/html/trustedresourceurl.d.ts" />
-/// <reference path="../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../closure/goog/dom/tags.d.ts" />
-/// <reference path="../../../closure/goog/html/safestyle.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/html/safehtml.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./safehtml.d.ts" />
+/// <reference path="./trustedresourceurl.d.ts" />
+/// <reference path="./safeurl.d.ts" />
 
 declare module goog.html.legacyconversions {
 
@@ -54,5 +43,18 @@ declare module goog.html.legacyconversions {
      *     object.
      */
     function safeUrlFromString(url: string): goog.html.SafeUrl;
-}
 
+    /**
+     * @private {function(): undefined}
+     */
+    var reportCallback_: any /*missing*/;
+
+    /**
+     * Sets a function that will be called every time a legacy conversion is
+     * performed. The function is called with no parameters but it can use
+     * goog.debug.getStacktrace to get a stacktrace.
+     *
+     * @param {function(): undefined} callback Error callback as defined above.
+     */
+    function setReportCallback(callback: () => any /*undefined*/): void;
+}

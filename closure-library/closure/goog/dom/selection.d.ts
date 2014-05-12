@@ -1,13 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.dom.selection {
 
@@ -34,7 +25,7 @@ declare module goog.dom.selection {
      * Returns the start and end points of the selection inside a textarea or a
      * text input.
      * @param {Element} textfield A textarea or text input.
-     * @return {Array.<number>} An array with the start and end positions where the
+     * @return {!Array.<number>} An array with the start and end positions where the
      *     selection starts and ends or [0,0] if it was unable to find the
      *     positions or no selection exists. Note that we can't reliably tell the
      *     difference between an element that has no selection and one where
@@ -79,4 +70,3 @@ declare module goog.dom.selection {
      */
     function getText(textfield: Element): string;
 }
-

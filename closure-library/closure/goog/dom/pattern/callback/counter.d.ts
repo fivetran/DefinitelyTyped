@@ -1,39 +1,38 @@
-/// <reference path="../../../../../closure/goog/base.d.ts" />
+/// <reference path="../../../../../globals.d.ts" />
 
 declare module goog.dom.pattern.callback {
 
-    /**
-     * Callback class for counting matches.
-     * @constructor
-     * @final
-     */
-    class Counter {
-        /**
-         * Callback class for counting matches.
-         * @constructor
-         * @final
-         */
-        constructor();
+    class Counter extends Counter.__Class { }
+    module Counter {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * The count of objects matched so far.
-         *
-         * @type {number}
-         */
-        count: number;
+            /**
+             * Callback class for counting matches.
+             * @constructor
+             * @final
+             */
+            constructor();
     
-        /**
-         * Get a bound callback function that is suitable as a callback for
-         * {@link goog.dom.pattern.Matcher}.
-         *
-         * @return {Function} A callback function.
-         */
-        getCallback(): Function;
+            /**
+             * The count of objects matched so far.
+             *
+             * @type {number}
+             */
+            count: number;
     
-        /**
-         * Reset the counter.
-         */
-        reset(): void;
+            /**
+             * Get a bound callback function that is suitable as a callback for
+             * {@link goog.dom.pattern.Matcher}.
+             *
+             * @return {!Function} A callback function.
+             */
+            getCallback(): Function;
+    
+            /**
+             * Reset the counter.
+             */
+            reset(): void;
+        }
     }
 }
-

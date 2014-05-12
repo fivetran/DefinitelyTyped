@@ -1,7 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/json/json.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/proto/serializer.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.proto {
 
@@ -12,4 +9,3 @@ declare module goog.proto {
      */
     function serialize(object: Object): string;
 }
-

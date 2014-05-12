@@ -1,36 +1,31 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.db {
 
-    /**
-     * Creates a new IDBKeyRange wrapper object. Should not be created directly,
-     * instead use one of the static factory methods. For example:
-     * @see goog.db.KeyRange.bound
-     * @see goog.db.KeyRange.lowerBound
-     *
-     * @param {!IDBKeyRange} range Underlying IDBKeyRange object.
-     * @constructor
-     * @final
-     */
-    class KeyRange {
-        /**
-         * Creates a new IDBKeyRange wrapper object. Should not be created directly,
-         * instead use one of the static factory methods. For example:
-         * @see goog.db.KeyRange.bound
-         * @see goog.db.KeyRange.lowerBound
-         *
-         * @param {!IDBKeyRange} range Underlying IDBKeyRange object.
-         * @constructor
-         * @final
-         */
-        constructor(range: IDBKeyRange);
+    class KeyRange extends KeyRange.__Class { }
+    module KeyRange {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * Returns underlying key range object. This is used in ObjectStore's openCursor
-         * and count methods.
-         * @return {!IDBKeyRange}
-         */
-        range(): IDBKeyRange;
+            /**
+             * Creates a new IDBKeyRange wrapper object. Should not be created directly,
+             * instead use one of the static factory methods. For example:
+             * @see goog.db.KeyRange.bound
+             * @see goog.db.KeyRange.lowerBound
+             *
+             * @param {!IDBKeyRange} range Underlying IDBKeyRange object.
+             * @constructor
+             * @final
+             */
+            constructor(range: IDBKeyRange);
+    
+            /**
+             * Returns underlying key range object. This is used in ObjectStore's openCursor
+             * and count methods.
+             * @return {!IDBKeyRange}
+             */
+            range(): IDBKeyRange;
+        }
     }
 }
 
@@ -42,7 +37,7 @@ declare module goog.db.KeyRange {
      * @param {IDBKeyType} key The single value in the range.
      * @return {!goog.db.KeyRange} The key range.
      */
-    function only(key: any): goog.db.KeyRange;
+    function only(key: IDBKeyType): goog.db.KeyRange;
 
     /**
      * Creates a key range with upper and lower bounds.
@@ -55,7 +50,7 @@ declare module goog.db.KeyRange {
      *     value.
      * @return {!goog.db.KeyRange} The key range.
      */
-    function bound(lower: any, upper: any, opt_lowerOpen?: boolean, opt_upperOpen?: boolean): goog.db.KeyRange;
+    function bound(lower: IDBKeyType, upper: IDBKeyType, opt_lowerOpen?: boolean, opt_upperOpen?: boolean): goog.db.KeyRange;
 
     /**
      * Creates a key range with a lower bound only, finishes at the last record.
@@ -65,7 +60,7 @@ declare module goog.db.KeyRange {
      *     value.
      * @return {!goog.db.KeyRange} The key range.
      */
-    function lowerBound(lower: any, opt_lowerOpen?: boolean): goog.db.KeyRange;
+    function lowerBound(lower: IDBKeyType, opt_lowerOpen?: boolean): goog.db.KeyRange;
 
     /**
      * Creates a key range with a upper bound only, starts at the first record.
@@ -75,6 +70,5 @@ declare module goog.db.KeyRange {
      *     value.
      * @return {!goog.db.KeyRange} The key range.
      */
-    function upperBound(upper: any, opt_upperOpen?: boolean): goog.db.KeyRange;
+    function upperBound(upper: IDBKeyType, opt_upperOpen?: boolean): goog.db.KeyRange;
 }
-

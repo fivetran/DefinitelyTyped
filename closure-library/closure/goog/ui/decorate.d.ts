@@ -1,11 +1,5 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/dom/classlist.d.ts" />
-/// <reference path="../../../closure/goog/ui/registry.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./component.d.ts" />
 
 declare module goog.ui {
 
@@ -17,4 +11,3 @@ declare module goog.ui {
      */
     function decorate(element: Element): goog.ui.Component;
 }
-

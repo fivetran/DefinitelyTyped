@@ -1,4 +1,4 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
 
 declare module goog.storage.mechanism {
 
@@ -8,4 +8,3 @@ declare module goog.storage.mechanism {
      */
     enum ErrorCode { INVALID_VALUE, QUOTA_EXCEEDED, STORAGE_DISABLED } 
 }
-

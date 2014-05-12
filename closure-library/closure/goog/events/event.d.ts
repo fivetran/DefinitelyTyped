@@ -1,56 +1,60 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/events/eventid.d.ts" />
-/// <reference path="../../../closure/goog/disposable/idisposable.d.ts" />
-/// <reference path="../../../closure/goog/disposable/disposable.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./eventid.d.ts" />
 
 declare module goog.events {
 
-    /**
-     * A base class for event objects, so that they can support preventDefault and
-     * stopPropagation.
-     *
-     * @param {string|!goog.events.EventId} type Event Type.
-     * @param {Object=} opt_target Reference to the object that is the target of
-     *     this event. It has to implement the {@code EventTarget} interface
-     *     declared at {@link http://developer.mozilla.org/en/DOM/EventTarget}.
-     * @constructor
-     */
-    class Event {
-        /**
-         * A base class for event objects, so that they can support preventDefault and
-         * stopPropagation.
-         *
-         * @param {string|!goog.events.EventId} type Event Type.
-         * @param {Object=} opt_target Reference to the object that is the target of
-         *     this event. It has to implement the {@code EventTarget} interface
-         *     declared at {@link http://developer.mozilla.org/en/DOM/EventTarget}.
-         * @constructor
-         */
-        constructor(type: any /*string|goog.events.EventId<any>*/, opt_target?: Object);
+    class Event extends Event.__Class { }
+    module Event {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * For backwards compatibility (goog.events.Event used to inherit
-         * goog.Disposable).
-         * @deprecated Events don't need to be disposed.
-         */
-        disposeInternal(): void;
+            /**
+             * A base class for event objects, so that they can support preventDefault and
+             * stopPropagation.
+             *
+             * @param {string|!goog.events.EventId} type Event Type.
+             * @param {Object=} opt_target Reference to the object that is the target of
+             *     this event. It has to implement the {@code EventTarget} interface
+             *     declared at {@link http://developer.mozilla.org/en/DOM/EventTarget}.
+             * @constructor
+             */
+            constructor(type: string, opt_target?: Object);
+            /**
+             * A base class for event objects, so that they can support preventDefault and
+             * stopPropagation.
+             *
+             * @param {string|!goog.events.EventId} type Event Type.
+             * @param {Object=} opt_target Reference to the object that is the target of
+             *     this event. It has to implement the {@code EventTarget} interface
+             *     declared at {@link http://developer.mozilla.org/en/DOM/EventTarget}.
+             * @constructor
+             */
+            constructor(type: goog.events.EventId<any>, opt_target?: Object);
     
-        /**
-         * For backwards compatibility (goog.events.Event used to inherit
-         * goog.Disposable).
-         * @deprecated Events don't need to be disposed.
-         */
-        dispose(): void;
+            /**
+             * For backwards compatibility (goog.events.Event used to inherit
+             * goog.Disposable).
+             * @deprecated Events don't need to be disposed.
+             */
+            disposeInternal(): void;
     
-        /**
-         * Stops event propagation.
-         */
-        stopPropagation(): void;
+            /**
+             * For backwards compatibility (goog.events.Event used to inherit
+             * goog.Disposable).
+             * @deprecated Events don't need to be disposed.
+             */
+            dispose(): void;
     
-        /**
-         * Prevents the default action, for example a link redirecting to a url.
-         */
-        preventDefault(): void;
+            /**
+             * Stops event propagation.
+             */
+            stopPropagation(): void;
+    
+            /**
+             * Prevents the default action, for example a link redirecting to a url.
+             */
+            preventDefault(): void;
+        }
     }
 
     /**
@@ -82,4 +86,3 @@ declare module goog.events.Event {
      */
     function preventDefault(e: goog.events.Event): void;
 }
-

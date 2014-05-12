@@ -1,6 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/locale/nativenameconstants.d.ts" />
-/// <reference path="../../../closure/goog/locale/locale.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.locale {
 
@@ -18,7 +16,7 @@ declare module goog.locale {
      *    this parameter is not speficied, current locale is used to
      *    extract this information.
      *
-     * @return {Array.<Object>} Localized and relevant list of timezone names
+     * @return {!Array.<Object>} Localized and relevant list of timezone names
      *    and ids.
      */
     function getTimeZoneSelectedShortNames(opt_regionOrLang?: string): Object[];
@@ -37,7 +35,7 @@ declare module goog.locale {
      *    this parameter is not speficied, current locale is used to
      *    extract this information.
      *
-     * @return {Array.<Object>} Localized and relevant list of timezone names
+     * @return {!Array.<Object>} Localized and relevant list of timezone names
      *    and ids.
      */
     function getTimeZoneSelectedLongNames(opt_regionOrLang?: string): Object[];
@@ -55,4 +53,3 @@ declare module goog.locale {
      */
     function getTimeZoneAllLongNames(): Object[];
 }
-

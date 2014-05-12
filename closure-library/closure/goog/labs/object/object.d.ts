@@ -1,4 +1,4 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
 
 declare module goog.labs.object {
 
@@ -16,4 +16,3 @@ declare module goog.labs.object {
      */
     function is(v: any, v2: any): boolean;
 }
-

@@ -1,5 +1,16 @@
+/// <reference path="../../globals.d.ts" />
 
 declare module goog {
+
+    /**
+     * Returns true if the specified value is not undefined.
+     * WARNING: Do not use this to test if an object has a property. Use the in
+     * operator instead.
+     *
+     * @param {?} val Variable to test.
+     * @return {boolean} Whether variable is defined.
+     */
+    function isDef(val: any): boolean;
 
     /**
      * Defines a named value. In uncompiled mode, the value is retreived from
@@ -11,7 +22,29 @@ declare module goog {
      * @param {string} name The distinguished name to provide.
      * @param {string|number|boolean} defaultValue
      */
-    function define(name: string, defaultValue: any /*string|number|boolean*/): void;
+    function define(name: string, defaultValue: string): void;
+    /**
+     * Defines a named value. In uncompiled mode, the value is retreived from
+     * CLOSURE_DEFINES or CLOSURE_UNCOMPILED_DEFINES if the object is defined and
+     * has the property specified, and otherwise used the defined defaultValue.
+     * When compiled, the default can be overridden using compiler command-line
+     * options.
+     *
+     * @param {string} name The distinguished name to provide.
+     * @param {string|number|boolean} defaultValue
+     */
+    function define(name: string, defaultValue: number): void;
+    /**
+     * Defines a named value. In uncompiled mode, the value is retreived from
+     * CLOSURE_DEFINES or CLOSURE_UNCOMPILED_DEFINES if the object is defined and
+     * has the property specified, and otherwise used the defined defaultValue.
+     * When compiled, the default can be overridden using compiler command-line
+     * options.
+     *
+     * @param {string} name The distinguished name to provide.
+     * @param {string|number|boolean} defaultValue
+     */
+    function define(name: string, defaultValue: boolean): void;
 
     /**
      * @define {boolean} DEBUG is provided as a convenience so that debugging code
@@ -168,16 +201,6 @@ declare module goog {
      * @return {string} The name of the type.
      */
     function typeOf(value: any): string;
-
-    /**
-     * Returns true if the specified value is not undefined.
-     * WARNING: Do not use this to test if an object has a property. Use the in
-     * operator instead.  Additionally, this function assumes that the global
-     * undefined variable has not been redefined.
-     * @param {?} val Variable to test.
-     * @return {boolean} Whether variable is defined.
-     */
-    function isDef(val: any): boolean;
 
     /**
      * Returns true if the specified value is null.
@@ -657,4 +680,3 @@ declare module goog.global {
      */
     var CLOSURE_CSS_NAME_MAPPING: any /*Object|any (undefined)*/;
 }
-

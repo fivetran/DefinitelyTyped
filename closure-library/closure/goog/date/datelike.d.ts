@@ -1,4 +1,5 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./date.d.ts" />
 
 declare module goog.date {
 
@@ -7,4 +8,3 @@ declare module goog.date {
      */
     interface DateLike { /*any (Date|goog.date.Date)*/ }
 }
-

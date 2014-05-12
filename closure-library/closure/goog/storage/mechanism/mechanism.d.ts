@@ -1,42 +1,41 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
 
 declare module goog.storage.mechanism {
 
-    /**
-     * Basic interface for all storage mechanisms.
-     *
-     * @constructor
-     */
-    class Mechanism {
-        /**
-         * Basic interface for all storage mechanisms.
-         *
-         * @constructor
-         */
-        constructor();
+    class Mechanism extends Mechanism.__Class { }
+    module Mechanism {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * Set a value for a key.
-         *
-         * @param {string} key The key to set.
-         * @param {string} value The string to save.
-         */
-        set(key: string, value: string): void;
+            /**
+             * Basic interface for all storage mechanisms.
+             *
+             * @constructor
+             */
+            constructor();
     
-        /**
-         * Get the value stored under a key.
-         *
-         * @param {string} key The key to get.
-         * @return {?string} The corresponding value, null if not found.
-         */
-        get(key: string): string;
+            /**
+             * Set a value for a key.
+             *
+             * @param {string} key The key to set.
+             * @param {string} value The string to save.
+             */
+            set(key: string, value: string): void;
     
-        /**
-         * Remove a key and its value.
-         *
-         * @param {string} key The key to remove.
-         */
-        remove(key: string): void;
+            /**
+             * Get the value stored under a key.
+             *
+             * @param {string} key The key to get.
+             * @return {?string} The corresponding value, null if not found.
+             */
+            get(key: string): string;
+    
+            /**
+             * Remove a key and its value.
+             *
+             * @param {string} key The key to remove.
+             */
+            remove(key: string): void;
+        }
     }
 }
-

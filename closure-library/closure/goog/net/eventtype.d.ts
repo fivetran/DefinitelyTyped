@@ -1,4 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.net {
 
@@ -8,4 +8,3 @@ declare module goog.net {
      */
     enum EventType { COMPLETE, SUCCESS, ERROR, ABORT, READY, READY_STATE_CHANGE, TIMEOUT, INCREMENTAL_DATA, PROGRESS } 
 }
-

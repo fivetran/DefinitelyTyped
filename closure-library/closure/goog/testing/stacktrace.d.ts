@@ -1,54 +1,45 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.testing.stacktrace {
 
-    /**
-     * Class representing one stack frame.
-     * @param {string} context Context object, empty in case of global functions or
-     *     if the browser doesn't provide this information.
-     * @param {string} name Function name, empty in case of anonymous functions.
-     * @param {string} alias Alias of the function if available. For example the
-     *     function name will be 'c' and the alias will be 'b' if the function is
-     *     defined as <code>a.b = function c() {};</code>.
-     * @param {string} args Arguments of the function in parentheses if available.
-     * @param {string} path File path or URL including line number and optionally
-     *     column number separated by colons.
-     * @constructor
-     * @final
-     */
-    class Frame {
-        /**
-         * Class representing one stack frame.
-         * @param {string} context Context object, empty in case of global functions or
-         *     if the browser doesn't provide this information.
-         * @param {string} name Function name, empty in case of anonymous functions.
-         * @param {string} alias Alias of the function if available. For example the
-         *     function name will be 'c' and the alias will be 'b' if the function is
-         *     defined as <code>a.b = function c() {};</code>.
-         * @param {string} args Arguments of the function in parentheses if available.
-         * @param {string} path File path or URL including line number and optionally
-         *     column number separated by colons.
-         * @constructor
-         * @final
-         */
-        constructor(context: string, name: string, alias: string, args: string, path: string);
+    class Frame extends Frame.__Class { }
+    module Frame {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * @return {string} The function name or empty string if the function is
-         *     anonymous and the object field which it's assigned to is unknown.
-         */
-        getName(): string;
+            /**
+             * Class representing one stack frame.
+             * @param {string} context Context object, empty in case of global functions or
+             *     if the browser doesn't provide this information.
+             * @param {string} name Function name, empty in case of anonymous functions.
+             * @param {string} alias Alias of the function if available. For example the
+             *     function name will be 'c' and the alias will be 'b' if the function is
+             *     defined as <code>a.b = function c() {};</code>.
+             * @param {string} args Arguments of the function in parentheses if available.
+             * @param {string} path File path or URL including line number and optionally
+             *     column number separated by colons.
+             * @constructor
+             * @final
+             */
+            constructor(context: string, name: string, alias: string, args: string, path: string);
     
-        /**
-         * @return {boolean} Whether the stack frame contains an anonymous function.
-         */
-        isAnonymous(): boolean;
+            /**
+             * @return {string} The function name or empty string if the function is
+             *     anonymous and the object field which it's assigned to is unknown.
+             */
+            getName(): string;
     
-        /**
-         * Brings one frame of the stack trace into a common format across browsers.
-         * @return {string} Pretty printed stack frame.
-         */
-        toCanonicalString(): string;
+            /**
+             * @return {boolean} Whether the stack frame contains an anonymous function.
+             */
+            isAnonymous(): boolean;
+    
+            /**
+             * Brings one frame of the stack trace into a common format across browsers.
+             * @return {string} Pretty printed stack frame.
+             */
+            toCanonicalString(): string;
+        }
     }
 
     /**
@@ -70,4 +61,3 @@ declare module goog.testing.stacktrace {
      */
     function get(): string;
 }
-

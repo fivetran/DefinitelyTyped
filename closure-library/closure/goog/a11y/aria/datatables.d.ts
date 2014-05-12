@@ -1,6 +1,5 @@
-/// <reference path="../../../../closure/goog/base.d.ts" />
-/// <reference path="../../../../closure/goog/object/object.d.ts" />
-/// <reference path="../../../../closure/goog/a11y/aria/attributes.d.ts" />
+/// <reference path="../../../../globals.d.ts" />
+/// <reference path="./attributes.d.ts" />
 
 declare module goog.a11y.aria {
 
@@ -24,4 +23,3 @@ declare module goog.a11y.aria.datatables {
      */
     function getDefaultValuesMap(): { [key: string]: any /*string|boolean|number*/ };
 }
-

@@ -1,5 +1,5 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/messaging/messagechannel.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./messagechannel.d.ts" />
 
 declare module goog.messaging {
 
@@ -11,4 +11,3 @@ declare module goog.messaging {
      */
     function pipe(channel1: goog.messaging.MessageChannel, channel2: goog.messaging.MessageChannel): void;
 }
-

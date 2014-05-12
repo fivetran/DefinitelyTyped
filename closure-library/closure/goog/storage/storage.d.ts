@@ -1,48 +1,44 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/json/json.d.ts" />
-/// <reference path="../../../closure/goog/storage/errorcode.d.ts" />
+/// <reference path="../../../globals.d.ts" />
+/// <reference path="./mechanism/mechanism.d.ts" />
 
 declare module goog.storage {
 
-    /**
-     * The base implementation for all storage APIs.
-     *
-     * @param {!goog.storage.mechanism.Mechanism} mechanism The underlying
-     *     storage mechanism.
-     * @constructor
-     */
-    class Storage {
-        /**
-         * The base implementation for all storage APIs.
-         *
-         * @param {!goog.storage.mechanism.Mechanism} mechanism The underlying
-         *     storage mechanism.
-         * @constructor
-         */
-        constructor(mechanism: goog.storage.mechanism.Mechanism);
+    class Storage extends Storage.__Class { }
+    module Storage {
+        /** Fake class which should be extended to avoid inheriting static properties */
+        class __Class {
     
-        /**
-         * Sets an item in the data storage.
-         *
-         * @param {string} key The key to set.
-         * @param {*} value The value to serialize to a string and save.
-         */
-        set(key: string, value: any): void;
+            /**
+             * The base implementation for all storage APIs.
+             *
+             * @param {!goog.storage.mechanism.Mechanism} mechanism The underlying
+             *     storage mechanism.
+             * @constructor
+             */
+            constructor(mechanism: goog.storage.mechanism.Mechanism);
     
-        /**
-         * Gets an item from the data storage.
-         *
-         * @param {string} key The key to get.
-         * @return {*} Deserialized value or undefined if not found.
-         */
-        get(key: string): any;
+            /**
+             * Sets an item in the data storage.
+             *
+             * @param {string} key The key to set.
+             * @param {*} value The value to serialize to a string and save.
+             */
+            set(key: string, value: any): void;
     
-        /**
-         * Removes an item from the data storage.
-         *
-         * @param {string} key The key to remove.
-         */
-        remove(key: string): void;
+            /**
+             * Gets an item from the data storage.
+             *
+             * @param {string} key The key to get.
+             * @return {*} Deserialized value or undefined if not found.
+             */
+            get(key: string): any;
+    
+            /**
+             * Removes an item from the data storage.
+             *
+             * @param {string} key The key to remove.
+             */
+            remove(key: string): void;
+        }
     }
 }
-

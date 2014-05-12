@@ -1,14 +1,4 @@
-/// <reference path="../../../closure/goog/base.d.ts" />
-/// <reference path="../../../closure/goog/dom/nodetype.d.ts" />
-/// <reference path="../../../closure/goog/debug/error.d.ts" />
-/// <reference path="../../../closure/goog/string/string.d.ts" />
-/// <reference path="../../../closure/goog/asserts/asserts.d.ts" />
-/// <reference path="../../../closure/goog/array/array.d.ts" />
-/// <reference path="../../../closure/goog/crypt/crypt.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/util.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/engine.d.ts" />
-/// <reference path="../../../closure/goog/labs/useragent/browser.d.ts" />
-/// <reference path="../../../closure/goog/useragent/useragent.d.ts" />
+/// <reference path="../../../globals.d.ts" />
 
 declare module goog.crypt.base64 {
 
@@ -50,7 +40,17 @@ declare module goog.crypt.base64 {
      *     alternative alphabet.
      * @return {string} The base64 encoded string.
      */
-    function encodeByteArray(input: any /*number[]|Uint8Array*/, opt_webSafe?: boolean): string;
+    function encodeByteArray(input: number[], opt_webSafe?: boolean): string;
+    /**
+     * Base64-encode an array of bytes.
+     *
+     * @param {Array.<number>|Uint8Array} input An array of bytes (numbers with
+     *     value in [0, 255]) to encode.
+     * @param {boolean=} opt_webSafe Boolean indicating we should use the
+     *     alternative alphabet.
+     * @return {string} The base64 encoded string.
+     */
+    function encodeByteArray(input: Uint8Array, opt_webSafe?: boolean): string;
 
     /**
      * Base64-encode a string.
@@ -75,11 +75,17 @@ declare module goog.crypt.base64 {
     /**
      * Base64-decode a string.
      *
-     * @param {string} input to decode (length not required to be a multiple of 4).
-     * @param {boolean=} opt_webSafe True if we should use the
-     *     alternative alphabet.
+     * In base-64 decoding, groups of four characters are converted into three
+     * bytes.  If the encoder did not apply padding, the input length may not
+     * be a multiple of 4.
+     *
+     * In this case, the last group will have fewer than 4 characters, and
+     * padding will be inferred.  If the group has one or two characters, it decodes
+     * to one byte.  If the group has three characters, it decodes to two bytes.
+     *
+     * @param {string} input Input to decode.
+     * @param {boolean=} opt_webSafe True if we should use the web-safe alphabet.
      * @return {!Array} bytes representing the decoded value.
      */
     function decodeStringToByteArray(input: string, opt_webSafe?: boolean): any[];
 }
-
