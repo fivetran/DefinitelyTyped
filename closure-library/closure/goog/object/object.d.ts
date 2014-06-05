@@ -108,7 +108,8 @@ declare module goog.object {
      * @return {V|undefined} The value or undefined if the object is empty.
      * @template K,V
      */
-    function getAnyValue<K,V>(obj: { [key: string]: V }): any /*V|any (undefined)*/;
+    function getAnyValue<V>(obj: { [key: number]: V }): any /*V|any (undefined)*/;
+    function getAnyValue<V>(obj: { [key: string]: V }): any /*V|any (undefined)*/;
 
     /**
      * Whether the object/hash/map contains the given object as a value.
@@ -119,7 +120,8 @@ declare module goog.object {
      * @return {boolean} true if val is present.
      * @template K,V
      */
-    function contains<K,V>(obj: { [key: string]: V }, val: V): boolean;
+    function contains<V>(obj: { [key: number]: V }, val: V): boolean;
+    function contains<V>(obj: { [key: string]: V }, val: V): boolean;
 
     /**
      * Returns the values of the object/map/hash.
@@ -128,7 +130,8 @@ declare module goog.object {
      * @return {!Array.<V>} The values in the object/map/hash.
      * @template K,V
      */
-    function getValues<K,V>(obj: { [key: string]: V }): V[];
+    function getValues<V>(obj: { [key: number]: V }): V[];
+    function getValues<V>(obj: { [key: string]: V }): V[];
 
     /**
      * Returns the keys of the object/map/hash.
@@ -195,7 +198,8 @@ declare module goog.object {
      * @return {boolean} true If the map contains the value.
      * @template K,V
      */
-    function containsValue<K,V>(obj: { [key: string]: V }, val: V): boolean;
+    function containsValue<V>(obj: { [key: number]: V }, val: V): boolean;
+    function containsValue<V>(obj: { [key: string]: V }, val: V): boolean;
 
     /**
      * Searches an object for an element that satisfies the given condition and
@@ -209,7 +213,8 @@ declare module goog.object {
      *     returns true or undefined if no such element is found.
      * @template T,K,V
      */
-    function findKey<T,K,V>(obj: { [key: string]: V }, f: (_0: V, _1: string, _2: { [key: string]: V }) => boolean, opt_this?: T): any /*string|any (undefined)*/;
+    function findKey<T,V>(obj: { [key: number]: V }, f: (_0: V, _1: number, _2: { [key: number]: V }) => boolean, opt_this?: T): any /*string|any (undefined)*/;
+    function findKey<T,V>(obj: { [key: string]: V }, f: (_0: V, _1: string, _2: { [key: string]: V }) => boolean, opt_this?: T): any /*string|any (undefined)*/;
 
     /**
      * Searches an object for an element that satisfies the given condition and
@@ -223,7 +228,8 @@ declare module goog.object {
      *     undefined if no such element is found.
      * @template T,K,V
      */
-    function findValue<T,K,V>(obj: { [key: string]: V }, f: (_0: V, _1: string, _2: { [key: string]: V }) => boolean, opt_this?: T): V;
+    function findValue<T,V>(obj: { [key: number]: V }, f: (_0: V, _1: number, _2: { [key: number]: V }) => boolean, opt_this?: T): V;
+    function findValue<T,V>(obj: { [key: string]: V }, f: (_0: V, _1: string, _2: { [key: string]: V }) => boolean, opt_this?: T): V;
 
     /**
      * Whether the object/map/hash is empty.
@@ -258,7 +264,8 @@ declare module goog.object {
      * @param {V} val The value to add.
      * @template K,V
      */
-    function add<K,V>(obj: { [key: string]: V }, key: string, val: V): void;
+    function add<V>(obj: { [key: number]: V }, key: number, val: V): void;
+    function add<V>(obj: { [key: string]: V }, key: string, val: V): void;
 
     /**
      * Returns the value for the given key.
@@ -270,7 +277,8 @@ declare module goog.object {
      * @return {V|R|undefined} The value for the given key.
      * @template K,V,R
      */
-    function get<K,V,R>(obj: { [key: string]: V }, key: string, opt_val?: R): any /*V|R|any (undefined)*/;
+    function get<V,R>(obj: { [key: number]: V }, key: number, opt_val?: R): any /*V|R|any (undefined)*/;
+    function get<V,R>(obj: { [key: string]: V }, key: string, opt_val?: R): any /*V|R|any (undefined)*/;
 
     /**
      * Adds a key-value pair to the object/map/hash.
@@ -280,7 +288,8 @@ declare module goog.object {
      * @param {V} value The value to add.
      * @template K,V
      */
-    function set<K,V>(obj: { [key: string]: V }, key: string, value: V): void;
+    function set<V>(obj: { [key: number]: V }, key: number, value: V): void;
+    function set<V>(obj: { [key: string]: V }, key: string, value: V): void;
 
     /**
      * Adds a key-value pair to the object/map/hash if it doesn't exist yet.
@@ -291,7 +300,8 @@ declare module goog.object {
      * @return {V} The value of the entry at the end of the function.
      * @template K,V
      */
-    function setIfUndefined<K,V>(obj: { [key: string]: V }, key: string, value: V): V;
+    function setIfUndefined<V>(obj: { [key: number]: V }, key: number, value: V): V;
+    function setIfUndefined<V>(obj: { [key: string]: V }, key: string, value: V): V;
 
     /**
      * Does a flat clone of the object.
@@ -300,7 +310,8 @@ declare module goog.object {
      * @return {!Object.<K,V>} Clone of the input object.
      * @template K,V
      */
-    function clone<K,V>(obj: { [key: string]: V }): { [key: string]: V };
+    function clone<V>(obj: { [key: number]: V }): { [key: number]: V };
+    function clone<V>(obj: { [key: string]: V }): { [key: string]: V };
 
     /**
      * Clones a value. The input may be an Object, Array, or basic type. Objects and
@@ -379,7 +390,8 @@ declare module goog.object {
      *     original object if this browser does not support immutables.
      * @template K,V
      */
-    function createImmutableView<K,V>(obj: { [key: string]: V }): { [key: string]: V };
+    function createImmutableView<V>(obj: { [key: number]: V }): { [key: number]: V };
+    function createImmutableView<V>(obj: { [key: string]: V }): { [key: string]: V };
 
     /**
      * @param {!Object} obj An object.
