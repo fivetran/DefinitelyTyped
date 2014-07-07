@@ -1055,8 +1055,8 @@ declare module webdriver {
          *     Defaults to (0, 0).
          * @return {!webdriver.ActionSequence} A self reference.
          */
-        mouseMove(location: webdriver.WebElement, opt_offset?: ILocation): ActionSequence
-        mouseMove(location: ILocation): ActionSequence
+        mouseMove(location: webdriver.WebElement, opt_offset?: ILocation): ActionSequence;
+        mouseMove(location: ILocation): ActionSequence;
 
         /**
          * Presses a mouse button. The mouse button will not be released until
@@ -2677,7 +2677,7 @@ declare module webdriver {
          * @return {!webdriver.WebDriver.TargetLocator} The target locator interface for
          *     this instance.
          */
-        switchTo(): webdriver.WebDriverTargetLocator
+        switchTo(): webdriver.WebDriverTargetLocator;
 
         //endregion
     }
@@ -3084,7 +3084,7 @@ declare module webdriver {
          * @param {Object.<string>} obj The object to convert into a locator.
          * @return {webdriver.Locator} The new locator object.
          */
-        static createFromObj(obj: any): Locator
+        static createFromObj(obj: any): Locator;
 
         /**
          * Verifies that a {@code locator} is a valid locator to use for searching for
