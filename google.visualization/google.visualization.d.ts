@@ -14,8 +14,8 @@ declare module google {
 
         export interface ChartSpecs {
             chartType: string;
-            containerId: string;
-            oprtions?: Object;
+            containerId?: string;
+            options?: Object;
             dataTable?: Object;
             dataSourceUrl?: string;
             query?: string;
