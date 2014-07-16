@@ -41,7 +41,7 @@ interface Cheerio {
     prepend(...content: any[]): Cheerio;
     after(...content: any[]): Cheerio;
     before(...content: any[]): Cheerio;
-    remove(selector: string): Cheerio;
+    remove(selector?: string): Cheerio;
     replaceWith(content: string): Cheerio;
     empty(): Cheerio;
 
