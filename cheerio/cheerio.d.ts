@@ -25,7 +25,7 @@ interface Cheerio {
 
     children(selector?: any): Cheerio;
 
-    each(func: (index: any, elem: any) => Cheerio);
+    each(func: (index: any, elem: any) => any): Cheerio;
 
     map(callback: (index: any, domElement: Element) =>any): Cheerio;
 
