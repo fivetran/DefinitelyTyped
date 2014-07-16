@@ -61,8 +61,6 @@ interface Cheerio {
     isArray(obj: any): boolean;
     inArray(value: any, array: any[], fromIndex?: number): number;
     merge(first: any[], second: any[]): any[];
-
-
 }
 
 interface CheerioOptionsInterface {
@@ -74,6 +72,8 @@ interface CheerioOptionsInterface {
 interface CheerioStatic {
     (...selectors: any[]): Cheerio;
     (): Cheerio;
+    html(selector?: string): string;
+    xml(selector?: string): string;
 }
 
 declare module "cheerio" {
