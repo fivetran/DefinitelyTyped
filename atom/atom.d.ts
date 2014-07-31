@@ -7,12 +7,15 @@
 /// <reference path="../jquery/jquery.d.ts" />
 /// <reference path="../space-pen/space-pen.d.ts" />
 /// <reference path="../emissary/emissary.d.ts" />
+/// <reference path="../pathwatcher/pathwatcher.d.ts" />
+/// <reference path="../text-buffer/text-buffer.d.ts" />
+/// <reference path="../status-bar/status-bar.d.ts" />
 
 // Policy: this definition file only declare element related to `atom`.
 // if js file include to another npm package (e.g. "space-pen", "mixto" and "emissary").
 // you should create a separate file.
 
-// NOTE Document? You should use DevTools hehe...
+// API documentation : https://atom.io/docs/api/v0.106.0/api/docs/README.md.html
 
 interface Window {
 	atom: AtomCore.IAtom;
@@ -23,20 +26,82 @@ interface Window {
 declare module AtomCore {
 
 // https://atom.io/docs/v0.84.0/advanced/view-system
-	interface IWorkspaceView {
-		prependToBottom:any;
-		prependToTop:any;
-		prependToLeft:any;
-		prependToRight:any;
-		appendToBottom:any;
-		appendToTop:any;
-		appendToLeft:any;
-		appendToRight:any;
+	interface IWorkspaceViewStatic {
+		new ():IWorkspaceView;
 
-		command: Function;
+		version: number;
+		configDefaults:any;
+		content():any;
+	}
+
+	interface IWorkspaceView extends View {
+		// Delegator.includeInto(WorkspaceView);
+
+		// delegate to model property's property
+		fullScreen:boolean;
+
+		// delegate to model property's method
+		open(uri:string, options:any):Q.Promise<View>;
+		openSync(uri:string, options?:any):any;
+		saveActivePaneItem():any;
+		saveActivePaneItemAs():any;
+		saveAll():void;
+		destroyActivePaneItem():any;
+		destroyActivePane():any;
+		increaseFontSize():void;
+		decreaseFontSize():void;
+
+		// own property & methods
+		initialize(model:IWorkspace):any;
+		initialize(view:View, args:any):void; // do not use
+		model:IWorkspace;
+		panes: IPaneContainerView;
+		getModel():IWorkspace;
+		installShellCommands():any;
+		handleFocus():any;
+		afterAttach(onDom?:any):any;
+		confirmClose():boolean;
+		updateTitle():any;
+		setTitle(title:string):any;
+		getEditorViews():any[]; // atom.EditorView
+		prependToTop(element:any):any;
+		appendToTop(element:any):any;
+		prependToBottom(element:any):any;
+		appendToBottom(element:any):any;
+		prependToLeft(element:any):any;
+		appendToLeft(element:any):any;
+		prependToRight(element:any):any;
+		appendToRight(element:any):any;
+		getActivePaneView():IPaneView;
+		getActiveView():View;
+		focusPreviousPaneView():any;
+		focusNextPaneView():any;
+		focusPaneViewAbove():any;
+		focusPaneViewBelow():any;
+		focusPaneViewOnLeft():any;
+		focusPaneViewOnRight():any;
+		eachPaneView(callback:(paneView:IPaneView)=>any):{ off():any; };
+		getPaneViews():IPaneView[];
+		eachEditorView(callback:(editorView:any /* EditorView */)=>any):{ off():any; };
+		beforeRemove():any;
+
+		command(eventName:string, handler:Function):any;
+		command(eventName:string, selector:Function, handler:Function):any;
+		command(eventName:string, options:any, handler:Function):any;
+		command(eventName:string, selector:Function, options:any, handler:Function):any;
+
+		statusBar:StatusBar.IStatusBarView;
 	}
 
 	interface IPanes {
+		// TBD
+	}
+
+	interface IPaneView {
+		// TBD
+	}
+
+	interface IPaneContainerView {
 		// TBD
 	}
 
@@ -44,11 +109,41 @@ declare module AtomCore {
 		// TBD
 	}
 
-	interface ICommandPanel {
-		// TBD
+	interface IGutterViewStatic {
+		new(): IGutterView;
+		content():any;
 	}
 
-	interface ITextBuffer {
+	interface IGutterView extends View {
+		firstScreenRow:any;
+		lastScreenRow:any;
+		initialize():void;
+		initialize(view:View, args:any):void; // do not use
+		afterAttach(onDom?:any):any;
+		beforeRemove():any;
+		handleMouseEvents(e:JQueryMouseEventObject):any;
+		getEditorView():any; /* EditorView */
+		getEditor():IEditor;
+		getLineNumberElements():HTMLCollection;
+		getLineNumberElementsForClass(klass:string):NodeList;
+		getLineNumberElement(bufferRow:number):NodeList;
+		addClassToAllLines(klass:string):boolean;
+		removeClassFromAllLines(klass:string):boolean;
+		addClassToLine(bufferRow:number, klass:string):boolean;
+		removeClassFromLine(bufferRow:number, klass:string):boolean;
+		updateLineNumbers(changes:any[], startScreenRow?:number, endScreenRow?:number):any;
+		prependLineElements(lineElements:any):void;
+		appendLineElements(lineElements:any):void;
+		removeLineElements(numberOfElements:number):void;
+		buildLineElements(startScreenRow:any, endScreenRow:any):any;
+		buildLineElementsHtml(startScreenRow:any, endScreenRow:any):any;
+		updateFoldableClasses(changes:any[]):any;
+		removeLineHighlights():void;
+		addLineHighlight(row:number, emptySelection?:boolean):any;
+		highlightLines():boolean;
+	}
+
+	interface ICommandPanel {
 		// TBD
 	}
 
@@ -66,7 +161,7 @@ declare module AtomCore {
 
 		declaredPropertyValues:any;
 		tokenizedBuffer: ITokenizedBuffer;
-		buffer: ITextBuffer;
+		buffer: TextBuffer.ITextBuffer;
 		charWidthsByScope:any;
 		markers:{ [index:number]:IDisplayBufferMarker; };
 		foldsByMarkerId:any;
@@ -74,7 +169,7 @@ declare module AtomCore {
 		screenLines:ITokenizedLine[];
 		rowMap:any; // return type are RowMap
 		longestScreenRow:number;
-		subscriptions:ISubscription[];
+		subscriptions:Emissary.ISubscription[];
 		subscriptionsByObject:any; // return type are WeakMap
 		behaviors:any;
 		subscriptionCounts:any;
@@ -123,7 +218,7 @@ declare module AtomCore {
 		scrollToScreenRange(screenRange:any):any;
 		scrollToScreenPosition(screenPosition:any):any;
 		scrollToBufferPosition(bufferPosition:any):any;
-		pixelRectForScreenRange(screenRange:IRange):any;
+		pixelRectForScreenRange(screenRange:TextBuffer.IRange):any;
 		getTabLength():number;
 		setTabLength(tabLength:number):any;
 		setSoftWrap(softWrap:boolean):boolean;
@@ -151,59 +246,59 @@ declare module AtomCore {
 		lastScreenRowForBufferRow(bufferRow:number):number;
 		bufferRowForScreenRow(screenRow:number):number;
 
-		screenRangeForBufferRange(bufferRange:IPoint[]):IRange;
+		screenRangeForBufferRange(bufferRange:TextBuffer.IPoint[]):TextBuffer.IRange;
 
-		screenRangeForBufferRange(bufferRange:IRange):IRange;
+		screenRangeForBufferRange(bufferRange:TextBuffer.IRange):TextBuffer.IRange;
 
-		screenRangeForBufferRange(bufferRange:{start: IPoint; end: IPoint}):IRange;
-		screenRangeForBufferRange(bufferRange:{start: number[]; end: IPoint}):IRange;
-		screenRangeForBufferRange(bufferRange:{start: {row:number; col:number;}; end: IPoint}):IRange;
+		screenRangeForBufferRange(bufferRange:{start: TextBuffer.IPoint; end: TextBuffer.IPoint}):TextBuffer.IRange;
+		screenRangeForBufferRange(bufferRange:{start: number[]; end: TextBuffer.IPoint}):TextBuffer.IRange;
+		screenRangeForBufferRange(bufferRange:{start: {row:number; col:number;}; end: TextBuffer.IPoint}):TextBuffer.IRange;
 
-		screenRangeForBufferRange(bufferRange:{start: IPoint; end: number[]}):IRange;
-		screenRangeForBufferRange(bufferRange:{start: number[]; end: number[]}):IRange;
-		screenRangeForBufferRange(bufferRange:{start: {row:number; col:number;}; end: number[]}):IRange;
+		screenRangeForBufferRange(bufferRange:{start: TextBuffer.IPoint; end: number[]}):TextBuffer.IRange;
+		screenRangeForBufferRange(bufferRange:{start: number[]; end: number[]}):TextBuffer.IRange;
+		screenRangeForBufferRange(bufferRange:{start: {row:number; col:number;}; end: number[]}):TextBuffer.IRange;
 
-		screenRangeForBufferRange(bufferRange:{start: IPoint; end: {row:number; col:number;}}):IRange;
-		screenRangeForBufferRange(bufferRange:{start: number[]; end: {row:number; col:number;}}):IRange;
-		screenRangeForBufferRange(bufferRange:{start: {row:number; col:number;}; end: {row:number; col:number;}}):IRange;
+		screenRangeForBufferRange(bufferRange:{start: TextBuffer.IPoint; end: {row:number; col:number;}}):TextBuffer.IRange;
+		screenRangeForBufferRange(bufferRange:{start: number[]; end: {row:number; col:number;}}):TextBuffer.IRange;
+		screenRangeForBufferRange(bufferRange:{start: {row:number; col:number;}; end: {row:number; col:number;}}):TextBuffer.IRange;
 
-		bufferRangeForScreenRange(screenRange:IPoint[]):IRange;
+		bufferRangeForScreenRange(screenRange:TextBuffer.IPoint[]):TextBuffer.IRange;
 
-		bufferRangeForScreenRange(screenRange:IRange):IRange;
+		bufferRangeForScreenRange(screenRange:TextBuffer.IRange):TextBuffer.IRange;
 
-		bufferRangeForScreenRange(screenRange:{start: IPoint; end: IPoint}):IRange;
-		bufferRangeForScreenRange(screenRange:{start: number[]; end: IPoint}):IRange;
-		bufferRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: IPoint}):IRange;
+		bufferRangeForScreenRange(screenRange:{start: TextBuffer.IPoint; end: TextBuffer.IPoint}):TextBuffer.IRange;
+		bufferRangeForScreenRange(screenRange:{start: number[]; end: TextBuffer.IPoint}):TextBuffer.IRange;
+		bufferRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: TextBuffer.IPoint}):TextBuffer.IRange;
 
-		bufferRangeForScreenRange(screenRange:{start: IPoint; end: number[]}):IRange;
-		bufferRangeForScreenRange(screenRange:{start: number[]; end: number[]}):IRange;
-		bufferRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: number[]}):IRange;
+		bufferRangeForScreenRange(screenRange:{start: TextBuffer.IPoint; end: number[]}):TextBuffer.IRange;
+		bufferRangeForScreenRange(screenRange:{start: number[]; end: number[]}):TextBuffer.IRange;
+		bufferRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: number[]}):TextBuffer.IRange;
 
-		bufferRangeForScreenRange(screenRange:{start: IPoint; end: {row:number; col:number;}}):IRange;
-		bufferRangeForScreenRange(screenRange:{start: number[]; end: {row:number; col:number;}}):IRange;
-		bufferRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: {row:number; col:number;}}):IRange;
+		bufferRangeForScreenRange(screenRange:{start: TextBuffer.IPoint; end: {row:number; col:number;}}):TextBuffer.IRange;
+		bufferRangeForScreenRange(screenRange:{start: number[]; end: {row:number; col:number;}}):TextBuffer.IRange;
+		bufferRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: {row:number; col:number;}}):TextBuffer.IRange;
 
-		pixelRangeForScreenRange(screenRange:IPoint[], clip?:boolean):IRange;
+		pixelRangeForScreenRange(screenRange:TextBuffer.IPoint[], clip?:boolean):TextBuffer.IRange;
 
-		pixelRangeForScreenRange(screenRange:IRange, clip?:boolean):IRange;
+		pixelRangeForScreenRange(screenRange:TextBuffer.IRange, clip?:boolean):TextBuffer.IRange;
 
-		pixelRangeForScreenRange(screenRange:{start: IPoint; end: IPoint}, clip?:boolean):IRange;
-		pixelRangeForScreenRange(screenRange:{start: number[]; end: IPoint}, clip?:boolean):IRange;
-		pixelRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: IPoint}, clip?:boolean):IRange;
+		pixelRangeForScreenRange(screenRange:{start: TextBuffer.IPoint; end: TextBuffer.IPoint}, clip?:boolean):TextBuffer.IRange;
+		pixelRangeForScreenRange(screenRange:{start: number[]; end: TextBuffer.IPoint}, clip?:boolean):TextBuffer.IRange;
+		pixelRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: TextBuffer.IPoint}, clip?:boolean):TextBuffer.IRange;
 
-		pixelRangeForScreenRange(screenRange:{start: IPoint; end: number[]}, clip?:boolean):IRange;
-		pixelRangeForScreenRange(screenRange:{start: number[]; end: number[]}, clip?:boolean):IRange;
-		pixelRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: number[]}, clip?:boolean):IRange;
+		pixelRangeForScreenRange(screenRange:{start: TextBuffer.IPoint; end: number[]}, clip?:boolean):TextBuffer.IRange;
+		pixelRangeForScreenRange(screenRange:{start: number[]; end: number[]}, clip?:boolean):TextBuffer.IRange;
+		pixelRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: number[]}, clip?:boolean):TextBuffer.IRange;
 
-		pixelRangeForScreenRange(screenRange:{start: IPoint; end: {row:number; col:number;}}, clip?:boolean):IRange;
-		pixelRangeForScreenRange(screenRange:{start: number[]; end: {row:number; col:number;}}, clip?:boolean):IRange;
-		pixelRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: {row:number; col:number;}}, clip?:boolean):IRange;
+		pixelRangeForScreenRange(screenRange:{start: TextBuffer.IPoint; end: {row:number; col:number;}}, clip?:boolean):TextBuffer.IRange;
+		pixelRangeForScreenRange(screenRange:{start: number[]; end: {row:number; col:number;}}, clip?:boolean):TextBuffer.IRange;
+		pixelRangeForScreenRange(screenRange:{start: {row:number; col:number;}; end: {row:number; col:number;}}, clip?:boolean):TextBuffer.IRange;
 
-		pixelPositionForScreenPosition(screenPosition:IPoint, clip?:boolean):IPoint;
-		pixelPositionForScreenPosition(screenPosition:number[], clip?:boolean):IPoint;
-		pixelPositionForScreenPosition(screenPosition:{row:number; col:number;}, clip?:boolean):IPoint;
+		pixelPositionForScreenPosition(screenPosition:TextBuffer.IPoint, clip?:boolean):TextBuffer.IPoint;
+		pixelPositionForScreenPosition(screenPosition:number[], clip?:boolean):TextBuffer.IPoint;
+		pixelPositionForScreenPosition(screenPosition:{row:number; col:number;}, clip?:boolean):TextBuffer.IPoint;
 
-		screenPositionForPixelPosition(pixelPosition:any):IPoint;
+		screenPositionForPixelPosition(pixelPosition:any):TextBuffer.IPoint;
 
 		pixelPositionForBufferPosition(bufferPosition:any):any;
 		getLineCount():number;
@@ -219,14 +314,14 @@ declare module AtomCore {
 		reloadGrammar():any;
 		clipScreenPosition(screenPosition:any, options:any):any;
 		findWrapColumn(line:any, softWrapColumn:any):any;
-		rangeForAllLines():IRange;
+		rangeForAllLines():TextBuffer.IRange;
 		getMarker(id:number):IDisplayBufferMarker;
 		getMarkers():IDisplayBufferMarker[];
 		getMarkerCount():number;
-		markScreenRange(range:IRange, ...args:any[]):IDisplayBufferMarker;
-		markBufferRange(range:IRange, options?:any):IDisplayBufferMarker;
-		markScreenPosition(screenPosition:IPoint, options?:any):IDisplayBufferMarker;
-		markBufferPosition(bufferPosition:IPoint, options?:any):IDisplayBufferMarker;
+		markScreenRange(range:TextBuffer.IRange, ...args:any[]):IDisplayBufferMarker;
+		markBufferRange(range:TextBuffer.IRange, options?:any):IDisplayBufferMarker;
+		markScreenPosition(screenPosition:TextBuffer.IPoint, options?:any):IDisplayBufferMarker;
+		markBufferPosition(bufferPosition:TextBuffer.IPoint, options?:any):IDisplayBufferMarker;
 		destroyMarker(id:number):any;
 		findMarker(params?:any):IDisplayBufferMarker;
 		findMarkers(params?:any):IDisplayBufferMarker[];
@@ -249,8 +344,75 @@ declare module AtomCore {
 		foldForMarker(marker:any):any;
 	}
 
-	interface ICursor {
-		// TBD
+	interface ICursorStatic {
+		new (arg:{editor:IEditor; marker:IDisplayBufferMarker; id: number;}):ICursor;
+	}
+
+	interface ICursor /* extends Theorist.Model */ {
+		screenPosition:any;
+		bufferPosition:any;
+		goalColumn:any;
+		visible:boolean;
+		needsAutoscroll:boolean;
+
+		editor:IEditor;
+		marker:IDisplayBufferMarker;
+		id: number;
+
+		destroy():any;
+		changePosition(options:any, fn:Function):any;
+		getPixelRect():any;
+		setScreenPosition(screenPosition:any, options?:any):any;
+		getScreenPosition():TextBuffer.IPoint;
+		getScreenRange():TextBuffer.IRange;
+		setBufferPosition(bufferPosition:any, options?:any):any;
+		getBufferPosition():TextBuffer.IPoint;
+		autoscroll():any;
+		updateVisibility():any;
+		setVisible(visible:boolean):any;
+		isVisible():boolean;
+		wordRegExp(arg?:any):any;
+		isLastCursor():boolean;
+		isSurroundedByWhitespace():boolean;
+		isBetweenWordAndNonWord():boolean;
+		isInsideWord():boolean;
+		clearAutoscroll():void;
+		clearSelection():void;
+		getScreenRow():number;
+		getScreenColumn():number;
+		getBufferRow():number;
+		getBufferColumn():number;
+		getCurrentBufferLine():string;
+		moveUp(rowCount:number, arg?:any):any;
+		moveDown(rowCount:number, arg?:any):any;
+		moveLeft(arg?:any):any;
+		moveRight(arg?:any):any;
+		moveToTop():any;
+		moveToBottom():void;
+		moveToBeginningOfScreenLine():void;
+		moveToBeginningOfLine():void;
+		moveToFirstCharacterOfLine():void;
+		moveToEndOfScreenLine():void;
+		moveToEndOfLine():void;
+		moveToBeginningOfWord():void;
+		moveToEndOfWord():void;
+		moveToBeginningOfNextWord():void;
+		moveToPreviousWordBoundary():void;
+		moveToNextWordBoundary():void;
+		getBeginningOfCurrentWordBufferPosition(options?:any):TextBuffer.IPoint;
+		getPreviousWordBoundaryBufferPosition(options?:any):TextBuffer.IPoint;
+		getMoveNextWordBoundaryBufferPosition(options?:any):TextBuffer.IPoint;
+		getEndOfCurrentWordBufferPosition(options?:any):TextBuffer.IPoint;
+		getBeginningOfNextWordBufferPosition(options?:any):TextBuffer.IPoint;
+		getCurrentWordBufferRange(options?:any):TextBuffer.IPoint;
+		getCurrentLineBufferRange(options?:any):TextBuffer.IPoint;
+		getCurrentParagraphBufferRange():any;
+		getCurrentWordPrefix():string;
+		isAtBeginningOfLine():boolean;
+		getIndentLevel():number;
+		isAtEndOfLine():boolean;
+		getScopes():string[];
+		hasPrecedingCharactersOnLine():boolean;
 	}
 
 	interface ILanguageMode {
@@ -273,17 +435,17 @@ declare module AtomCore {
 		isEmpty():boolean;
 		isReversed():boolean;
 		isSingleScreenLine():boolean;
-		getScreenRange():IRange;
+		getScreenRange():TextBuffer.IRange;
 		setScreenRange(screenRange:any, options:any):any;
-		getBufferRange():IRange;
+		getBufferRange():TextBuffer.IRange;
 		setBufferRange(bufferRange:any, options:any):any;
 		getBufferRowRange():number[];
 		autoscroll():void;
 		getText():string;
 		clear():boolean;
-		selectWord():IRange;
+		selectWord():TextBuffer.IRange;
 		expandOverWord():any;
-		selectLine(row?:any):IRange;
+		selectLine(row?:any):TextBuffer.IRange;
 		expandOverLine():boolean;
 		selectToScreenPosition(position:any):any;
 		selectToBufferPosition(position:any):any;
@@ -308,7 +470,7 @@ declare module AtomCore {
 		insertText(text:string, options?:any):any;
 		normalizeIndents(text:string, indentBasis:number):any;
 		indent(_arg?:any):any;
-		indentSelectedRows():IRange[];
+		indentSelectedRows():TextBuffer.IRange[];
 		setIndentationForLine(line:string, indentLevel:number):any;
 		backspace():any;
 		backspaceToBeginningOfWord():any;
@@ -335,10 +497,6 @@ declare module AtomCore {
 		screenRangeChanged():any;
 	}
 
-	interface ISubscription {
-		// TBD
-	}
-
 	interface IEditor {
 		// Serializable.includeInto(Editor);
 		// Delegator.includeInto(Editor);
@@ -346,7 +504,7 @@ declare module AtomCore {
 		deserializing:boolean;
 		callDisplayBufferCreatedHook:boolean;
 		registerEditor:boolean;
-		buffer:ITextBuffer;
+		buffer:TextBuffer.ITextBuffer;
 		languageMode: ILanguageMode;
 		cursors:ICursor[];
 		selections: ISelection[];
@@ -362,7 +520,7 @@ declare module AtomCore {
 		lastOpened: number;
 		subscriptionCounts: any;
 		subscriptionsByObject: any; /* WeakMap */
-		subscriptions: ISubscription[];
+		subscriptions: Emissary.ISubscription[];
 
 		serializeParams():{id:number; softTabs:boolean; scrollTop:number; scrollLeft:number; displayBuffer:any;};
 		deserializeParams(params:any):any;
@@ -400,14 +558,14 @@ declare module AtomCore {
 		setText(text:any):void;
 		getTextInRange(range:any):any;
 		getLineCount():number;
-		getBuffer():ITextBuffer;
+		getBuffer():TextBuffer.ITextBuffer;
 		getUri():string;
 		isBufferRowBlank(bufferRow:any):boolean;
 		isBufferRowCommented(bufferRow:any):void;
 		nextNonBlankBufferRow(bufferRow:any):void;
-		getEofBufferPosition():IPoint;
+		getEofBufferPosition():TextBuffer.IPoint;
 		getLastBufferRow():number;
-		bufferRangeForBufferRow(row:any, options:any):IRange;
+		bufferRangeForBufferRow(row:any, options:any):TextBuffer.IRange;
 		lineForBufferRow(row:number):string;
 		lineLengthForBufferRow(row:number):number;
 		scan():any;
@@ -415,11 +573,11 @@ declare module AtomCore {
 		backwardsScanInBufferRange():any;
 		isModified():boolean;
 		shouldPromptToSave():boolean;
-		screenPositionForBufferPosition(bufferPosition:any, options?:any):IPoint;
-		bufferPositionForScreenPosition(screenPosition:any, options?:any):IPoint;
-		screenRangeForBufferRange(bufferRange:any):IRange;
-		bufferRangeForScreenRange(screenRange:any):IRange;
-		clipScreenPosition(screenPosition:any, options:any):IRange;
+		screenPositionForBufferPosition(bufferPosition:any, options?:any):TextBuffer.IPoint;
+		bufferPositionForScreenPosition(screenPosition:any, options?:any):TextBuffer.IPoint;
+		screenRangeForBufferRange(bufferRange:any):TextBuffer.IRange;
+		bufferRangeForScreenRange(screenRange:any):TextBuffer.IRange;
+		clipScreenPosition(screenPosition:any, options:any):TextBuffer.IRange;
 		lineForScreenRow(row:any):ITokenizedLine;
 		linesForScreenRows(start?:any, end?:any):ITokenizedLine[];
 		getScreenLineCount():number;
@@ -431,9 +589,9 @@ declare module AtomCore {
 		bufferRangeForScopeAtCursor(selector:string):any;
 		tokenForBufferPosition(bufferPosition:any):IToken;
 		getCursorScopes():string[];
-		insertText(text:string, options?:any):IRange[];
-		insertNewline():IRange[];
-		insertNewlineBelow():IRange[];
+		insertText(text:string, options?:any):TextBuffer.IRange[];
+		insertNewline():TextBuffer.IRange[];
+		insertNewlineBelow():TextBuffer.IRange[];
 		insertNewlineAbove():any;
 		indent(options?:any):any;
 		backspace():any[];
@@ -441,16 +599,16 @@ declare module AtomCore {
 		backspaceToBeginningOfLine():any[];
 		delete():any[];
 		deleteToEndOfWord():any[];
-		deleteLine():IRange[];
-		indentSelectedRows():IRange[][];
-		outdentSelectedRows():IRange[][];
-		toggleLineCommentsInSelection():IRange[];
-		autoIndentSelectedRows():IRange[][];
+		deleteLine():TextBuffer.IRange[];
+		indentSelectedRows():TextBuffer.IRange[][];
+		outdentSelectedRows():TextBuffer.IRange[][];
+		toggleLineCommentsInSelection():TextBuffer.IRange[];
+		autoIndentSelectedRows():TextBuffer.IRange[][];
 		normalizeTabsInBufferRange(bufferRange:any):any;
 		cutToEndOfLine():boolean[];
 		cutSelectedText():boolean[];
 		copySelectedText():boolean[];
-		pasteText(options?:any):IRange[];
+		pasteText(options?:any):TextBuffer.IRange[];
 		undo():any[];
 		redo():any[];
 		foldCurrentRow():any;
@@ -480,12 +638,12 @@ declare module AtomCore {
 		replaceSelectedText(options:any, fn:(selection:string)=>any):any;
 		getMarker(id:number):IDisplayBufferMarker;
 		getMarkers():IDisplayBufferMarker[];
-		findMarkers(properties:any):IDisplayBufferMarker[];
-		markScreenRange(value:number):IDisplayBufferMarker;
-		markBufferRange(value:number):IDisplayBufferMarker;
-		markScreenPosition(value:number):IDisplayBufferMarker;
-		markBufferPosition():IDisplayBufferMarker;
-		destroyMarker():boolean;
+		findMarkers(...args:any[]):IDisplayBufferMarker[];
+		markScreenRange(...args:any[]):IDisplayBufferMarker;
+		markBufferRange(...args:any[]):IDisplayBufferMarker;
+		markScreenPosition(...args:any[]):IDisplayBufferMarker;
+		markBufferPosition(...args:any[]):IDisplayBufferMarker;
+		destroyMarker(...args:any[]):boolean;
 		getMarkerCount():number;
 		hasMultipleCursors():boolean;
 		getCursors():ICursor[];
@@ -507,18 +665,18 @@ declare module AtomCore {
 		getSelectionsOrderedByBufferPosition():ISelection[];
 		getLastSelectionInBuffer():ISelection;
 		selectionIntersectsBufferRange(bufferRange:any):any;
-		setCursorScreenPosition(position:any, options:any):any;
-		getCursorScreenPosition():IPoint;
+		setCursorScreenPosition(position:TextBuffer.IPoint, options?:any):any;
+		getCursorScreenPosition():TextBuffer.IPoint;
 		getCursorScreenRow():number;
-		setCursorBufferPosition(position:any, options:any):any;
-		getCursorBufferPosition():IPoint;
-		getSelectedScreenRange():IRange;
-		getSelectedBufferRange():IRange;
-		getSelectedBufferRanges():IRange[];
+		setCursorBufferPosition(position:any, options?:any):any;
+		getCursorBufferPosition():TextBuffer.IPoint;
+		getSelectedScreenRange():TextBuffer.IRange;
+		getSelectedBufferRange():TextBuffer.IRange;
+		getSelectedBufferRanges():TextBuffer.IRange[];
 		getSelectedText():string;
-		getTextInBufferRange(range:IRange):string;
-		setTextInBufferRange(range:IRange, text:string):any;
-		getCurrentParagraphBufferRange():IRange;
+		getTextInBufferRange(range:TextBuffer.IRange):string;
+		setTextInBufferRange(range:TextBuffer.IRange, text:string):any;
+		getCurrentParagraphBufferRange():TextBuffer.IRange;
 		getWordUnderCursor(options?:any):string;
 		moveCursorUp(lineCount?:number):void;
 		moveCursorDown(lineCount?:number):void;
@@ -537,7 +695,7 @@ declare module AtomCore {
 		moveCursorToPreviousWordBoundary():void;
 		moveCursorToNextWordBoundary():void;
 		moveCursors(fn:(cursor:ICursor)=>any):any;
-		selectToScreenPosition(position:IPoint):any;
+		selectToScreenPosition(position:TextBuffer.IPoint):any;
 		selectRight():ISelection[];
 		selectLeft():ISelection[];
 		selectUp(rowCount?:number):ISelection[];
@@ -554,7 +712,7 @@ declare module AtomCore {
 		addSelectionBelow():ISelection[];
 		addSelectionAbove():ISelection[];
 		splitSelectionsIntoLines():any[];
-		transpose():IRange[];
+		transpose():TextBuffer.IRange[];
 		upperCase():boolean[];
 		lowerCase():boolean[];
 		joinLines():any[];
@@ -568,7 +726,7 @@ declare module AtomCore {
 		expandSelectionsBackward(fn:(selection:ISelection)=>any):ISelection[];
 		finalizeSelections():boolean[];
 		mergeIntersectingSelections():any;
-		preserveCursorPositionOnBufferReload():ISubscription;
+		preserveCursorPositionOnBufferReload():Emissary.ISubscription;
 		getGrammar(): IGrammar;
 		setGrammar(grammer:IGrammar):void;
 		reloadGrammar():any;
@@ -666,8 +824,46 @@ declare module AtomCore {
 		height:number;
 	}
 
-	interface IProject {
-		// TBD
+	interface IProjectStatic {
+		pathForRepositoryUrl(repoUrl:string):string;
+
+		new (arg?:{path:any; buffers:any[];}):IProject;
+	}
+
+	interface IProject /* extends Theorist.Model */ {
+		// Serializable.includeInto(Project);
+
+		path:string;
+		rootDirectory:PathWatcher.IDirectory;
+
+		serializeParams():any;
+		deserializeParams(params:any):any;
+		destroyed():any;
+		destroyRepo():any;
+		destroyUnretainedBuffers():any;
+		getRepo():IGit;
+		getPath():string;
+		setPath(projectPath:string):any;
+		getRootDirectory():PathWatcher.IDirectory;
+		resolve(uri:string):string;
+		relativize(fullPath:string):string;
+		contains(pathToCheck:string):boolean;
+		open(filePath:string, options?:any):Q.Promise<IEditor>;
+		openSync(filePath:string, options?:any):IEditor;
+		getBuffers():TextBuffer.ITextBuffer;
+		isPathModified(filePath:string):boolean;
+		findBufferForPath(filePath:string):TextBuffer.ITextBuffer;
+		bufferForPathSync(filePath:string):TextBuffer.ITextBuffer;
+		bufferForPath(filePath:string):Q.Promise<TextBuffer.ITextBuffer>;
+		bufferForId(id:any):TextBuffer.ITextBuffer;
+		buildBufferSync(absoluteFilePath:string):TextBuffer.ITextBuffer;
+		buildBuffer(absoluteFilePath:string):Q.Promise<TextBuffer.ITextBuffer>;
+		addBuffer(buffer:TextBuffer.ITextBuffer, options?:any):any;
+		addBufferAtIndex(buffer:TextBuffer.ITextBuffer, index:number, options?:any):any;
+		scan(regex:any, options:any, iterator:any):Q.Promise<any>;
+		replace(regex:any, replacementText:any, filePaths:any, iterator:any):Q.Promise<any>;
+		buildEditorForBuffer(buffer:any, editorOptions:any):IEditor;
+		eachBuffer(...args:any[]):any;
 	}
 
 	interface IWorkspaceStatic {
@@ -745,6 +941,21 @@ declare module AtomCore {
 		// TBD
 	}
 
+  interface IPackage {
+		mainModulePath: string;
+		mainModule: any;
+		enable(): void;
+		disable(): void;
+		isTheme(): boolean;
+		getType(): string;
+		getStylesheetType(): string;
+		load(): IPackage;
+		reset(): void;
+		activate(): Q.Promise<any[]>;
+		activateNow(): void;
+	  // TBD
+  }
+
 	interface IPackageManager extends Emissary.IEmitter {
 		packageDirPaths:string[];
 		loadedPackages:any;
@@ -761,7 +972,7 @@ declare module AtomCore {
 		activate():void;
 		registerPackageActivator(activator:any, types:any):void;
 		activatePackages(packages:any):void;
-		activatePackage(name:string):void;
+		activatePackage(name:string):Q.Promise<IPackage>;
 		deactivatePackages():void;
 		deactivatePackage(name:string):void;
 		getActivePackages():any;
@@ -814,7 +1025,14 @@ declare module AtomCore {
 	interface IAtomStatic extends ISerializationStatic<IAtom> {
 		version: number;
 		loadSettings: IAtomSettings;
+
+		/* Load or create the Atom environment in the given mode */
+		loadOrCreate(mode:'editor'):IAtom;
+		/* Load or create the Atom environment in the given mode */
+		loadOrCreate(mode:'spec'):IAtom;
+		/* Load or create the Atom environment in the given mode */
 		loadOrCreate(mode:string):IAtom;
+
 		loadState(mode:any):void;
 		getStatePath(mode:any):string;
 		getConfigDirPath():string;
@@ -827,6 +1045,8 @@ declare module AtomCore {
 		new(state:IAtomState):IAtom;
 	}
 
+	// https://atom.io/docs/api/v0.106.0/api/classes/Atom.html
+	/* Global Atom class : instance members */
 	interface IAtom {
 		constructor:IAtomStatic;
 
@@ -937,157 +1157,6 @@ declare module AtomCore {
 	interface IGit {
 	}
 
-	interface IPointStatic {
-		new (row?:number, column?:number):IPoint;
-
-		fromObject(point:IPoint, copy?:boolean):IPoint;
-		fromObject(object:number[]):IPoint;
-		fromObject(object:{row:number; col:number;}):IPoint;
-
-		min(point1:IPoint, point2:IPoint):IPoint;
-		min(point1:number[], point2:IPoint):IPoint;
-		min(point1:{row:number; col:number;}, point2:IPoint):IPoint;
-
-		min(point1:IPoint, point2:number[]):IPoint;
-		min(point1:number[], point2:number[]):IPoint;
-		min(point1:{row:number; col:number;}, point2:number[]):IPoint;
-
-		min(point1:IPoint, point2:{row:number; col:number;}):IPoint;
-		min(point1:number[], point2:{row:number; col:number;}):IPoint;
-		min(point1:{row:number; col:number;}, point2:{row:number; col:number;}):IPoint;
-	}
-
-	interface IPoint {
-		constructor: IPointStatic;
-
-		row:number;
-		column:number;
-
-		copy():IPoint;
-		freeze():IPoint;
-
-		translate(delta:IPoint):IPoint;
-		translate(delta:number[]):IPoint;
-		translate(delta:{row:number; col:number;}):IPoint;
-
-		add(other:IPoint):IPoint;
-		add(other:number[]):IPoint;
-		add(other:{row:number; col:number;}):IPoint;
-
-		splitAt(column:number):IPoint[];
-		compare(other:IPoint):number;
-		isEqual(other:IPoint):boolean;
-		isLessThan(other:IPoint):boolean;
-		isLessThanOrEqual(other:IPoint):boolean;
-		isGreaterThan(other:IPoint):boolean;
-		isGreaterThanOrEqual(other:IPoint):boolean;
-		toArray():number[];
-		serialize():number[];
-	}
-
-	interface IRangeStatic {
-		deserialize(array:IPoint[]):IRange;
-
-		fromObject(object:IPoint[]):IRange;
-
-		fromObject(object:IRange, copy?:boolean):IRange;
-
-		fromObject(object:{start: IPoint; end: IPoint}):IRange;
-		fromObject(object:{start: number[]; end: IPoint}):IRange;
-		fromObject(object:{start: {row:number; col:number;}; end: IPoint}):IRange;
-
-		fromObject(object:{start: IPoint; end: number[]}):IRange;
-		fromObject(object:{start: number[]; end: number[]}):IRange;
-		fromObject(object:{start: {row:number; col:number;}; end: number[]}):IRange;
-
-		fromObject(object:{start: IPoint; end: {row:number; col:number;}}):IRange;
-		fromObject(object:{start: number[]; end: {row:number; col:number;}}):IRange;
-		fromObject(object:{start: {row:number; col:number;}; end: {row:number; col:number;}}):IRange;
-
-		fromText(point:IPoint, text:string):IRange;
-		fromText(point:number[], text:string):IRange;
-		fromText(point:{row:number; col:number;}, text:string):IRange;
-		fromText(text:string):IRange;
-
-		fromPointWithDelta(startPoint:IPoint, rowDelta:number, columnDelta:number):IRange;
-		fromPointWithDelta(startPoint:number[], rowDelta:number, columnDelta:number):IRange;
-		fromPointWithDelta(startPoint:{row:number; col:number;}, rowDelta:number, columnDelta:number):IRange;
-
-		new(point1:IPoint, point2:IPoint):IRange;
-		new(point1:number[], point2:IPoint):IRange;
-		new(point1:{row:number; col:number;}, point2:IPoint):IRange;
-
-		new(point1:IPoint, point2:number[]):IRange;
-		new(point1:number[], point2:number[]):IRange;
-		new(point1:{row:number; col:number;}, point2:number[]):IRange;
-
-		new(point1:IPoint, point2:{row:number; col:number;}):IRange;
-		new(point1:number[], point2:{row:number; col:number;}):IRange;
-		new(point1:{row:number; col:number;}, point2:{row:number; col:number;}):IRange;
-	}
-
-	interface IRange {
-		constructor:IRangeStatic;
-
-		start: IPoint;
-		end: IPoint;
-
-		serialize():number[][];
-		copy():IRange;
-		freeze():IRange;
-		isEqual(other:IRange):boolean;
-		isEqual(other:IPoint[]):boolean;
-
-		compare(object:IPoint[]):number;
-
-		compare(object:{start: IPoint; end: IPoint}):number;
-		compare(object:{start: number[]; end: IPoint}):number;
-		compare(object:{start: {row:number; col:number;}; end: IPoint}):number;
-
-		compare(object:{start: IPoint; end: number[]}):number;
-		compare(object:{start: number[]; end: number[]}):number;
-		compare(object:{start: {row:number; col:number;}; end: number[]}):number;
-
-		compare(object:{start: IPoint; end: {row:number; col:number;}}):number;
-		compare(object:{start: number[]; end: {row:number; col:number;}}):number;
-		compare(object:{start: {row:number; col:number;}; end: {row:number; col:number;}}):number;
-
-		isSingleLine():boolean;
-		coversSameRows(other:IRange):boolean;
-
-		add(object:IPoint[]):IRange;
-
-		add(object:{start: IPoint; end: IPoint}):IRange;
-		add(object:{start: number[]; end: IPoint}):IRange;
-		add(object:{start: {row:number; col:number;}; end: IPoint}):IRange;
-
-		add(object:{start: IPoint; end: number[]}):IRange;
-		add(object:{start: number[]; end: number[]}):IRange;
-		add(object:{start: {row:number; col:number;}; end: number[]}):IRange;
-
-		add(object:{start: IPoint; end: {row:number; col:number;}}):IRange;
-		add(object:{start: number[]; end: {row:number; col:number;}}):IRange;
-		add(object:{start: {row:number; col:number;}; end: {row:number; col:number;}}):IRange;
-
-		translate(startPoint:IPoint, endPoint:IPoint):IRange;
-		translate(startPoint:IPoint):IRange;
-
-		intersectsWith(otherRange:IRange):boolean;
-		containsRange(otherRange:IRange, exclusive:boolean):boolean;
-
-		containsPoint(point:IPoint, exclusive:boolean):boolean;
-		containsPoint(point:number[], exclusive:boolean):boolean;
-		containsPoint(point:{row:number; col:number;}, exclusive:boolean):boolean;
-
-		intersectsRow(row:number):boolean;
-		intersectsRowRange(startRow:number, endRow:number):boolean;
-		union(otherRange:IRange):IRange;
-		isEmpty():boolean;
-		toDelta():IPoint;
-		getRowCount():number;
-		getRows():number[];
-	}
-
 	interface ITokenizedBuffer {
 		// TBD
 	}
@@ -1123,10 +1192,10 @@ declare module AtomCore {
 		id: number;
 
 		bufferMarkerSubscription:any;
-		oldHeadBufferPosition:IPoint;
-		oldHeadScreenPosition:IPoint;
-		oldTailBufferPosition:IPoint;
-		oldTailScreenPosition:IPoint;
+		oldHeadBufferPosition:TextBuffer.IPoint;
+		oldHeadScreenPosition:TextBuffer.IPoint;
+		oldTailBufferPosition:TextBuffer.IPoint;
+		oldTailScreenPosition:TextBuffer.IPoint;
 		wasValid:boolean;
 
 		bufferMarker: IMarker;
@@ -1134,22 +1203,22 @@ declare module AtomCore {
 		globalPauseCount:number;
 		globalQueuedEvents:any;
 
-		subscriptions:ISubscription[];
+		subscriptions:Emissary.ISubscription[];
 		subscriptionsByObject:any; // WeakMap
 
 		copy(attributes?:any /* maybe IMarker */):IDisplayBufferMarker;
-		getScreenRange():IRange;
+		getScreenRange():TextBuffer.IRange;
 		setScreenRange(screenRange:any, options:any):any;
-		getBufferRange():IRange;
+		getBufferRange():TextBuffer.IRange;
 		setBufferRange(bufferRange:any, options:any):any;
 		getPixelRange():any;
-		getHeadScreenPosition():IPoint;
+		getHeadScreenPosition():TextBuffer.IPoint;
 		setHeadScreenPosition(screenPosition:any, options:any):any;
-		getHeadBufferPosition():IPoint;
+		getHeadBufferPosition():TextBuffer.IPoint;
 		setHeadBufferPosition(bufferPosition:any):any;
-		getTailScreenPosition():IPoint;
+		getTailScreenPosition():TextBuffer.IPoint;
 		setTailScreenPosition(screenPosition:any, options:any):any;
-		getTailBufferPosition():IPoint;
+		getTailBufferPosition():TextBuffer.IPoint;
 		setTailBufferPosition(bufferPosition:any):any;
 		plantTail():boolean;
 		clearTail():boolean;
@@ -1194,13 +1263,14 @@ declare module "atom" {
 	import spacePen = require("space-pen");
 
 	var $:typeof spacePen.$;
+	var $$:typeof spacePen.$$;
 	var $$$:typeof spacePen.$$$;
 
 	var BufferedNodeProcess:AtomCore.IBufferedNodeProcessStatic;
 	var BufferedProcess:AtomCore.IBufferedProcessStatic;
 	var Git:AtomCore.IGitStatic;
-	var Point:AtomCore.IPointStatic;
-	var Range:AtomCore.IRangeStatic;
+	var Point:TextBuffer.IPointStatic;
+	var Range:TextBuffer.IRangeStatic;
 
 	class View extends spacePen.View implements Emissary.ISubscriber {
 		// Subscriber.includeInto(spacePen.View);
@@ -1243,9 +1313,20 @@ declare module "atom" {
 		newSelections:any[];
 		redrawOnReattach:any;
 		bottomPaddingInLines:number;
+		active:boolean;
 
 		id:number;
 
+		gutter:AtomCore.IGutterView;
+		overlayer:JQuery;
+		scrollView:JQuery;
+		renderedLines:JQuery;
+		underlayer:JQuery;
+		hiddenInput:JQuery;
+		verticalScrollbar:JQuery;
+		verticalScrollbarContent:JQuery;
+
+		constructor(editor:AtomCore.IEditor);
 
 		initialize(editorOrOptions:AtomCore.IEditor):void; // return type are same as editor method.
 		initialize(editorOrOptions?:{editor: AtomCore.IEditor; mini:any; placeholderText:any}):void;
@@ -1260,7 +1341,7 @@ declare module "atom" {
 
 		setText(text:string):void;
 
-		insertText(text:string, options?:any):AtomCore.IRange[];
+		insertText(text:string, options?:any):TextBuffer.IRange[];
 
 		setHeightInLines(heightInLines:number):number;
 
@@ -1284,7 +1365,7 @@ declare module "atom" {
 
 		checkoutHead():boolean;
 
-		configure():AtomCore.ISubscription;
+		configure():Emissary.ISubscription;
 
 		handleEvents():void;
 
@@ -1507,13 +1588,73 @@ declare module "atom" {
 		// TBD
 	}
 
-	class SelectListView extends View {
-		// TBD
+	interface ISelectListItem {
+		/** e.g. application:about */
+		eventName:string;
+		/** e.g. Application: About */
+		eventDescription:string;
 	}
 
-	class WorkspaceView extends View {
-		// TBD
+	class SelectListView extends View {
+		static content():any;
+
+		maxItems:number;
+		scheduleTimeout:any;
+		inputThrottle:number;
+		cancelling:boolean;
+		items:any[];
+		list:JQuery;
+
+		previouslyFocusedElement:JQuery;
+
+		initialize():any;
+
+		schedulePopulateList():number;
+
+		setItems(items:any[]):any;
+
+		setError(message?:string):any;
+
+		setLoading(message?:string):any;
+
+		getFilterQuery():string;
+
+		populateList():any;
+
+		getEmptyMessage(itemCount?:any, filteredItemCount?:any):string;
+
+		setMaxItems(maxItems:number):void;
+
+		selectPreviousItemView():any;
+
+		selectNextItemView():any;
+
+		selectItemView(view:any):any;
+
+		scrollToItemView(view:any):any;
+
+		getSelectedItemView():any;
+
+		getSelectedItem():any;
+
+		confirmSelection():any;
+
+		viewForItem(item:any):JQuery; // You must override this method!
+		confirmed(item:any):any; // You must override this method!
+		getFilterKey():any;
+
+		focusFilterEditor():any;
+
+		storeFocusedElement():any;
+
+		restoreFocus():any;
+
+		cancelled():any;
+
+		cancel():any;
 	}
+
+	var WorkspaceView:AtomCore.IWorkspaceViewStatic;
 
 	var Task:AtomCore.ITaskStatic;
 	var Workspace:AtomCore.IWorkspaceStatic;

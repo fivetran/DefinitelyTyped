@@ -33,6 +33,10 @@ _.every([true, 1, null, 'yes'], _.identity);
 
 _.any([null, 0, 'yes', false]);
 
+_.some([1, 2, 3, 4], l => l % 3 === 0);
+
+_.some({ a: 'a', b: 'B', c: 'C', d: 'd' }, l => l === l.toUpperCase());
+
 _.contains([1, 2, 3], 3);
 
 _.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
@@ -40,11 +44,11 @@ _.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
 var stooges = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
 _.pluck(stooges, 'name');
 
-_.max<{ name: string; age: number }>(stooges, (stooge) => stooge.age);
-
-_.max([1, 2, 3, 4, 5]);
+_.max(stooges, (stooge) => stooge.age);
+_.min(stooges, (stooge) => stooge.age);
 
 var numbers = [10, 5, 100, 2, 1000];
+_.max(numbers);
 _.min(numbers);
 
 _.sortBy([1, 2, 3, 4, 5, 6], (num) => Math.sin(num));
@@ -65,18 +69,18 @@ _.countBy([1, 2, 3, 4, 5], (num) => (num % 2 == 0) ? 'even' : 'odd');
 
 _.shuffle([1, 2, 3, 4, 5, 6]);
 
-(function(a, b, c, d){ return _.toArray(arguments).slice(1); })(1, 2, 3, 4);
+(function (a, b, c, d) { return _.toArray(arguments).slice(1); })(1, 2, 3, 4);
 
 _.size({ one: 1, two: 2, three: 3 });
 
-_.partition<number>([0, 1, 2, 3, 4, 5], (num)=>{return num % 2 ==0});
+_.partition<number>([0, 1, 2, 3, 4, 5], (num) => {return num % 2 == 0 });
 
 interface Family {
 	name: string;
-	relation : string;
+	relation: string;
 }
-var isUncleMoe = _.matches<Family, boolean>({name : 'moe', relation : 'uncle'});
-_.filter([{name: 'larry', relation : 'father'}, {name : 'moe', relation : 'uncle'}], isUncleMoe);
+var isUncleMoe = _.matches<Family, boolean>({ name: 'moe', relation: 'uncle' });
+_.filter([{ name: 'larry', relation: 'father' }, { name: 'moe', relation: 'uncle' }], isUncleMoe);
 
 
 
@@ -247,7 +251,7 @@ _.isUndefined((<any>window).missingVariable);
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-var UncleMoe = {name: 'moe'};
+var UncleMoe = { name: 'moe' };
 _.constant(UncleMoe)();
 
 typeof _.now() === "number";
@@ -323,5 +327,9 @@ function chain_tests() {
 		.map(num => [num, num + 1])
 		.flatten()
 		.find(num => num % 2 == 0)
+		.value();
+		
+	var firstVal: number = _.chain([1, 2, 3])
+		.first()
 		.value();
 }
