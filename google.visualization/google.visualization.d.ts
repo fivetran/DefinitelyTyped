@@ -1020,5 +1020,74 @@ declare module google {
         }
 
         //#endregion
+
+        //#region Formatters
+
+        export class ArrowFormat {
+            constructor(options: ArrowFormatOptions);
+            format(dataTable: DataTable, column: number): void;
+        }
+
+        export interface ArrowFormatOptions {
+            base: number;
+        }
+
+        export class BarFormat {
+            constructor(options: BarFormatOptions);
+            format(dataTable: DataTable, column: number): void;
+        }
+
+        export interface BarFormatOptions {
+            base?: number;
+            colorNegative?: string;
+            colorPositive?: string;
+            drawZeroLine?: boolean;
+            max?: number;
+            min?: number;
+            showValue?: boolean;
+            width?: number;
+        }
+
+        export class ColorFormat {
+            constructor();
+            addRange(from: any, to: any, color: string, bgColor: string): void;
+            addGradientRange(from: any, to: any, fromBgColor: number, toBgColor: number): void;
+            format(dataTable: DataTable, column: number): void;
+        }
+
+        export class DateFormat {
+            constructor(options: DateFormatOptions);
+            format(dataTable: DataTable, column: number): void;
+            formatValue(value: any): string;
+        }
+
+        export interface DateFormatOptions {
+            formatType?: string;
+            pattern?: string;
+            timeZone?: number;
+        }
+
+        export class NumberFormat {
+            constructor(options: NumberFormatOptions);
+            format(dataTable: DataTable, column: number): void;
+            formatValue(value: any): string;
+        }
+
+        export interface NumberFormatOptions {
+            decimalSymbol?: string;
+            fractionDigits?: number;
+            groupingSymbol?: string;
+            negativeColor?: string;
+            negativeParens?: string;
+            pattern?: string;
+            prefix?: string;
+            suffix?: string;
+        }
+
+        export class PatternFormat {
+            constructor(pattern: string);
+            format(dataTable: DataTable, srcColumnIndices: number[], dstColumnIndex?: number);
+        }
+        //#endregion
     }
 }
