@@ -1051,7 +1051,7 @@ declare module google {
         export class ColorFormat {
             constructor();
             addRange(from: any, to: any, color: string, bgColor: string): void;
-            addGradientRange(from: any, to: any, fromBgColor: number, toBgColor: number): void;
+            addGradientRange(from: any, to: any, color: string, fromBgColor: string, toBgColor: string): void;
             format(dataTable: DataTable, column: number): void;
         }
 
