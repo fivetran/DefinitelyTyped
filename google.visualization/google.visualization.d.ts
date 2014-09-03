@@ -1014,6 +1014,8 @@ declare module google {
         module events {
             function addListener(visualization: any, eventName: string, callback: Function): any;
             function addListener(visualization: any, eventName: string, callback: (...args: any[]) => void): any;
+            function addOneTimeListener(visualization: any, eventName: string, callback: Function): any;
+            function addOneTimeListener(visualization: any, eventName: string, callback: (...args: any[]) => void): any;
             function removeListener(listener: any): void;
             function removeAllListeners(visualization: any): void;
             function trigger(visualization: any, eventName: string, args?: any): void;
