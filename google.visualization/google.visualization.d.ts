@@ -75,7 +75,7 @@ declare module google {
             addRows(rows: DataObjectCell[][]): number;
             addRows(rows: any[][]): number;
             clone(): DataTable;
-            getColumnId(columnIndex: number): String;
+            getColumnId(columnIndex: number): string;
             getColumnLabel(columnIndex: number): string;
             getColumnPattern(columnIndex: number): string;
             getColumnProperties(columnIndex: number): Properties;
@@ -1026,7 +1026,7 @@ declare module google {
         //#region Formatters
 
         export class ArrowFormat {
-            constructor(options: ArrowFormatOptions);
+            constructor(options?: ArrowFormatOptions);
             format(dataTable: DataTable, column: number): void;
         }
 
@@ -1035,7 +1035,7 @@ declare module google {
         }
 
         export class BarFormat {
-            constructor(options: BarFormatOptions);
+            constructor(options?: BarFormatOptions);
             format(dataTable: DataTable, column: number): void;
         }
 
@@ -1058,7 +1058,7 @@ declare module google {
         }
 
         export class DateFormat {
-            constructor(options: DateFormatOptions);
+            constructor(options?: DateFormatOptions);
             format(dataTable: DataTable, column: number): void;
             formatValue(value: any): string;
         }
@@ -1070,7 +1070,7 @@ declare module google {
         }
 
         export class NumberFormat {
-            constructor(options: NumberFormatOptions);
+            constructor(options?: NumberFormatOptions);
             format(dataTable: DataTable, column: number): void;
             formatValue(value: any): string;
         }
