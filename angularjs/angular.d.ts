@@ -952,6 +952,18 @@ declare module ng {
     }
 
     ///////////////////////////////////////////////////////////////////////////
+    // TemplateRequestService
+    // see http://docs.angularjs.org/api/ng.$templateRequest
+    ///////////////////////////////////////////////////////////////////////////
+    interface ITemplateRequestService {
+        /**
+         * @param tpl The HTTP request template URL
+         * @param ignoreRequestError Whether or not to ignore the exception when the request fails or the template is empty
+         */
+        (tpl: string, ignoreRequestError?: boolean);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
     // TemplateCacheService
     // see http://docs.angularjs.org/api/ng.$templateCache
     ///////////////////////////////////////////////////////////////////////////
