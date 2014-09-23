@@ -438,15 +438,15 @@ declare module google {
             groupWidth: any; // number | string
         }
 
-        export interface VisualizationSelectionArray {
+        export interface SelectedCell {
             column?: number;
             row?: number;
         }
 
         class ChartBase {
             constructor(element: Element);
-            getSelection(): any[];
-            setSelection(selection: any[]): void;
+            getSelection(): SelectedCell[];
+            setSelection(selection: SelectedCell[]): void;
             clearChart(): void;
             getImageURI(): string;
         }
