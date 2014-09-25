@@ -1088,7 +1088,7 @@ declare module google {
 
         export class PatternFormat {
             constructor(pattern: string);
-            format(dataTable: DataTable, srcColumnIndices: number[], dstColumnIndex?: number);
+            format(dataTable: DataTable, srcColumnIndices: number[], dstColumnIndex?: number): void;
         }
         //#endregion
     }
