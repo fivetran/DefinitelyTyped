@@ -40,6 +40,7 @@ interface StripeTokenResponse {
 
 interface StripeError {
     message: string;
+    param: string;
 }
 
 interface StripeCardData {
