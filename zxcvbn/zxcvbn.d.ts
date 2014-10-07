@@ -27,5 +27,4 @@ interface ZxcvbnResult {
      * (useful for implementing a strength bar.)
      */
     score: number;
-
 }
