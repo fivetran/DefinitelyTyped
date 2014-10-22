@@ -186,6 +186,7 @@ interface CheerioStatic {
     (selector: string, context: Cheerio, root: string): Cheerio;
     (selector: any): Cheerio;
 
+    html(): string;
     xml(): string;
     root(): Cheerio;
     contains(container: CheerioElement, contained: CheerioElement): boolean;
