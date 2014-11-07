@@ -1011,13 +1011,23 @@ declare module google {
         //#endregion
         //#region Events
 
+        export interface SortEvent {
+            ascending: boolean;
+            column: number;
+            sortIndexes: number[];
+        }
+
         module events {
             function addListener(visualization: any, eventName: string, callback: Function): any;
             function addListener(visualization: any, eventName: string, callback: (...args: any[]) => void): any;
+            function addListener(visualization: any, eventName: 'sort', callback: (sort: SortEvent) => void): void;
+
             function addOneTimeListener(visualization: any, eventName: string, callback: Function): any;
             function addOneTimeListener(visualization: any, eventName: string, callback: (...args: any[]) => void): any;
+
             function removeListener(listener: any): void;
             function removeAllListeners(visualization: any): void;
+
             function trigger(visualization: any, eventName: string, args?: any): void;
         }
 
