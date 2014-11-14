@@ -600,6 +600,8 @@ declare module CodeMirror {
         text: string[];
         /**  Text that used to be between from and to, which is overwritten by this change. */
         removed: string;
+        /** +input, setValue, etc. */
+        origin: string;
     }
 
     interface EditorChangeLinkedList extends CodeMirror.EditorChange {
