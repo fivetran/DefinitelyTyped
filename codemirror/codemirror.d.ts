@@ -633,7 +633,7 @@ declare module CodeMirror {
         /**
          * a function of no arguments that produces a state object to be used at the start of a document
          */
-        startState?(): State;
+        startState?: () => State;
 
         /**
          * read one token from the stream it is given as an argument, optionally update its state, and return a
@@ -646,7 +646,7 @@ declare module CodeMirror {
          * For languages that have significant blank lines, you can define a blankLine(state) method on your mode
          * that will get called whenever a blank line is passed over, so that it can update the parser state.
          */
-        blankLine?(state: State): void;
+        blankLine?: (state: State) => void;
 
         /**
          * Because state object are mutated, and CodeMirror needs to keep valid versions of a state around
@@ -656,14 +656,14 @@ declare module CodeMirror {
          * When this is not correct, for example because a mode mutates non-array properties of its state object,
          * a mode object should define a copyState method, which is given a state and should return a safe copy of that state.
          */
-        copyState?(state: State): State;
+        copyState?: (state: State) => State;
 
         /**
          * @param state
          * @param textAfter contains the text on the line that is being indented
          * @returns the amount of spaces to indent. May return CodeMirror.Pass to indicate that it could not come up with a precise indentation.
          */
-        indent?(state: State, textAfter: string): number;
+        indent?: (state: State, textAfter: string) => number;
 
         /**
          * string that starts a line comment, to work with commenting addon
