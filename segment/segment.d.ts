@@ -1,14 +1,14 @@
 declare module analytics {
 
     export interface Traits {
-        address: {
+        address?: {
             city?: string;
             country?: string;
             postalCode?: string;
-            state: string;
-            street: string;
+            state?: string;
+            street?: string;
         };
-        age: number;
+        age?: number;
         avatar?: string;
         birthday?: Date;
         createdAt?: any;
@@ -31,59 +31,59 @@ declare module analytics {
 
     export interface Context {
         app?: {
-            name: string;
-            version: string;
-            build: string;
+            name?: string;
+            version?: string;
+            build?: string;
         };
         campaign?: {
-            name: string;
-            source: string;
-            medium: string;
-            term: string;
-            content: string;
+            name?: string;
+            source?: string;
+            medium?: string;
+            term?: string;
+            content?: string;
         };
         device?: {
-            id: string;
-            manufacturer: string;
-            model: string;
-            name: string;
-            type: string;
-            version: string;
+            id?: string;
+            manufacturer?: string;
+            model?: string;
+            name?: string;
+            type?: string;
+            version?: string;
         };
         ip?: string;
         library?: {
-            name: string;
-            version: string;
+            name?: string;
+            version?: string;
         };
         locale?: string;
         location?: {
-            city: string;
-            country: string;
-            latitude: string;
-            longitude: string;
-            region: string;
-            speed: string;
+            city?: string;
+            country?: string;
+            latitude?: string;
+            longitude?: string;
+            region?: string;
+            speed?: string;
         };
         network?: {
-            bluetooth: string;
-            carrier: string;
-            cellular: string;
-            wifi: string;
+            bluetooth?: string;
+            carrier?: string;
+            cellular?: string;
+            wifi?: string;
         };
         os?: {
-            name: string;
-            version: string;
+            name?: string;
+            version?: string;
         };
         referrer?: {
-            type: string;
-            name: string;
-            url: string;
-            link: string;
+            type?: string;
+            name?: string;
+            url?: string;
+            link?: string;
         };
         screen?: {
-            density: string;
-            height: string;
-            width: string;
+            density?: string;
+            height?: string;
+            width?: string;
         };
         timezone?: string;
         traits?: {[special: string]: any};
