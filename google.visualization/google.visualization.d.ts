@@ -430,8 +430,8 @@ declare module google {
             getChartAreaBoundingBox(): ChartBoundingBox;
             getHAxisValue(position: number, axisIndex?: number): number;
             getVAxisValue(position: number, axisIndex?: number): number;
-            getXLocation(position: number, axisIndex?: number): number;
-            getYLocation(position: number, axisIndex?: number): number;
+            getXLocation(position: any, axisIndex?: number): number;
+            getYLocation(position: any, axisIndex?: number): number;
         }
 
         export interface GroupWidth {
