@@ -312,5 +312,9 @@ declare module goog.ui.DatePicker {
      *
      * @type {Object}
      */
-    var Events: Object;
+    var Events: {
+        CHANGE: string;
+        CHANGE_ACTIVE_MONTH: string;
+        SELECT: string;
+    }
 }
