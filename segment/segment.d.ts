@@ -92,11 +92,27 @@ declare module analytics {
         [special: string]: any;
     }
 
+    export interface Properties {
+        properties: {
+            /**
+             *
+             */
+            page?: string;
+            /**
+             * which angular template the event tracks to
+             */
+            template?: string;
+
+        }
+    }
+
     export interface TraitsContext extends Traits, Context { }
 
     function identify(id?: string, options?: Traits)
 
     function group(id?: string, options?: TraitsContext)
+
+    function track(event: string, properties?: Properties)
 
     // defined by https://segment.com/docs/api/tracking/page/
     function page(name?: string, category?: string, specialProperties?: TraitsContext)
