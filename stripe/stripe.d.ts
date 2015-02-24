@@ -44,6 +44,7 @@ interface StripeError {
 }
 
 interface StripeCardData {
+    id: string;
     object: string;
     last4: string;
     type: string;
